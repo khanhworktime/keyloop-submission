@@ -1,0 +1,36 @@
+.device[data-mode="tablet"] .control-app{grid-template-columns:72px minmax(0,1fr)}
+.device[data-mode="tablet"] .workspace-head h2{font-size:24px}
+.device[data-mode="tablet"] .board-grid{grid-template-columns:minmax(260px,.8fr) minmax(0,1.2fr);gap:10px;padding:10px}
+.device[data-mode="tablet"] .specimen-panel{padding:13px}
+.device[data-mode="tablet"] .button,.device[data-mode="tablet"] .icon-button,.device[data-mode="tablet"] .filter-chip,.device[data-mode="tablet"] .field input,.device[data-mode="tablet"] .field select,.device[data-mode="tablet"] .input-shell{min-height:48px}
+.device[data-mode="tablet"] .icon-button{width:48px;height:48px}
+.device[data-mode="tablet"] .action-list .button{min-height:48px}
+.device[data-mode="tablet"] .form-panel form>.field:not(.field-wide){--paired-control-height:48px}
+.device[data-mode="tablet"] .action-list .button-destructive,.device[data-mode="tablet"] .action-list .button:disabled{display:none}
+
+.device[data-mode="mobile"] .control-app{display:block;padding:0}
+.device[data-mode="mobile"] .section-rail{display:none}
+.device[data-mode="mobile"] .workspace{height:100%;border:0;border-radius:0;background:#f3f5f6}
+.device[data-mode="mobile"] .workspace-head{min-height:106px;align-items:flex-start;padding:14px 16px}
+.device[data-mode="mobile"] .workspace-head h2{max-width:240px;font-size:21px;line-height:1.1}
+.device[data-mode="mobile"] .workspace-head p{display:none}
+.device[data-mode="mobile"] .workspace-actions .icon-button{display:none}
+.device[data-mode="mobile"] .header-save{width:44px;padding:0;font-size:0}
+.device[data-mode="mobile"] .header-save .icon{width:20px;height:20px}
+.device[data-mode="mobile"] .board-grid{display:flex;flex-direction:column;gap:10px;padding:10px}
+.device[data-mode="mobile"] .specimen-panel{padding:14px}
+.device[data-mode="mobile"] .form-panel{order:1}.device[data-mode="mobile"] .filter-panel{order:2}.device[data-mode="mobile"] .selection-panel{order:3}.device[data-mode="mobile"] .action-panel{order:4}
+.device[data-mode="mobile"] .form-panel form{grid-template-columns:1fr}
+.device[data-mode="mobile"] .form-panel form>.field:not(.field-wide){--paired-control-height:48px}
+.device[data-mode="mobile"] .field-wide{grid-column:auto}
+.device[data-mode="mobile"] .field input,.device[data-mode="mobile"] .field select,.device[data-mode="mobile"] .input-shell,.device[data-mode="mobile"] .button{min-height:48px}
+.device[data-mode="mobile"] .form-actions{position:sticky;bottom:-14px;z-index:2;display:grid;grid-template-columns:1fr 1.4fr;margin:2px -14px -14px;padding:12px 14px;background:white;box-shadow:0 -8px 18px rgb(17 24 28 / 8%)}
+.device[data-mode="mobile"] .action-list .button{width:100%;min-height:48px}.device[data-mode="mobile"] .action-list .button-destructive,.device[data-mode="mobile"] .action-list .button:disabled{display:none}
+.device[data-mode="mobile"] .utility-row>span{display:none}
+.device[data-mode="mobile"] .filter-chips{flex-wrap:nowrap;overflow:hidden}.device[data-mode="mobile"] .filter-chip:nth-child(3){display:none}
+.device[data-mode="mobile"] fieldset{display:grid;gap:2px}.device[data-mode="mobile"] .choice{min-height:44px}
+
+@media(max-width:720px){
+  .review-actions{overflow:auto}
+  .review-actions .mode-switch:first-child{display:none}
+}

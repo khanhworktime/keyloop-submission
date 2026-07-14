@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Keyloop brand direction review</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #11181c;
+      --graphite: #162228;
+      --slate: #2e4758;
+      --mist: #f1f1f3;
+      --line: #d9e0e4;
+      --blue: #3da5ff;
+      --white: #fff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--mist);
+      font-family: "IBM Plex Sans", Inter, system-ui, sans-serif;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 76px;
+      padding: 14px clamp(20px, 4vw, 64px);
+      border-bottom: 1px solid var(--line);
+      background: rgba(241, 241, 243, .96);
+    }
+    header img { width: 156px; display: block; }
+    header span { color: var(--slate); font-size: 13px; font-weight: 700; letter-spacing: .08em; }
+    main { max-width: 1500px; margin: auto; padding: 64px clamp(20px, 4vw, 64px) 88px; }
+    .intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr);
+      gap: 40px;
+      align-items: end;
+      margin-bottom: 44px;
+    }
+    h1, h2 { font-family: "Plus Jakarta Sans", "IBM Plex Sans", sans-serif; letter-spacing: -.04em; }
+    h1 { max-width: 800px; margin: 0; font-size: clamp(44px, 6vw, 84px); line-height: .98; }
+    .intro p { margin: 0; color: var(--slate); font-size: 18px; line-height: 1.55; }
+    .grid { display: grid; gap: 28px; }
+    article {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(300px, .6fr);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--white);
+      box-shadow: 0 18px 50px rgba(17, 24, 28, .06);
+    }
+    .preview {
+      position: relative;
+      min-height: 420px;
+      overflow: hidden;
+      border-right: 1px solid var(--line);
+      background: #e7eaec;
+    }
+    .preview img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+    .copy { display: flex; flex-direction: column; padding: clamp(28px, 3vw, 46px); }
+    .eyebrow { color: var(--slate); font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    h2 { margin: 16px 0 14px; font-size: clamp(28px, 3vw, 42px); line-height: 1; }
+    .copy p { margin: 0; color: var(--slate); line-height: 1.55; }
+    .traits { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 32px; }
+    .traits span { padding: 8px 11px; border: 1px solid var(--line); border-radius: 999px; font-size: 12px; font-weight: 700; }
+    .actions { display: flex; gap: 10px; margin-top: auto; }
+    a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 18px;
+      border: 1px solid var(--graphite);
+      border-radius: 10px;
+      color: var(--graphite);
+      font-weight: 750;
+      text-decoration: none;
+    }
+    a.primary { color: var(--white); background: var(--graphite); }
+    a:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+    footer { max-width: 780px; margin: 48px auto 0; color: var(--slate); text-align: center; line-height: 1.55; }
+    @media (max-width: 900px) {
+      .intro, article { grid-template-columns: 1fr; }
+      .preview { min-height: 360px; border-right: 0; border-bottom: 1px solid var(--line); }
+    }
+    @media (max-width: 560px) {
+      header { min-height: 64px; }
+      header img { width: 150px; }
+      header span { display: none; }
+      main { padding-top: 42px; }
+      .intro { gap: 20px; }
+      .intro p { font-size: 16px; }
+      article { border-radius: 18px; }
+      .preview { min-height: 250px; }
+      .actions { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="assets/keyloop-logo-slate.svg" alt="Keyloop" width="1000" height="267">
+    <span>BRAND FOUNDATION · V0.1 REVIEW</span>
+  </header>
+  <main>
+    <section class="intro">
+      <h1>Three ways to make operations feel connected.</h1>
+      <p>One Keyloop-aligned foundation, explored through three responsive product personalities. Review the full HTML artifacts at desktop, tablet, and mobile widths.</p>
+    </section>
+    <section class="grid" aria-label="Brand directions">
+      <article>
+        <div class="preview"><img src="previews/v0.1-a-soft-operations.png" alt="Soft Operations direction preview" width="1440" height="6622" loading="lazy"></div>
+        <div class="copy">
+          <span class="eyebrow">Direction A · Balanced</span>
+          <h2>Soft Operations</h2>
+          <p>Calm surfaces and a floating slate navigation create the most implementation-ready foundation for everyday dealership management.</p>
+          <div class="traits"><span>Soft</span><span>Clear</span><span>Adaptable</span></div>
+          <div class="actions"><a class="primary" href="directions/v0.1-a-soft-operations.html">Open full direction</a></div>
+        </div>
+      </article>
+      <article>
+        <div class="preview"><img src="previews/v0.1-b-connected-lanes.png" alt="Connected Lanes direction preview" width="1440" height="7250" loading="lazy"></div>
+        <div class="copy">
+          <span class="eyebrow">Direction B · Relational</span>
+          <h2>Connected Lanes</h2>
+          <p>A continuous information lane makes the Zone, Slot, Inventory Unit, and Vehicle Master relationships visible and navigable.</p>
+          <div class="traits"><span>Connected</span><span>Spatial</span><span>Guided</span></div>
+          <div class="actions"><a class="primary" href="directions/v0.1-b-connected-lanes.html">Open full direction</a></div>
+        </div>
+      </article>
+      <article>
+        <div class="preview"><img src="previews/v0.1-c-precision-cockpit.png" alt="Precision Cockpit direction preview" width="1440" height="4014" loading="lazy"></div>
+        <div class="copy">
+          <span class="eyebrow">Direction C · Dense</span>
+          <h2>Precision Cockpit</h2>
+          <p>A framed operational workspace exposes maximum desktop context, then compresses carefully into touch-first tablet and fast-check mobile views.</p>
+          <div class="traits"><span>Precise</span><span>Dense</span><span>Decisive</span></div>
+          <div class="actions"><a class="primary" href="directions/v0.1-c-precision-cockpit.html">Open full direction</a></div>
+        </div>
+      </article>
+    </section>
+    <footer>Recommended blend: use Soft Operations as the base, bring Connected Lanes into Zone and Slot management, and use Precision Cockpit's contextual rail where desktop detail matters.</footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Keyloop Inventory Intelligence — Final Design Review</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/final-review.css">
+</head>
+<body>
+  <a class="skip-link" href="#core-flow">Skip to core flow</a>
+  <!-- Curated front door only: versioned folders remain the editable design evidence. -->
+  <main class="review-page">
+    <header class="hero">
+      <nav class="hero-nav" aria-label="Review shortcuts">
+        <a class="logo" href="index.html" aria-label="Final design review home">
+          <img src="../v0.1-brand-foundation/assets/keyloop-logo-slate.svg" alt="Keyloop" width="1000" height="267">
+        </a>
+        <div>
+          <a href="#core-flow">Core flow</a>
+          <a href="#design-language">Design language</a>
+          <a href="README.md">How to review</a>
+        </div>
+      </nav>
+
+      <div class="hero-copy">
+        <span class="eyebrow">Inventory Intelligence · Final design review</span>
+        <h1>Review the approved<br>Supply inventory flow.</h1>
+        <p>This page removes the archive noise. Start with the handoff contract, then walk the four manager screens in sequence.</p>
+      </div>
+
+      <div class="hero-meta" aria-label="Review scope summary">
+        <div><strong>04</strong><span>core screens</span></div>
+        <div><strong>03</strong><span>primary routes</span></div>
+        <div><strong>&gt;90</strong><span>days means aging</span></div>
+      </div>
+    </header>
+
+    <section class="handoff-strip" aria-labelledby="handoff-title">
+      <div>
+        <span class="section-index">Start here</span>
+        <h2 id="handoff-title">Implementation boundary and acceptance contract</h2>
+        <p>Confirms MVP scope, responsive behavior, component sources, and the deferred Location/Zone/Slot module.</p>
+      </div>
+      <a class="button button-commit" href="../v0.5-design-handoff/index.html">Open v0.5 handoff <span aria-hidden="true">→</span></a>
+    </section>
+
+    <section class="section" id="core-flow" aria-labelledby="flow-title">
+      <header class="section-head">
+        <div><span class="section-index">01 · Core journey</span><h2 id="flow-title">One decision loop, in review order.</h2></div>
+        <p>Use the built-in Desktop, Tablet, and Mobile controls on each prototype.</p>
+      </header>
+      <div class="flow-grid">
+        <a class="flow-card attention-card" href="../v0.3-responsive-screens/screens/dashboard.html">
+          <span class="step">01</span>
+          <div><span class="card-label">Overview</span><h3>Find the aging signal.</h3><p>See current stock health and move directly into units needing attention.</p></div>
+          <span class="open-label">Open screen <b aria-hidden="true">→</b></span>
+        </a>
+        <a class="flow-card" href="../v0.3-responsive-screens/screens/inventory.html">
+          <span class="step">02</span>
+          <div><span class="card-label">Inventory</span><h3>Filter and select stock.</h3><p>Compare Inventory Units by make, model, and age using the approved data surface.</p></div>
+          <span class="open-label">Open screen <b aria-hidden="true">→</b></span>
+        </a>
+        <a class="flow-card" href="../v0.3-responsive-screens/screens/inventory-unit.html">
+          <span class="step">03</span>
+          <div><span class="card-label">Inventory Unit</span><h3>Record the next action.</h3><p>Review VIN-specific context and save a proposed action for the aging unit.</p></div>
+          <span class="open-label">Open screen <b aria-hidden="true">→</b></span>
+        </a>
+        <a class="flow-card" href="../v0.3-responsive-screens/screens/activity.html">
+          <span class="step">04</span>
+          <div><span class="card-label">Activity</span><h3>Verify the evidence.</h3><p>Review manager actions and operational events across the inventory.</p></div>
+          <span class="open-label">Open screen <b aria-hidden="true">→</b></span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section language-section" id="design-language" aria-labelledby="language-title">
+      <header class="section-head">
+        <div><span class="section-index">02 · Design language</span><h2 id="language-title">The references production should follow.</h2></div>
+        <p>Open these only when reviewing system decisions or implementing a component family.</p>
+      </header>
+      <div class="reference-grid">
+        <a class="reference-card brand-reference" href="../v0.1-d-precision-guideline/brand-kit-board.html"><span>Foundation</span><h3>Precision brand guideline</h3><p>Color, type, spacing, hierarchy, overlays, and accessibility.</p></a>
+        <a class="reference-card" href="../v0.2-component-language/components/navigation-shell.html"><span>Navigation</span><h3>Application shell</h3><p>Responsive sidebar, app bar, and mobile navigation.</p></a>
+        <a class="reference-card" href="../v0.2-component-language/components/ag-grid-data-surface.html"><span>Data</span><h3>AG Grid surface</h3><p>Table and grid language across desktop, tablet, and mobile.</p></a>
+        <a class="reference-card" href="../v0.2.2-component-families/components/actions-and-inputs.html"><span>Input</span><h3>Actions &amp; inputs</h3><p>Buttons, search, forms, selection, and touch behavior.</p></a>
+        <a class="reference-card" href="../v0.2.3-status-and-feedback/components/status-and-feedback.html"><span>Feedback</span><h3>Status &amp; feedback</h3><p>Durable status, validation, progress, and recovery.</p></a>
+        <a class="reference-card" href="../v0.2.4-overlays-and-decisions/components/overlays-and-decisions.html"><span>Overlay</span><h3>Overlays &amp; decisions</h3><p>Popover, dialog, alert dialog, and responsive sheet.</p></a>
+      </div>
+    </section>
+
+    <section class="boundary-grid" aria-label="Supporting and deferred scope">
+      <article class="supporting">
+        <span class="section-index">Supporting reference</span>
+        <h2>Vehicle Master remains behind Inventory.</h2>
+        <p>Use these screens to understand reusable make, model, variant, and type—not as a fourth core workflow.</p>
+        <div><a href="../v0.4-management-screens/screens/vehicle-masters.html">Vehicle Masters <span aria-hidden="true">→</span></a><a href="../v0.4-management-screens/screens/vehicle-master.html">Master detail <span aria-hidden="true">→</span></a></div>
+      </article>
+      <article class="deferred">
+        <span class="section-index">Deferred module</span>
+        <h2>Locations, Zones, and Slots are not part of this review.</h2>
+        <p>The versioned archive retains those explorations, but this final entrypoint deliberately does not link or promote them.</p>
+      </article>
+    </section>
+
+    <footer>
+      <div><span class="section-index">Final bundle</span><strong>Keyloop Inventory Intelligence</strong></div>
+      <p>Curated review entrypoint · source designs remain versioned</p>
+      <a href="README.md">Read review instructions</a>
+    </footer>
+  </main>
+</body>
+</html>

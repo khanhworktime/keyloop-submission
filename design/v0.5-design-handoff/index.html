@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Precision v0.5 — Supply Inventory Handoff</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/handoff.css">
+</head>
+<body>
+  <!-- Assumption: v0.5 freezes approved scope; it does not redesign source prototypes. -->
+  <main class="handoff">
+    <header class="hero">
+      <div class="hero-copy">
+        <span class="version">Supply · v0.5 design handoff</span>
+        <h1>Inventory decisions,<br>ready to build.</h1>
+        <p>One bounded manager journey: see current stock, isolate vehicles held longer than 90 days, record a proposed action, and verify that it persists.</p>
+        <div class="hero-actions">
+          <a class="button commit" href="../v0.3-responsive-screens/screens/dashboard.html">Open core prototype</a>
+          <a class="button secondary" href="scope.md">Read scope contract</a>
+        </div>
+      </div>
+      <div class="hero-mark">
+        <img src="../v0.1-brand-foundation/assets/keyloop-logo-slate.svg" alt="Keyloop">
+        <span>Implementation boundary</span>
+        <b>Overview · Inventory · Activity</b>
+      </div>
+    </header>
+
+    <section class="section-heading">
+      <div><span>01 · Required outcome</span><h2>Three requirements. One accountable loop.</h2></div>
+      <p>Form comes from the manager decision sequence: signal → inventory → action → evidence.</p>
+    </section>
+    <section class="requirements" aria-label="Core product requirements">
+      <article><span>01</span><div><h3>Inventory visualization</h3><p>Filter every Inventory Unit by make, model, and age without losing record identity.</p></div></article>
+      <article class="attention"><span>02</span><div><h3>Aging stock identification</h3><p>Prominently identify units with <b>daysInStock &gt; 90</b>. Exactly 90 days is not aging.</p></div></article>
+      <article><span>03</span><div><h3>Actionable insight</h3><p>Persist a proposed action and timestamped Activity entry for an aging unit.</p></div></article>
+    </section>
+
+    <nav class="flow" aria-label="Core manager flow">
+      <a href="../v0.3-responsive-screens/screens/dashboard.html"><span>1</span><div><b>Overview</b><small>Find the aging signal</small></div></a>
+      <a href="../v0.3-responsive-screens/screens/inventory.html"><span>2</span><div><b>Inventory</b><small>Filter and select a unit</small></div></a>
+      <a href="../v0.3-responsive-screens/screens/inventory-unit.html"><span>3</span><div><b>Unit decision</b><small>Record proposed action</small></div></a>
+      <a href="../v0.3-responsive-screens/screens/activity.html"><span>4</span><div><b>Activity</b><small>Verify persisted evidence</small></div></a>
+    </nav>
+
+    <section class="section-heading screen-heading">
+      <div><span>02 · Approved source screens</span><h2>Build from reviewed evidence.</h2></div>
+      <p>Desktop compares, tablet acts comfortably, mobile checks quickly. Source prototypes remain linked rather than duplicated.</p>
+    </section>
+    <section class="screen-grid" aria-label="Approved core screen sources">
+      <article class="screen-card">
+        <header><div><span>Core · 01</span><h3>Overview</h3></div><a href="../v0.3-responsive-screens/screens/dashboard.html">Open Overview →</a></header>
+        <div class="screen-proof overview-proof"><span class="proof-label">Inventory health</span><strong>12 aging units</strong><p>From 86 current Inventory Units</p><div class="proof-rule"><span>Last refreshed</span><b>Just now</b></div></div>
+      </article>
+      <article class="screen-card">
+        <header><div><span>Core · 02</span><h3>Inventory</h3></div><a href="../v0.3-responsive-screens/screens/inventory.html">Open Inventory →</a></header>
+        <div class="screen-proof inventory-proof"><div class="filter-row"><span>Make · All</span><span>Model · All</span><span>Age · Over 90 days</span></div><div class="table-head"><span>Inventory Unit</span><span>Make / Model</span><span>Age</span></div><div class="table-row"><b>STK-2048</b><span>Aster · A7 Touring</span><strong>128 days</strong></div><div class="table-row"><b>STK-1934</b><span>Northstar · E2 Motion</span><strong>117 days</strong></div></div>
+      </article>
+      <article class="screen-card">
+        <header><div><span>Core · 03</span><h3>Inventory Unit</h3></div><a href="../v0.3-responsive-screens/screens/inventory-unit.html">Open Unit →</a></header>
+        <div class="screen-proof unit-proof"><span class="proof-label">Stock no. STK-2048</span><strong>Aster A7 Touring</strong><dl><div><dt>Inventory age</dt><dd>128 days · Aging</dd></div><div><dt>Proposed action</dt><dd>Price Reduction Planned</dd></div></dl><button type="button" disabled>Save proposed action</button></div>
+      </article>
+      <article class="screen-card">
+        <header><div><span>Core · 04</span><h3>Activity</h3></div><a href="../v0.3-responsive-screens/screens/activity.html">Open Activity →</a></header>
+        <div class="screen-proof activity-proof"><span class="proof-label">Persisted evidence</span><div class="event"><time>14 Jul · 14:32</time><div><b>Price Reduction Planned</b><p>STK-2048 · recorded by Krist Manager</p></div></div><div class="event"><time>10 Apr · 09:41</time><div><b>Inventory inspection completed</b><p>STK-2048 · system event</p></div></div></div>
+      </article>
+    </section>
+
+    <section class="contract-grid" aria-label="Production handoff contracts">
+      <article><span>Navigation</span><h3>Only three primary destinations.</h3><p>Overview, Inventory, and Activity. Inventory Unit detail is reached from its record, not added as navigation.</p></article>
+      <article><span>Data surface</span><h3>AG Grid where comparison matters.</h3><p>AG Grid Community on desktop/tablet; purpose-built fast-check cards on mobile using the same query and view model.</p></article>
+      <article><span>Interaction source</span><h3>Animate UI, then Base UI.</h3><p>Prefer Base UI-backed Animate UI variants. Every adopted primitive inherits global Precision tokens, focus, and touch rules.</p></article>
+      <article><span>Icon language</span><h3>Iconsax Rounded Linear.</h3><p>Use Bold only for selected navigation. Icons support meaning; they do not decorate every label.</p></article>
+    </section>
+
+    <section class="boundary">
+      <article class="supporting">
+        <span>Supporting data</span>
+        <h2>Vehicle Master stays behind Inventory.</h2>
+        <p>Make, model, variant, and type remain reusable Master-owned fields. A dedicated Master library may support administration, but it is not a fourth core workflow.</p>
+        <div class="boundary-links"><a href="../v0.4-management-screens/screens/vehicle-masters.html">Vehicle Masters evidence →</a><a href="../v0.4-management-screens/screens/vehicle-master.html">Master detail evidence →</a></div>
+      </article>
+      <article class="deferred">
+        <span>Deferred module</span>
+        <h2>Location capacity and placement.</h2>
+        <p>Locations, Zones, Slots, assignment, movement, capacity, persistence, API contracts, and validation are outside the submission MVP.</p>
+        <small>Legacy Zone/Slot labels in fixture screens are display context only.</small>
+      </article>
+    </section>
+
+    <footer class="handoff-footer">
+      <div><span>Next gate</span><h2>Implement the core flow, then earn v1.0.</h2></div>
+      <nav aria-label="Handoff documents"><a href="README.md">Handoff README</a><a href="scope.md">Normative scope</a><a href="validation.md">Validation</a></nav>
+    </footer>
+  </main>
+</body>
+</html>

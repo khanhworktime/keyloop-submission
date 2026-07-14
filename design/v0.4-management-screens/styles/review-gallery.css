@@ -1,0 +1,61 @@
+@import url("../../v0.1-d-precision-guideline/design-tokens.css");
+
+*{box-sizing:border-box}
+body{margin:0;background:#eef0f2;color:var(--color-carbon-900);font-family:var(--font-ui)}
+a{color:inherit}
+.gallery{max-width:1500px;margin:auto;padding:42px}
+.gallery-head{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;padding:34px;border-radius:24px;background:var(--color-carbon-800);color:#fff}
+.gallery-head h1{max-width:900px;margin:14px 0 0;font:700 54px/.98 var(--font-display);letter-spacing:-.055em}
+.gallery-head p{max-width:720px;margin:18px 0 0;color:#bdcbd1;font-size:16px;line-height:1.55}
+.gallery-head img{width:180px;filter:brightness(0) invert(1)}
+.review-badge{display:inline-flex;min-height:32px;align-items:center;padding:0 11px;border:1px solid #78909b;border-radius:99px;color:#d7e4e9;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.review-badge.dark{border-color:#9cb0b9;color:#355261}
+.relationship-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:18px 0;overflow:hidden;border:1px solid #cbd5da;border-radius:16px;background:#cbd5da}
+.relationship-strip a{display:flex;min-height:92px;align-items:center;gap:13px;padding:18px;background:#fff;text-decoration:none}
+.relationship-strip span{display:grid;width:34px;height:34px;place-items:center;border-radius:9px;background:#eaf2f5;color:#315164;font-weight:800}
+.relationship-strip b,.relationship-strip small{display:block}
+.relationship-strip b{font:700 15px var(--font-display)}
+.relationship-strip small{margin-top:4px;color:#617681;font-size:11px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin:32px 0 12px}
+.section-head span{color:#5e7480;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+.section-head h2{margin:5px 0 0;font:700 28px var(--font-display);letter-spacing:-.035em}
+.section-head p{max-width:520px;margin:0;color:#526a76;font-size:13px;line-height:1.5;text-align:right}
+.new-family-head{margin-top:44px}
+.screen-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.screen-card{overflow:hidden;border:1px solid #cbd5da;border-radius:17px;background:#fff}
+.screen-card.review{border-color:#8cb8ca;box-shadow:0 10px 28px rgba(20,52,66,.07)}
+.screen-card>header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid #d9e0e4}
+.screen-card header span,.screen-card header b{display:block}
+.screen-card header span{color:#617681;font-size:10px;font-weight:800;text-transform:uppercase}
+.screen-card header b{margin-top:3px;font:700 16px var(--font-display)}
+.screen-card header a{min-height:44px;display:inline-flex;align-items:center;font-size:11px;font-weight:800;text-decoration:none}
+.frame{height:390px;overflow:hidden;background:#0b1114}
+.frame iframe{width:200%;height:200%;transform:scale(.5);transform-origin:0 0;border:0}
+.inherited .frame{filter:saturate(.82)}
+.gate{display:flex;align-items:center;justify-content:space-between;gap:30px;margin-top:24px;padding:28px;border:1px solid #c7d6dc;border-radius:18px;background:#fff}
+.gate h2{margin:12px 0 0;font:700 24px var(--font-display)}
+.gate p{margin:7px 0 0;color:#526a76;font-size:13px}
+.gate-links{display:flex;gap:10px}
+.gate-links a{display:inline-flex;min-height:44px;align-items:center;padding:0 16px;border:1px solid #78909b;border-radius:11px;font-size:12px;font-weight:800;text-decoration:none}
+.gate-links a:first-child{border-color:#156b50;background:#156b50;color:#fff}
+
+@media(max-width:900px){
+  .gallery{padding:20px}
+  .gallery-head{align-items:flex-start;flex-direction:column}
+  .gallery-head h1{font-size:42px}
+  .gallery-head img{width:150px}
+  .screen-grid{grid-template-columns:1fr}
+  .relationship-strip{grid-template-columns:1fr 1fr}
+  .section-head{align-items:flex-start;flex-direction:column}
+  .section-head p{text-align:left}
+}
+@media(max-width:560px){
+  .gallery{padding:12px}
+  .gallery-head{padding:24px 20px;border-radius:18px}
+  .gallery-head h1{font-size:34px}
+  .relationship-strip{grid-template-columns:1fr}
+  .frame{height:310px}
+  .gate{align-items:flex-start;flex-direction:column}
+  .gate-links{width:100%;flex-direction:column}
+  .gate-links a{justify-content:center}
+}

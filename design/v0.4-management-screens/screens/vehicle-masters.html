@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Precision v0.4 — Vehicle Masters</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../v0.3-responsive-screens/styles/screen-foundation.css">
+  <link rel="stylesheet" href="../../v0.3-responsive-screens/styles/application-shell.css">
+  <link rel="stylesheet" href="../styles/review-controls.css">
+  <link rel="stylesheet" href="../styles/vehicle-masters.css">
+  <link rel="stylesheet" href="../../v0.3-responsive-screens/styles/responsive-tablet.css">
+  <link rel="stylesheet" href="../../v0.3-responsive-screens/styles/responsive-mobile.css">
+</head>
+<body>
+<a class="skip-link" href="#masters-screen">Skip to Vehicle Masters</a>
+<svg class="sr-only" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-overview" viewBox="0 0 24 24"><path d="M17 10h2c2 0 3-1 3-3V5c0-2-1-3-3-3h-2c-2 0-3 1-3 3v2c0 2 1 3 3 3ZM5 22h2c2 0 3-1 3-3v-2c0-2-1-3-3-3H5c-2 0-3 1-3 3v2c0 2 1 3 3 3ZM6 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM18 22a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M3.2 7.4 12 12.5l8.8-5.1M12 21.6v-9.1M9.9 2.5 4.6 5.4c-1.2.7-2.2 2.4-2.2 3.8v5.6c0 1.4 1 3.1 2.2 3.8l5.3 3c1.2.6 3 .6 4.2 0l5.3-3c1.2-.7 2.2-2.4 2.2-3.8V9.2c0-1.4-1-3.1-2.2-3.8l-5.3-2.9c-1.2-.7-3-.7-4.2 0Z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-location" viewBox="0 0 24 24"><path d="M12 13.4a3.1 3.1 0 1 0 0-6.2 3.1 3.1 0 0 0 0 6.2ZM3.6 8.5c2-8.7 14.8-8.7 16.8 0 1.1 5.1-2 9.4-4.8 12a5.2 5.2 0 0 1-7.2 0c-2.8-2.6-5.9-6.9-4.8-12Z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24"><path d="M9 22h6c5 0 7-2 7-7V9c0-5-2-7-7-7H9C4 2 2 4 2 9v6c0 5 2 7 7 7Zm-1.7-7.5 2.4-3.1c.3-.4 1-.5 1.4-.2l1.8 1.5c.5.3 1.1.2 1.5-.2l2.3-3" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-database" viewBox="0 0 24 24"><path d="M19.3 10H4.7A2.7 2.7 0 0 1 2 7.3V4.7A2.7 2.7 0 0 1 4.7 2h14.6A2.7 2.7 0 0 1 22 4.7v2.6a2.7 2.7 0 0 1-2.7 2.7Zm0 12H4.7A2.7 2.7 0 0 1 2 19.3v-2.6A2.7 2.7 0 0 1 4.7 14h14.6a2.7 2.7 0 0 1 2.7 2.7v2.6a2.7 2.7 0 0 1-2.7 2.7ZM6 5v2m4-2v2m-4 10v2m4-2v2m4-13h4m-4 12h4" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><path d="M11 20a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm10 1-3.4-3.4" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-gallery" viewBox="0 0 24 24"><path d="M9 22h6c5 0 7-2 7-7V9c0-5-2-7-7-7H9C4 2 2 4 2 9v6c0 5 2 7 7 7Zm0-12a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm-6.3 8 4.9-3.3c.8-.5 1.9-.5 2.6.1l.4.4c.8.7 2.1.7 2.8 0l4.1-3.5c.8-.7 2.1-.7 2.9 0l1.6 1.4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-table" viewBox="0 0 24 24"><path d="M3 5.5h18M3 11.5h18M3 17.5h18M8 3v18" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><path d="M4 3h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Zm11 0h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1ZM4 14h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-5a1 1 0 0 1 1-1Zm11 0h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-5a1 1 0 0 1 1-1Z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-more" viewBox="0 0 24 24"><path d="M5 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm14 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+</svg>
+<div class="review-page">
+  <header class="review-header"><div><h1>04 · Vehicle Masters</h1><p>Reusable vehicle definitions stay distinct from physical, VIN-specific stock.</p></div><div class="mode-switch" role="group" aria-label="Viewport"><button data-mode-target="desktop" aria-pressed="true">Desktop</button><button data-mode-target="tablet" aria-pressed="false">Tablet</button><button data-mode-target="mobile" aria-pressed="false">Mobile</button></div></header>
+  <main class="device-stage"><section class="device" data-mode="desktop"><div class="app">
+    <aside class="sidebar"><div class="brand"><img src="../../v0.1-brand-foundation/assets/keyloop-logo-slate.svg" alt="Keyloop"><span class="product-mark">IN</span></div><nav aria-label="Primary"><ul class="nav-list">
+      <li><a class="nav-link" href="../../v0.3-responsive-screens/screens/dashboard.html" data-screen-link><span class="icon"><svg><use href="#i-overview"/></svg></span><span>Overview</span></a></li>
+      <li><a class="nav-link" href="../../v0.3-responsive-screens/screens/inventory.html" data-screen-link><span class="icon"><svg><use href="#i-box"/></svg></span><span>Inventory</span></a></li>
+      <li><a class="nav-link" href="locations.html" data-screen-link><span class="icon"><svg><use href="#i-location"/></svg></span><span>Locations</span></a></li>
+      <li><a class="nav-link" href="../../v0.3-responsive-screens/screens/activity.html" data-screen-link><span class="icon"><svg><use href="#i-activity"/></svg></span><span>Activity</span></a></li>
+      <li><a class="nav-link" aria-current="page" href="vehicle-masters.html" data-screen-link><span class="icon"><svg><use href="#i-database"/></svg></span><span>Master Data</span></a></li>
+    </ul></nav><div class="sidebar-foot"><div class="sidebar-note"><b>Northside Motors</b><span>Manager workspace</span></div></div></aside>
+    <section class="workspace"><header class="app-bar"><div class="title-lockup"><span class="product-mark">IN</span><div><strong>Inventory Intelligence</strong><small>Vehicle Masters · <span data-header-count>4</span> shown</small></div></div></header><header class="mobile-top"><strong>Vehicle Masters · <span data-header-count>4</span> shown</strong><button class="icon-button" aria-label="More Vehicle Master actions"><span class="icon"><svg><use href="#i-more"/></svg></span></button></header>
+      <div class="screen" id="masters-screen" tabindex="-1"><div class="context-strip"><a href="../../v0.3-responsive-screens/screens/dashboard.html" data-screen-link>Overview</a><span>›</span><b>Master Data</b><span>›</span><span>Vehicle Masters</span></div>
+        <header class="page-head"><div><span class="eyebrow">Vehicle Masters</span><h2>Reuse the right definition.</h2><p>Make, model, variant, and type are shared by every linked Inventory Unit.</p></div></header>
+        <section class="masters-layout"><div class="masters-main"><div class="master-toolbar">
+          <label class="master-search"><span class="icon"><svg><use href="#i-search"/></svg></span><span class="sr-only">Search Vehicle Masters</span><input data-master-search placeholder="Search master ID, make, model or variant"></label>
+          <label class="toolbar-select"><span>Type</span><select data-type-filter aria-label="Filter by vehicle type"><option value="All">All</option><option value="Passenger car">Passenger car</option><option value="Not supplied">Not supplied</option></select></label>
+          <label class="toolbar-select sort-select"><span>Sort</span><select data-sort-control aria-label="Sort Vehicle Masters"><option value="name-asc">Name A–Z</option><option value="name-desc">Name Z–A</option><option value="id-asc">Master ID</option></select></label>
+          <div class="view-switch" role="group" aria-label="Data view"><button type="button" data-master-view="table" aria-pressed="true"><span class="icon"><svg><use href="#i-table"/></svg></span><span>Table</span></button><button type="button" data-master-view="grid" aria-pressed="false"><span class="icon"><svg><use href="#i-grid"/></svg></span><span>Grid</span></button></div>
+        </div>
+        <div class="master-table" data-table-view aria-label="Vehicle Masters table view"><div class="master-head" aria-hidden="true"><span>Vehicle Master</span><span>Make</span><span>Model</span><span>Variant</span><span>Type</span><span>Linked units</span><span></span></div>
+          <button class="master-row selected" type="button" aria-pressed="true" data-master-row data-id="VM-014" data-title="Aster A7 Touring" data-type="Passenger car" data-unit="STK-2048" data-age="128 days" data-zone="North" data-slot="N-04"><span class="master-identity"><span class="vehicle-thumb" role="img" aria-label="Vehicle image pending"><svg aria-hidden="true"><use href="#i-gallery"/></svg></span><span class="master-copy"><b>Aster A7 Touring</b><small>VM-014</small></span></span><span>Aster</span><span>A7</span><span>Touring</span><span>Passenger car</span><span class="linked-count">1</span><span class="open-cell">›</span></button>
+          <button class="master-row" type="button" aria-pressed="false" data-master-row data-id="VM-021" data-title="Northstar E2 Motion" data-type="Not supplied" data-unit="STK-1934" data-age="117 days" data-zone="East" data-slot="E-11"><span class="master-identity"><span class="vehicle-thumb" role="img" aria-label="Vehicle image pending"><svg aria-hidden="true"><use href="#i-gallery"/></svg></span><span class="master-copy"><b>Northstar E2 Motion</b><small>VM-021</small></span></span><span>Northstar</span><span>E2</span><span>Motion</span><span class="not-supplied">Not supplied</span><span class="linked-count">1</span><span class="open-cell">›</span></button>
+          <button class="master-row" type="button" aria-pressed="false" data-master-row data-id="VM-009" data-title="Vela C4 Urban" data-type="Not supplied" data-unit="STK-1918" data-age="104 days" data-zone="Not assigned" data-slot="Not assigned"><span class="master-identity"><span class="vehicle-thumb" role="img" aria-label="Vehicle image pending"><svg aria-hidden="true"><use href="#i-gallery"/></svg></span><span class="master-copy"><b>Vela C4 Urban</b><small>VM-009</small></span></span><span>Vela</span><span>C4</span><span>Urban</span><span class="not-supplied">Not supplied</span><span class="linked-count">1</span><span class="open-cell">›</span></button>
+          <button class="master-row" type="button" aria-pressed="false" data-master-row data-id="VM-011" data-title="Aster A5 Sport" data-type="Not supplied" data-unit="STK-1886" data-age="96 days" data-zone="South" data-slot="S-08"><span class="master-identity"><span class="vehicle-thumb" role="img" aria-label="Vehicle image pending"><svg aria-hidden="true"><use href="#i-gallery"/></svg></span><span class="master-copy"><b>Aster A5 Sport</b><small>VM-011</small></span></span><span>Aster</span><span>A5</span><span>Sport</span><span class="not-supplied">Not supplied</span><span class="linked-count">1</span><span class="open-cell">›</span></button>
+        </div>
+        <div class="master-card-grid" data-grid-view hidden>
+          <a class="master-card selected" href="vehicle-master.html" data-screen-link data-master-card data-id="VM-014" data-title="Aster A7 Touring" data-type="Passenger car"><div class="master-media-placeholder" role="img" aria-label="Vehicle image pending"><svg aria-hidden="true"><use href="#i-gallery"/></svg><span>Vehicle image</span><small>Asset pending</small></div><span class="master-code">VM-014</span><h3>Aster A7 Touring</h3><dl><div><dt>Type</dt><dd>Passenger car</dd></div><div><dt>Linked units</dt><dd>1</dd></div></dl><span class="card-action">Open master <b>›</b></span></a>
+          <article class="master-card" aria-disabled="true" data-master-card data-id="VM-021" data-title="Northstar E2 Motion" data-type="Not supplied"><div class="master-media-placeholder" role="img" aria-label="Vehicle image pending"><svg aria-hidden="true"><use href="#i-gallery"/></svg><span>Vehicle image</span><small>Asset pending</small></div><span class="master-code">VM-021</span><h3>Northstar E2 Motion</h3><dl><div><dt>Type</dt><dd>Not supplied</dd></div><div><dt>Linked units</dt><dd>1</dd></div></dl><span class="card-action">Detail not composed</span></article>
+          <article class="master-card" aria-disabled="true" data-master-card data-id="VM-009" data-title="Vela C4 Urban" data-type="Not supplied"><div class="master-media-placeholder" role="img" aria-label="Vehicle image pending"><svg aria-hidden="true"><use href="#i-gallery"/></svg><span>Vehicle image</span><small>Asset pending</small></div><span class="master-code">VM-009</span><h3>Vela C4 Urban</h3><dl><div><dt>Type</dt><dd>Not supplied</dd></div><div><dt>Linked units</dt><dd>1</dd></div></dl><span class="card-action">Detail not composed</span></article>
+          <article class="master-card" aria-disabled="true" data-master-card data-id="VM-011" data-title="Aster A5 Sport" data-type="Not supplied"><div class="master-media-placeholder" role="img" aria-label="Vehicle image pending"><svg aria-hidden="true"><use href="#i-gallery"/></svg><span>Vehicle image</span><small>Asset pending</small></div><span class="master-code">VM-011</span><h3>Aster A5 Sport</h3><dl><div><dt>Type</dt><dd>Not supplied</dd></div><div><dt>Linked units</dt><dd>1</dd></div></dl><span class="card-action">Detail not composed</span></article>
+        </div>
+        <div class="mobile-master-list"><a class="mobile-master-card" href="vehicle-master.html" data-screen-link data-mobile-master data-id="VM-014" data-title="Aster A7 Touring" data-type="Passenger car"><div class="mobile-master-media" role="img" aria-label="Vehicle image pending"><svg aria-hidden="true"><use href="#i-gallery"/></svg><span>Asset pending</span></div><div><span class="master-code">VM-014</span><header><h3>Aster A7 Touring</h3><b>›</b></header><dl><div><dt>Type</dt><dd>Passenger car</dd></div><div><dt>Linked units</dt><dd>1 unit</dd></div></dl><span class="mobile-card-action">Open master</span></div></a><article class="mobile-master-card" data-mobile-master data-id="VM-021" data-title="Northstar E2 Motion" data-type="Not supplied"><div class="mobile-master-media" role="img" aria-label="Vehicle image pending"><svg aria-hidden="true"><use href="#i-gallery"/></svg><span>Asset pending</span></div><div><span class="master-code">VM-021</span><header><h3>Northstar E2 Motion</h3><b>›</b></header><dl><div><dt>Type</dt><dd>Not supplied</dd></div><div><dt>Linked units</dt><dd>1 unit</dd></div></dl><span class="mobile-card-action">Open master</span></div></article><article class="mobile-master-card" data-mobile-master data-id="VM-009" data-title="Vela C4 Urban" data-type="Not supplied"><div class="mobile-master-media" role="img" aria-label="Vehicle image pending"><svg aria-hidden="true"><use href="#i-gallery"/></svg><span>Asset pending</span></div><div><span class="master-code">VM-009</span><header><h3>Vela C4 Urban</h3><b>›</b></header><dl><div><dt>Type</dt><dd>Not supplied</dd></div><div><dt>Linked units</dt><dd>1 unit</dd></div></dl><span class="mobile-card-action">Open master</span></div></article><article class="mobile-master-card" data-mobile-master data-id="VM-011" data-title="Aster A5 Sport" data-type="Not supplied"><div class="mobile-master-media" role="img" aria-label="Vehicle image pending"><svg aria-hidden="true"><use href="#i-gallery"/></svg><span>Asset pending</span></div><div><span class="master-code">VM-011</span><header><h3>Aster A5 Sport</h3><b>›</b></header><dl><div><dt>Type</dt><dd>Not supplied</dd></div><div><dt>Linked units</dt><dd>1 unit</dd></div></dl><span class="mobile-card-action">Open master</span></div></article></div>
+        <p class="master-empty" data-master-empty hidden>No Vehicle Masters match these filters.</p>
+        <footer class="master-footer"><span aria-live="polite"><b data-result-count>4</b> definitions shown</span><span>Review subset · Make, model, variant, type</span></footer></div>
+        <aside class="master-detail"><div class="detail-media-placeholder" role="img" aria-label="Vehicle image pending"><svg aria-hidden="true"><use href="#i-gallery"/></svg><span>Vehicle image</span><small>Asset pending</small></div><span class="eyebrow">Selected definition</span><span class="detail-code" data-detail-id>VM-014</span><h3 data-detail-title>Aster A7 Touring</h3><p data-detail-type>Passenger car</p><div class="detail-metric"><span>Linked Inventory Units</span><b>1 unit</b></div><section class="linked-unit" aria-labelledby="linked-unit-title"><h4 id="linked-unit-title">Linked Inventory Unit</h4><dl class="linked-unit-fields"><div><dt>Stock no.</dt><dd data-detail-unit>STK-2048</dd></div><div><dt>Inventory age</dt><dd data-detail-age>128 days</dd></div><div><dt>Zone</dt><dd data-detail-zone>North</dd></div><div><dt>Slot</dt><dd data-detail-slot>N-04</dd></div></dl></section><a class="button button-primary" href="vehicle-master.html" data-master-detail-link data-screen-link>Open Vehicle Master</a></aside></section>
+      </div>
+      <nav class="bottom-nav" aria-label="Mobile navigation"><a href="../../v0.3-responsive-screens/screens/dashboard.html" data-screen-link><span class="icon"><svg><use href="#i-overview"/></svg></span>Overview</a><a href="../../v0.3-responsive-screens/screens/inventory.html" data-screen-link><span class="icon"><svg><use href="#i-box"/></svg></span>Inventory</a><a href="locations.html" data-screen-link><span class="icon"><svg><use href="#i-location"/></svg></span>Locations</a><a href="../../v0.3-responsive-screens/screens/activity.html" data-screen-link><span class="icon"><svg><use href="#i-activity"/></svg></span>Activity</a><a aria-current="page" href="vehicle-masters.html" data-screen-link><span class="icon"><svg><use href="#i-database"/></svg></span>Masters</a></nav>
+    </section>
+  </div></section></main>
+</div>
+<script src="../../v0.3-responsive-screens/scripts/responsive-screen-controls.js"></script>
+<script>
+  const viewButtons = document.querySelectorAll('[data-master-view]');
+  const tableView = document.querySelector('[data-table-view]');
+  const gridView = document.querySelector('[data-grid-view]');
+  const masterSearch = document.querySelector('[data-master-search]');
+  const typeFilter = document.querySelector('[data-type-filter]');
+  const sortControl = document.querySelector('[data-sort-control]');
+
+  document.querySelectorAll('article.mobile-master-card').forEach((card) => {
+    card.setAttribute('aria-disabled', 'true');
+    card.querySelector('header > b')?.setAttribute('hidden', '');
+    card.querySelector('.mobile-card-action').textContent = 'Detail not composed';
+  });
+
+  function applyMasterFilters() {
+    const query = masterSearch.value.trim().toLowerCase();
+    const activeType = typeFilter.value;
+    const matches = (item) => {
+      return item.textContent.toLowerCase().includes(query) && (activeType === 'All' || item.dataset.type === activeType);
+    };
+    const rows = [...document.querySelectorAll('[data-master-row]')];
+    const compare = (a, b) => {
+      const key = sortControl.value === 'id-asc' ? 'id' : 'title';
+      const direction = sortControl.value === 'name-desc' ? -1 : 1;
+      return a.dataset[key].localeCompare(b.dataset[key]) * direction;
+    };
+    const groups = [
+      [document.querySelector('[data-table-view]'), rows],
+      [document.querySelector('[data-grid-view]'), [...document.querySelectorAll('[data-master-card]')]],
+      [document.querySelector('.mobile-master-list'), [...document.querySelectorAll('[data-mobile-master]')]]
+    ];
+    groups.forEach(([container, items]) => items.sort(compare).forEach((item) => { item.hidden = !matches(item); container.append(item); }));
+    const visibleRows = rows.filter((item) => !item.hidden);
+    document.querySelector('[data-result-count]').textContent = String(visibleRows.length);
+    document.querySelectorAll('[data-header-count]').forEach((count) => { count.textContent = String(visibleRows.length); });
+    document.querySelector('[data-master-empty]').hidden = visibleRows.length !== 0;
+    const selected = document.querySelector('[data-master-row].selected');
+    const detailIsEmpty = document.querySelector('.master-detail').classList.contains('is-empty');
+    if ((selected?.hidden || detailIsEmpty) && visibleRows[0]) visibleRows[0].click();
+    if (visibleRows.length === 0) {
+      const detail = document.querySelector('.master-detail');
+      detail.classList.add('is-empty');
+      document.querySelector('[data-detail-id]').textContent = 'No selection';
+      document.querySelector('[data-detail-title]').textContent = 'No matching definition';
+      document.querySelector('[data-detail-type]').textContent = 'Adjust the search or filters.';
+      document.querySelector('[data-master-detail-link]').removeAttribute('href');
+      document.querySelector('[data-master-detail-link]').setAttribute('aria-disabled', 'true');
+    }
+  }
+
+  masterSearch.addEventListener('input', applyMasterFilters);
+  typeFilter.addEventListener('change', applyMasterFilters);
+  sortControl.addEventListener('change', applyMasterFilters);
+
+  viewButtons.forEach((button) => button.addEventListener('click', () => {
+    const showTable = button.dataset.masterView === 'table';
+    tableView.hidden = !showTable;
+    gridView.hidden = showTable;
+    viewButtons.forEach((peer) => peer.setAttribute('aria-pressed', String(peer === button)));
+  }));
+  document.querySelectorAll('[data-master-row]').forEach((row) => row.addEventListener('click', () => {
+    document.querySelector('.master-detail').classList.remove('is-empty');
+    document.querySelectorAll('[data-master-row]').forEach((peer) => { peer.classList.toggle('selected', peer === row); peer.setAttribute('aria-pressed', String(peer === row)); });
+    document.querySelectorAll('[data-master-card],[data-mobile-master]').forEach((peer) => peer.classList.toggle('selected', peer.dataset.id === row.dataset.id));
+    document.querySelector('[data-detail-id]').textContent = row.dataset.id;
+    document.querySelector('[data-detail-title]').textContent = row.dataset.title;
+    document.querySelector('[data-detail-type]').textContent = row.dataset.type;
+    document.querySelector('[data-detail-unit]').textContent = row.dataset.unit;
+    document.querySelector('[data-detail-age]').textContent = row.dataset.age;
+    document.querySelector('[data-detail-zone]').textContent = row.dataset.zone;
+    document.querySelector('[data-detail-slot]').textContent = row.dataset.slot;
+    const detailLink = document.querySelector('[data-master-detail-link]');
+    if (row.dataset.id === 'VM-014') {
+      const target = new URL('vehicle-master.html', window.location.href);
+      target.searchParams.set('mode', document.querySelector('.device').dataset.mode);
+      detailLink.href = target.href;
+      detailLink.setAttribute('data-screen-link', '');
+      detailLink.removeAttribute('aria-disabled');
+      detailLink.textContent = 'Open Vehicle Master';
+    } else {
+      detailLink.removeAttribute('href');
+      detailLink.removeAttribute('data-screen-link');
+      detailLink.setAttribute('aria-disabled', 'true');
+      detailLink.textContent = 'Detail not composed';
+    }
+  }));
+  applyMasterFilters();
+</script>
+</body>
+</html>

@@ -1,0 +1,581 @@
+<!--
+  ASSUMPTIONS
+  - This is a review artifact for the v0.1 brand foundation, not a production dashboard.
+  - Inventory values below are representative specimen copy, clearly identified as non-live data.
+  - The supplied slate SVG is the approved logo; it stays intact on light surfaces at 150px+ width.
+  - Plus Jakarta Sans and IBM Plex Sans use web-font delivery with system fallbacks for offline review.
+
+  REASONING
+  - “Soft Operations” balances dense dealership work with a mist canvas, generous rhythm, and crisp edges.
+  - The Keyloop loop becomes a continuous rail: navigation, record state, location, and action history connect.
+  - Slate carries stable structure; blue signals interaction; coral is reserved for aging-stock attention.
+  - Controls retain 44px minimum targets, with 48–56px examples for frequent tablet actions.
+
+  PLACEHOLDERS
+  - Vehicle and stock references are UI specimens only; no production statistics or dealership data are implied.
+  - This foundation intentionally omits final dashboard screens, photography, charts, and vehicle imagery.
+-->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Keyloop Brand Foundation — Soft Operations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --carbon: #11181c;
+      --graphite: #162228;
+      --slate: #2e4758;
+      --brand-slate: #3c576b;
+      --mist: #f5f7f8;
+      --stone: #f1f1f3;
+      --line: #d9e0e4;
+      --white: #fff;
+      --signal: #3da5ff;
+      --fusion: #00c7f2;
+      --success: #18e0a4;
+      --coral: #ff6b57;
+      --warning: #ffb800;
+      --error: #ff4d4f;
+      --success-ink: #075c46;
+      --warning-ink: #6d4f00;
+      --coral-ink: #8e261a;
+      --shadow: 0 18px 48px rgb(17 24 28 / 9%);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 10px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--carbon);
+      background: var(--mist);
+      font-family: "IBM Plex Sans", system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    button, a { font: inherit; }
+    button { color: inherit; }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: "Plus Jakarta Sans", "IBM Plex Sans", sans-serif; text-wrap: balance; }
+    p { text-wrap: pretty; }
+    h1 { margin-bottom: 24px; font-size: clamp(3rem, 6vw, 6.2rem); line-height: .94; letter-spacing: -.055em; }
+    h2 { margin-bottom: 16px; font-size: clamp(2rem, 3.4vw, 3.5rem); line-height: 1.05; letter-spacing: -.04em; }
+    h3 { margin-bottom: 10px; font-size: 1.2rem; letter-spacing: -.02em; }
+    .eyebrow { margin-bottom: 14px; color: var(--brand-slate); font-size: .82rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+    .lede { max-width: 660px; color: var(--slate); font-size: clamp(1.1rem, 1.6vw, 1.35rem); }
+    .meta { color: #526b7b; font-size: .875rem; }
+
+    .topbar {
+      position: sticky;
+      z-index: 20;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      padding: 12px clamp(20px, 4vw, 64px);
+      border-bottom: 1px solid rgb(217 224 228 / 80%);
+      background: rgb(245 247 248 / 94%);
+      backdrop-filter: blur(14px);
+    }
+    .topbar img { display: block; width: 160px; height: auto; }
+    .topbar nav { display: flex; gap: 8px; }
+    .topbar nav a {
+      min-height: 44px;
+      padding: 11px 14px;
+      border-radius: 999px;
+      color: var(--slate);
+      font-size: .9rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .topbar nav a:hover { background: var(--white); }
+    .version { color: var(--brand-slate); font-size: .8rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+
+    main { overflow: hidden; }
+    .section { width: min(1312px, calc(100% - 48px)); margin: 0 auto; padding: 112px 0; }
+    .section + .section { border-top: 1px solid var(--line); }
+    .section-head { display: grid; grid-template-columns: minmax(250px, .8fr) minmax(360px, 1.2fr); gap: 8vw; margin-bottom: 48px; }
+    .section-head p { align-self: end; max-width: 620px; margin-bottom: 6px; color: var(--slate); font-size: 1.06rem; }
+
+    .hero { min-height: calc(100vh - 72px); padding-top: clamp(80px, 10vw, 150px); }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(300px, .75fr); gap: 8vw; align-items: end; }
+    .hero-mark { display: flex; flex-direction: column; justify-content: space-between; min-height: 420px; padding: 34px; border-radius: var(--radius-lg); background: var(--slate); color: var(--white); box-shadow: var(--shadow); }
+    .hero-mark .loop-line { display: flex; align-items: center; gap: 0; margin-top: 20px; }
+    .hero-mark .loop-line span { width: 16px; height: 16px; border: 3px solid var(--fusion); border-radius: 50%; }
+    .hero-mark .loop-line i { flex: 1; height: 2px; background: var(--fusion); }
+    .hero-mark strong { display: block; max-width: 300px; font-family: "Plus Jakarta Sans", sans-serif; font-size: clamp(1.8rem, 3vw, 2.7rem); line-height: 1.08; letter-spacing: -.035em; }
+    .hero-note { max-width: 270px; margin: 32px 0 0 auto; color: #dce7ec; font-size: .95rem; }
+    .direction-line { display: flex; gap: 18px; align-items: center; margin-top: 44px; color: var(--brand-slate); }
+    .direction-line::before { width: 72px; height: 1px; content: ""; background: var(--brand-slate); }
+
+    .principles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 72px; }
+    .principle { min-height: 160px; padding: 24px 0; border-top: 2px solid var(--slate); }
+    .principle span { display: block; margin-bottom: 32px; color: #6b7e89; font-variant-numeric: tabular-nums; }
+    .principle p { max-width: 235px; margin: 0; color: var(--slate); }
+
+    .palette { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 16px; }
+    .swatch { display: flex; min-height: 220px; padding: 20px; flex-direction: column; justify-content: space-between; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--swatch); color: var(--ink, var(--carbon)); }
+    .swatch.large { grid-row: span 2; min-height: 456px; }
+    .swatch small { font-size: .82rem; font-weight: 600; letter-spacing: .07em; text-transform: uppercase; }
+    .swatch code { font-family: "IBM Plex Sans", sans-serif; font-size: .9rem; font-variant-numeric: tabular-nums; }
+    .swatch-note { grid-column: 2 / -1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .mini-swatch { padding: 18px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--white); }
+    .mini-swatch b { display: block; margin-bottom: 4px; }
+    .mini-swatch span { color: var(--slate); font-size: .875rem; }
+    .color-dot { display: inline-block; width: 11px; height: 11px; margin-right: 7px; border-radius: 50%; background: var(--dot); }
+
+    .type-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 20px; }
+    .type-card { min-height: 360px; padding: clamp(28px, 4vw, 52px); border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--white); }
+    .type-card.display { display: flex; flex-direction: column; justify-content: space-between; }
+    .type-card.display .sample { max-width: 620px; margin: 28px 0; font-family: "Plus Jakarta Sans", sans-serif; font-size: clamp(2.8rem, 5vw, 5.5rem); font-weight: 600; line-height: .98; letter-spacing: -.055em; }
+    .type-card.ui .sample { margin: 38px 0 28px; color: var(--slate); font-size: 1.18rem; line-height: 1.7; }
+    .type-meta { display: flex; justify-content: space-between; gap: 20px; padding-top: 18px; border-top: 1px solid var(--line); color: #597180; font-size: .84rem; }
+    .numeric { font-variant-numeric: tabular-nums; }
+
+    .specimen-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+    .viewport-switch { display: inline-flex; gap: 4px; padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: var(--white); }
+    .viewport-switch button { min-height: 44px; padding: 9px 16px; border: 0; border-radius: 999px; background: transparent; cursor: pointer; font-size: .9rem; font-weight: 500; }
+    .viewport-switch button[aria-pressed="true"] { background: var(--slate); color: var(--white); }
+    .viewport-shell { max-width: 100%; margin: 0 auto; transition: max-width 260ms ease; }
+    .viewport-shell[data-view="tablet"] { max-width: 980px; }
+    .viewport-shell[data-view="mobile"] { max-width: 390px; }
+
+    .product-frame { min-height: 720px; padding: 18px; border: 1px solid #cbd6dc; border-radius: 30px; background: #e9eef1; box-shadow: var(--shadow); }
+    .product-app { display: grid; grid-template-columns: 204px minmax(0, 1fr); gap: 14px; min-height: 684px; }
+    .app-sidebar { display: flex; position: relative; flex-direction: column; min-width: 0; padding: 18px 12px 14px; border-radius: 20px; background: var(--slate); color: var(--white); overflow: hidden; }
+    .app-sidebar::before { position: absolute; top: 74px; bottom: 72px; left: 29px; width: 2px; content: ""; background: #58768a; }
+    .app-brand { position: relative; z-index: 1; margin: 0 10px 27px; font-family: "Plus Jakarta Sans", sans-serif; font-size: .86rem; font-weight: 600; letter-spacing: .04em; }
+    .app-nav { display: grid; position: relative; z-index: 1; gap: 7px; }
+    .app-nav button { display: flex; align-items: center; width: 100%; min-height: 48px; padding: 9px 10px; border: 0; border-radius: 12px; background: transparent; color: #e0e9ee; cursor: pointer; text-align: left; }
+    .app-nav button::before { width: 12px; height: 12px; margin-right: 12px; border: 2px solid #9db1bd; border-radius: 50%; background: var(--slate); content: ""; }
+    .app-nav button[aria-current="page"] { background: var(--white); color: var(--carbon); font-weight: 600; }
+    .app-nav button[aria-current="page"]::before { border-color: var(--signal); background: var(--signal); box-shadow: 0 0 0 4px rgb(61 165 255 / 18%); }
+    .sidebar-foot { margin-top: auto; padding: 14px 10px 4px; color: #c5d2d9; font-size: .78rem; }
+
+    .app-main { min-width: 0; padding: 24px; border-radius: 20px; background: var(--white); }
+    .app-heading { display: flex; justify-content: space-between; gap: 24px; align-items: start; margin-bottom: 26px; }
+    .app-heading h3 { margin: 0 0 5px; font-size: 1.65rem; }
+    .app-heading p { margin: 0; color: #597180; }
+    .primary, .secondary, .quiet { min-height: 48px; padding: 11px 18px; border-radius: 10px; cursor: pointer; font-weight: 600; }
+    .primary { border: 1px solid var(--slate); background: var(--slate); color: var(--white); }
+    .primary:hover { background: var(--graphite); }
+    .secondary { border: 1px solid var(--line); background: var(--white); color: var(--slate); }
+    .quiet { border: 0; background: var(--stone); color: var(--slate); }
+    .action-row { display: flex; flex-wrap: wrap; gap: 10px; }
+
+    .filter-strip { display: grid; grid-template-columns: minmax(180px, 1fr) repeat(2, minmax(130px, .4fr)); gap: 10px; margin-bottom: 22px; }
+    .field { display: flex; align-items: center; min-height: 48px; padding: 0 14px; border: 1px solid var(--line); border-radius: 10px; color: #526b7b; background: var(--white); }
+    .inventory-table { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+    .table-head, .inventory-row { display: grid; grid-template-columns: 1.45fr .85fr .65fr .7fr .72fr; gap: 14px; align-items: center; padding: 0 18px; }
+    .table-head { min-height: 48px; border-bottom: 1px solid var(--line); background: var(--stone); color: #526b7b; font-size: .78rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+    .inventory-row { min-height: 88px; }
+    .inventory-row + .inventory-row { border-top: 1px solid var(--line); }
+    .vehicle strong, .vehicle span { display: block; }
+    .vehicle span { margin-top: 4px; color: #597180; font-size: .84rem; font-variant-numeric: tabular-nums; }
+    .status { display: inline-flex; align-items: center; width: fit-content; min-height: 34px; padding: 6px 10px; border-radius: 999px; font-size: .78rem; font-weight: 600; white-space: nowrap; }
+    .status::before { width: 8px; height: 8px; margin-right: 7px; border-radius: 50%; content: ""; background: currentColor; }
+    .status.available { color: var(--success-ink); background: #d7f8ed; }
+    .status.attention { color: var(--coral-ink); background: #ffe4df; }
+    .status.pending { color: var(--warning-ink); background: #fff0c2; }
+    .location { color: var(--slate); font-weight: 500; }
+    .age { font-variant-numeric: tabular-nums; }
+    .detail-rail { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 18px; }
+    .detail-cell { padding: 16px; border: 1px solid var(--line); border-radius: 12px; }
+    .detail-cell span { display: block; margin-bottom: 8px; color: #597180; font-size: .78rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+    .detail-cell b { color: var(--slate); }
+    .representative { margin: 14px 0 0; color: #607583; font-size: .78rem; }
+
+    .viewport-shell[data-view="tablet"] .product-app { grid-template-columns: 76px minmax(0, 1fr); }
+    .viewport-shell[data-view="tablet"] .app-sidebar { align-items: center; }
+    .viewport-shell[data-view="tablet"] .app-brand { writing-mode: vertical-rl; margin: 0 0 22px; }
+    .viewport-shell[data-view="tablet"] .app-nav button { justify-content: center; padding: 8px; font-size: 0; }
+    .viewport-shell[data-view="tablet"] .app-nav button::before { margin: 0; }
+    .viewport-shell[data-view="tablet"] .app-sidebar::before { left: 37px; }
+    .viewport-shell[data-view="tablet"] .table-head, .viewport-shell[data-view="tablet"] .inventory-row { grid-template-columns: 1.5fr .8fr .75fr .75fr; }
+    .viewport-shell[data-view="tablet"] .stock-age { display: none; }
+
+    .viewport-shell[data-view="mobile"] .product-frame { min-height: 720px; padding: 10px; border-radius: 26px; }
+    .viewport-shell[data-view="mobile"] .product-app { display: block; min-height: 698px; }
+    .viewport-shell[data-view="mobile"] .app-sidebar { display: none; }
+    .viewport-shell[data-view="mobile"] .app-main { min-height: 698px; padding: 20px 16px 86px; border-radius: 18px; }
+    .viewport-shell[data-view="mobile"] .app-heading { display: block; }
+    .viewport-shell[data-view="mobile"] .app-heading .primary { width: 100%; margin-top: 18px; }
+    .viewport-shell[data-view="mobile"] .filter-strip { grid-template-columns: 1fr; }
+    .viewport-shell[data-view="mobile"] .filter-strip .field:not(:first-child) { display: none; }
+    .viewport-shell[data-view="mobile"] .table-head { display: none; }
+    .viewport-shell[data-view="mobile"] .inventory-table { border: 0; border-radius: 0; }
+    .viewport-shell[data-view="mobile"] .inventory-row { display: grid; grid-template-columns: 1fr auto; min-height: auto; gap: 12px; padding: 18px 0; border-top: 1px solid var(--line); }
+    .viewport-shell[data-view="mobile"] .inventory-row > *:nth-child(2),
+    .viewport-shell[data-view="mobile"] .inventory-row > *:nth-child(3),
+    .viewport-shell[data-view="mobile"] .inventory-row > *:nth-child(4) { display: none; }
+    .viewport-shell[data-view="mobile"] .detail-rail { grid-template-columns: 1fr 1fr; }
+    .viewport-shell[data-view="mobile"] .detail-cell:last-child { display: none; }
+    .mobile-actions { display: none; }
+    .viewport-shell[data-view="mobile"] .mobile-actions { display: grid; position: absolute; right: 20px; bottom: 20px; left: 20px; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 5px; border: 1px solid var(--line); border-radius: 16px; background: var(--white); box-shadow: 0 14px 36px rgb(17 24 28 / 16%); }
+    .mobile-actions button { min-height: 48px; border: 0; border-radius: 11px; background: transparent; color: var(--slate); cursor: pointer; font-size: .76rem; font-weight: 600; }
+    .mobile-actions button[aria-current="page"] { background: var(--slate); color: var(--white); }
+    .viewport-shell[data-view="mobile"] .product-app { position: relative; }
+
+    .control-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .control-card { padding: clamp(24px, 4vw, 44px); border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--white); }
+    .control-card p { max-width: 480px; color: var(--slate); }
+    .targets { display: flex; align-items: end; gap: 18px; min-height: 120px; margin-top: 32px; }
+    .target { display: grid; place-items: center; border: 1px solid var(--brand-slate); border-radius: 10px; color: var(--slate); font-size: .76rem; font-weight: 600; }
+    .target.t44 { width: 44px; height: 44px; }
+    .target.t48 { width: 48px; height: 48px; background: var(--stone); }
+    .target.t56 { width: 56px; height: 56px; background: var(--slate); color: var(--white); }
+    .state-stack { display: grid; gap: 10px; margin-top: 28px; }
+    .state-row { display: grid; grid-template-columns: 110px 1fr; gap: 20px; align-items: center; min-height: 48px; padding: 7px 0; border-bottom: 1px solid var(--line); }
+    .state-row:last-child { border-bottom: 0; }
+    .state-row > span:last-child { color: var(--slate); font-size: .88rem; }
+
+    .responsive-grid { display: grid; grid-template-columns: 1.3fr .9fr .55fr; gap: 18px; align-items: end; }
+    .device { min-width: 0; padding: 14px; border: 1px solid #cbd6dc; border-radius: 24px; background: #e9eef1; }
+    .device-screen { min-height: 390px; padding: 20px; border-radius: 15px; background: var(--white); overflow: hidden; }
+    .device.tablet .device-screen { min-height: 340px; }
+    .device.mobile { border-radius: 32px; }
+    .device.mobile .device-screen { min-height: 420px; padding: 18px 14px; border-radius: 22px; }
+    .device-label { display: flex; justify-content: space-between; margin: 14px 4px 2px; color: var(--slate); font-size: .8rem; }
+    .mini-top { display: flex; align-items: center; justify-content: space-between; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+    .mini-top b { font-family: "Plus Jakarta Sans", sans-serif; }
+    .mini-rail { display: grid; grid-template-columns: 76px 1fr; gap: 12px; margin-top: 14px; }
+    .mini-nav { min-height: 275px; border-radius: 12px; background: var(--slate); }
+    .mini-content { display: grid; gap: 10px; align-content: start; }
+    .mini-line { height: 38px; border: 1px solid var(--line); border-radius: 8px; background: var(--stone); }
+    .mini-line:first-child { height: 70px; background: var(--white); }
+    .tablet .mini-rail { grid-template-columns: 52px 1fr; }
+    .mobile-check { display: grid; gap: 12px; margin-top: 18px; }
+    .mobile-check .check { padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .mobile-check .check b, .mobile-check .check span { display: block; }
+    .mobile-check .check span { margin-top: 4px; color: var(--slate); font-size: .8rem; }
+    .mobile-bottom { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; margin-top: 24px; padding: 5px; border: 1px solid var(--line); border-radius: 13px; }
+    .mobile-bottom span { min-height: 42px; padding: 12px 4px; border-radius: 9px; color: var(--slate); font-size: .68rem; font-weight: 600; text-align: center; }
+    .mobile-bottom span:first-child { background: var(--slate); color: var(--white); }
+
+    .logo-rules { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .logo-stage { display: grid; min-height: 300px; place-items: center; padding: 54px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--white); }
+    .logo-stage img { width: min(300px, 100%); }
+    .rule-list { display: grid; gap: 1px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--line); overflow: hidden; }
+    .rule { display: grid; grid-template-columns: 34px 1fr; gap: 10px; align-items: start; padding: 20px; background: var(--white); }
+    .rule b { color: var(--brand-slate); font-variant-numeric: tabular-nums; }
+    .rule p { margin: 0; color: var(--slate); }
+
+    footer { width: min(1312px, calc(100% - 48px)); margin: 0 auto; padding: 44px 0 70px; border-top: 1px solid var(--line); color: var(--slate); }
+    footer div { display: flex; justify-content: space-between; gap: 24px; }
+
+    @media (max-width: 900px) {
+      .topbar nav { display: none; }
+      .section { width: min(100% - 32px, 760px); padding: 84px 0; }
+      .hero-grid, .section-head, .type-grid, .logo-rules { grid-template-columns: 1fr; }
+      .hero-mark { min-height: 340px; }
+      .principles { grid-template-columns: 1fr 1fr; }
+      .palette { grid-template-columns: 1fr 1fr; }
+      .swatch.large { grid-row: auto; min-height: 220px; }
+      .swatch-note { grid-column: 1 / -1; }
+      .control-grid { grid-template-columns: 1fr; }
+      .responsive-grid { grid-template-columns: 1fr 1fr; }
+      .device.mobile { grid-column: 1 / -1; width: min(340px, 100%); justify-self: center; }
+      .specimen-toolbar { align-items: start; flex-direction: column; }
+    }
+
+    @media (max-width: 560px) {
+      h1 { font-size: 3.25rem; }
+      .topbar { min-height: 64px; padding: 10px 16px; }
+      .topbar img { width: 150px; }
+      .version { display: none; }
+      .section { width: calc(100% - 28px); padding: 68px 0; }
+      .hero { padding-top: 64px; }
+      .hero-grid { gap: 48px; }
+      .hero-mark { min-height: 310px; padding: 24px; }
+      .principles, .palette, .swatch-note, .responsive-grid { grid-template-columns: 1fr; }
+      .principle { min-height: 130px; }
+      .swatch-note { grid-column: auto; }
+      .type-card { min-height: 300px; padding: 26px; }
+      .type-meta, footer div { flex-direction: column; }
+      .viewport-switch { width: 100%; }
+      .viewport-switch button { flex: 1; padding-inline: 8px; }
+      .product-frame { padding: 8px; }
+      .viewport-shell .product-frame { min-height: 720px; border-radius: 26px; }
+      .viewport-shell .product-app { display: block; position: relative; min-height: 698px; }
+      .viewport-shell .app-sidebar { display: none; }
+      .viewport-shell .app-main { min-height: 698px; padding: 20px 14px 86px; border-radius: 18px; }
+      .viewport-shell .app-heading { display: block; }
+      .viewport-shell .app-heading .primary { width: 100%; margin-top: 18px; }
+      .filter-strip { grid-template-columns: 1fr; }
+      .filter-strip .field:not(:first-child) { display: none; }
+      .table-head { display: none; }
+      .inventory-row { grid-template-columns: 1fr auto; padding: 18px 10px; }
+      .inventory-row > *:nth-child(2), .inventory-row > *:nth-child(3), .inventory-row > *:nth-child(4) { display: none; }
+      .detail-rail { grid-template-columns: 1fr 1fr; }
+      .detail-cell:last-child { display: none; }
+      .viewport-shell .mobile-actions { display: grid; position: absolute; right: 14px; bottom: 16px; left: 14px; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 5px; border: 1px solid var(--line); border-radius: 16px; background: var(--white); box-shadow: 0 14px 36px rgb(17 24 28 / 16%); }
+      .targets { gap: 12px; }
+      .state-row { grid-template-columns: 100px 1fr; gap: 12px; }
+      .device.mobile { grid-column: auto; }
+      .logo-stage { min-height: 240px; padding: 38px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a href="#intro" aria-label="Keyloop brand foundation home"><img src="../assets/keyloop-logo-slate.svg" alt="Keyloop"></a>
+    <nav aria-label="Brand guideline sections">
+      <a href="#identity">Identity</a>
+      <a href="#system">System</a>
+      <a href="#product">Product specimen</a>
+      <a href="#responsive">Responsive</a>
+    </nav>
+    <span class="version">Foundation v0.1</span>
+  </header>
+
+  <main>
+    <section class="section hero" id="intro">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Direction A · Brand foundation</p>
+          <h1>Soft<br>Operations</h1>
+          <p class="lede">A calm, connected interface language for inventory decisions that need clarity, not theatre.</p>
+          <div class="direction-line"><span>Balanced · airy · implementation-ready</span></div>
+        </div>
+        <aside class="hero-mark" aria-label="Direction concept">
+          <div>
+            <p class="eyebrow" style="color:#bcd0da">The structural idea</p>
+            <strong>Every record has a place, a state, and a next action.</strong>
+          </div>
+          <div>
+            <div class="loop-line" aria-hidden="true"><span></span><i></i><span></span><i></i><span></span></div>
+            <p class="hero-note">One continuous rail links navigation, inventory, locations, and activity.</p>
+          </div>
+        </aside>
+      </div>
+      <div class="principles" aria-label="Design principles">
+        <article class="principle"><span>01</span><h3>Soft by spacing</h3><p>Breathing room creates calm without lowering contrast.</p></article>
+        <article class="principle"><span>02</span><h3>Precise by structure</h3><p>Edges, labels, and alignment carry operational meaning.</p></article>
+        <article class="principle"><span>03</span><h3>Connected by default</h3><p>Records visibly relate to location and activity.</p></article>
+        <article class="principle"><span>04</span><h3>Touch without compromise</h3><p>Comfortable targets coexist with desktop density.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="identity">
+      <div class="section-head">
+        <div><p class="eyebrow">01 · Identity</p><h2>Clear space is part of the mark.</h2></div>
+        <p>The official slate wordmark anchors light surfaces. It is never redrawn, shadowed, cropped, or separated; restraint protects recognition.</p>
+      </div>
+      <div class="logo-rules">
+        <div class="logo-stage"><img src="../assets/keyloop-logo-slate.svg" alt="Official Keyloop slate wordmark"></div>
+        <div class="rule-list">
+          <div class="rule"><b>01</b><p>Keep clear space of at least half the logo height on every side.</p></div>
+          <div class="rule"><b>02</b><p>Use the complete mark at a minimum digital width of 150px.</p></div>
+          <div class="rule"><b>03</b><p>Use slate on light surfaces; do not add outlines, effects, or new colorways.</p></div>
+          <div class="rule"><b>04</b><p>This exploration is Keyloop-aligned, not an official released product.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="system">
+      <div class="section-head">
+        <div><p class="eyebrow">02 · Color system</p><h2>A quiet field with deliberate signals.</h2></div>
+        <p>Carbon and slate carry hierarchy. Blue is reserved for interaction. Status colors always travel with words, never as color alone.</p>
+      </div>
+      <div class="palette">
+        <div class="swatch large" style="--swatch:#2e4758;--ink:#fff"><small>Structural anchor</small><div><h3>Tech Slate</h3><code>#2E4758</code></div></div>
+        <div class="swatch" style="--swatch:#f5f7f8"><small>Canvas</small><div><h3>Light Mist</h3><code>#F5F7F8</code></div></div>
+        <div class="swatch" style="--swatch:#ffffff"><small>Surface</small><div><h3>White</h3><code>#FFFFFF</code></div></div>
+        <div class="swatch" style="--swatch:#11181c;--ink:#fff"><small>Primary text</small><div><h3>Carbon</h3><code>#11181C</code></div></div>
+        <div class="swatch" style="--swatch:#3da5ff"><small>Interaction</small><div><h3>Signal Blue</h3><code>#3DA5FF</code></div></div>
+        <div class="swatch" style="--swatch:#d9e0e4"><small>Boundary</small><div><h3>UI Border</h3><code>#D9E0E4</code></div></div>
+        <div class="swatch-note">
+          <div class="mini-swatch"><b><i class="color-dot" style="--dot:#18e0a4"></i>Available</b><span>Positive completion or open capacity</span></div>
+          <div class="mini-swatch"><b><i class="color-dot" style="--dot:#ffb800"></i>Pending</b><span>Waiting for review or handoff</span></div>
+          <div class="mini-swatch"><b><i class="color-dot" style="--dot:#ff6b57"></i>Attention</b><span>Aging stock or high-risk action</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><p class="eyebrow">03 · Typography</p><h2>Warm headings. Exacting interface text.</h2></div>
+        <p>Plus Jakarta Sans makes the system approachable. IBM Plex Sans keeps operational detail lucid, with tabular numerals for values that must scan vertically.</p>
+      </div>
+      <div class="type-grid">
+        <article class="type-card display">
+          <span class="meta">Plus Jakarta Sans · 600</span>
+          <div class="sample">Inventory, in view.</div>
+          <div class="type-meta"><span>Display / section headings</span><span>Compact tracking · balanced wrap</span></div>
+        </article>
+        <article class="type-card ui">
+          <span class="meta">IBM Plex Sans · 400 / 500 / 600</span>
+          <div class="sample">Vehicle status, Zone and Slot, task ownership, and activity history remain clear at a glance.</div>
+          <div class="type-meta"><span>UI / body / metadata</span><span class="numeric">14px compact · 16px touch</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="product">
+      <div class="section-head">
+        <div><p class="eyebrow">04 · Product language</p><h2>Floating navigation, grounded decisions.</h2></div>
+        <p>The slate rail persists on desktop, condenses for tablet, and yields to prioritized fast checks on mobile. Use the controls to review the same specimen at each mode.</p>
+      </div>
+      <div class="specimen-toolbar">
+        <span class="meta">Interactive responsive specimen · representative content</span>
+        <div class="viewport-switch" role="group" aria-label="Choose specimen viewport">
+          <button type="button" data-view-button="desktop" aria-pressed="true">Desktop</button>
+          <button type="button" data-view-button="tablet" aria-pressed="false">Tablet</button>
+          <button type="button" data-view-button="mobile" aria-pressed="false">Mobile</button>
+        </div>
+      </div>
+
+      <div class="viewport-shell" data-view="desktop">
+        <div class="product-frame">
+          <div class="product-app">
+            <aside class="app-sidebar" aria-label="Inventory specimen navigation">
+              <div class="app-brand">Inventory</div>
+              <nav class="app-nav">
+                <button type="button" aria-current="page">Overview</button>
+                <button type="button">Inventory</button>
+                <button type="button">Locations</button>
+                <button type="button">Activity</button>
+                <button type="button">Master Data</button>
+              </nav>
+              <div class="sidebar-foot">Connected operations</div>
+            </aside>
+
+            <section class="app-main">
+              <div class="app-heading">
+                <div><p class="eyebrow">Inventory overview</p><h3>Vehicles that need a decision</h3><p>Fast-check status linked to location and ownership.</p></div>
+                <button class="primary" type="button" data-sheet-trigger>Review actions</button>
+              </div>
+              <div class="filter-strip" aria-label="Representative filters">
+                <div class="field">Search stock or VIN</div>
+                <div class="field">All locations</div>
+                <div class="field">All statuses</div>
+              </div>
+              <div class="inventory-table" role="table" aria-label="Representative inventory rows">
+                <div class="table-head" role="row"><span>Vehicle</span><span>Location</span><span class="stock-age">Stock age</span><span>Owner</span><span>Status</span></div>
+                <div class="inventory-row" role="row">
+                  <div class="vehicle"><strong>2024 Volvo EX30</strong><span>Stock KL-2047 · VIN …1842</span></div>
+                  <span class="location">Zone A · 12</span><span class="age stock-age">42 days</span><span>Sales ops</span><span class="status attention">Attention</span>
+                </div>
+                <div class="inventory-row" role="row">
+                  <div class="vehicle"><strong>2023 Ford Puma</strong><span>Stock KL-1998 · VIN …6207</span></div>
+                  <span class="location">Zone B · 04</span><span class="age stock-age">18 days</span><span>J. Morgan</span><span class="status pending">Pending</span>
+                </div>
+                <div class="inventory-row" role="row">
+                  <div class="vehicle"><strong>2024 Kia Niro</strong><span>Stock KL-2112 · VIN …9915</span></div>
+                  <span class="location">Zone A · 08</span><span class="age stock-age">6 days</span><span>Unassigned</span><span class="status available">Available</span>
+                </div>
+              </div>
+              <div class="detail-rail" aria-label="Connected record details">
+                <div class="detail-cell"><span>Location link</span><b>Zone A → Slot 12</b></div>
+                <div class="detail-cell"><span>Next action</span><b>Assign owner</b></div>
+                <div class="detail-cell"><span>History</span><b>Moved today</b></div>
+              </div>
+              <p class="representative">Representative UI content only — no live dealership data or production statistics.</p>
+            </section>
+
+            <nav class="mobile-actions" aria-label="Mobile fast-check navigation">
+              <button type="button" aria-current="page">Check</button><button type="button">Locations</button><button type="button">Activity</button>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div><p class="eyebrow">05 · Controls and semantics</p><h2>Comfort is measurable.</h2></div>
+        <p>Touch targets are a system constraint, not visual padding. Status semantics combine color and language, with visible focus and no hover dependency.</p>
+      </div>
+      <div class="control-grid">
+        <article class="control-card">
+          <h3>Target guidance</h3>
+          <p>44px is the floor. Frequent tablet actions use 48–56px for reliable one-handed operation.</p>
+          <div class="targets" aria-label="Touch target size examples"><div class="target t44">44</div><div class="target t48">48</div><div class="target t56">56</div></div>
+          <div class="action-row"><button class="primary" type="button">Primary action</button><button class="secondary" type="button">Secondary</button><button class="quiet" type="button">Quiet action</button></div>
+        </article>
+        <article class="control-card">
+          <h3>Status is never color alone</h3>
+          <p>Every state has an explicit label and stable meaning across rows, filters, and detail views.</p>
+          <div class="state-stack">
+            <div class="state-row"><span class="status available">Available</span><span>Ready or capacity open</span></div>
+            <div class="state-row"><span class="status pending">Pending</span><span>Waiting for a known action</span></div>
+            <div class="state-row"><span class="status attention">Attention</span><span>Review aging or high-risk work</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="responsive">
+      <div class="section-head">
+        <div><p class="eyebrow">06 · Responsive behavior</p><h2>One language, three priorities.</h2></div>
+        <p>Desktop preserves visibility. Tablet promotes touch. Mobile narrows the job to exceptions and immediate actions, using progressive disclosure instead of squeezing the table.</p>
+      </div>
+      <div class="responsive-grid">
+        <article class="device desktop">
+          <div class="device-screen"><div class="mini-top"><b>Inventory overview</b><span class="status attention">3 to review</span></div><div class="mini-rail"><div class="mini-nav"></div><div class="mini-content"><div class="mini-line"></div><div class="mini-line"></div><div class="mini-line"></div><div class="mini-line"></div></div></div></div>
+          <div class="device-label"><b>Desktop · detailed</b><span>Persistent rail</span></div>
+        </article>
+        <article class="device tablet">
+          <div class="device-screen"><div class="mini-top"><b>Inventory</b><span class="status pending">Review</span></div><div class="mini-rail"><div class="mini-nav"></div><div class="mini-content"><div class="mini-line"></div><div class="mini-line"></div><div class="mini-line"></div></div></div></div>
+          <div class="device-label"><b>Tablet · touch-forward</b><span>Reduced columns</span></div>
+        </article>
+        <article class="device mobile">
+          <div class="device-screen"><div class="mini-top"><b>Fast check</b><span class="meta">Today</span></div><div class="mobile-check"><div class="check"><b>2024 Volvo EX30</b><span>Attention · Zone A / 12</span></div><div class="check"><b>2023 Ford Puma</b><span>Pending · Zone B / 04</span></div></div><div class="mobile-bottom"><span>Check</span><span>Locations</span><span>Activity</span></div></div>
+          <div class="device-label"><b>Mobile · exceptions</b><span>Fast check</span></div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div><b>Soft Operations · Direction A</b><span>Form derived from the Keyloop loop and the dealership lane: connected records arranged for quick operational scanning.</span></div>
+  </footer>
+
+  <script>
+    const shell = document.querySelector('.viewport-shell');
+    const viewButtons = [...document.querySelectorAll('[data-view-button]')];
+
+    viewButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        shell.dataset.view = button.dataset.viewButton;
+        viewButtons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+      });
+    });
+
+    document.querySelectorAll('.app-nav button').forEach((button) => {
+      button.addEventListener('click', () => {
+        document.querySelectorAll('.app-nav button').forEach((item) => item.removeAttribute('aria-current'));
+        button.setAttribute('aria-current', 'page');
+      });
+    });
+
+    document.querySelectorAll('.mobile-actions button').forEach((button) => {
+      button.addEventListener('click', () => {
+        document.querySelectorAll('.mobile-actions button').forEach((item) => item.removeAttribute('aria-current'));
+        button.setAttribute('aria-current', 'page');
+      });
+    });
+
+    document.querySelector('[data-sheet-trigger]').addEventListener('click', (event) => {
+      const pressed = event.currentTarget.getAttribute('aria-pressed') === 'true';
+      event.currentTarget.setAttribute('aria-pressed', String(!pressed));
+      event.currentTarget.textContent = pressed ? 'Review actions' : 'Actions ready';
+    });
+  </script>
+</body>
+</html>

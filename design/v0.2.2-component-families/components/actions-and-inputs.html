@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Precision — Actions & Inputs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/component-foundation.css">
+  <link rel="stylesheet" href="../styles/actions-and-inputs.css">
+  <link rel="stylesheet" href="../styles/actions-and-inputs-responsive.css">
+</head>
+<body>
+<!-- Assumptions: native controls first; one primary per region; mobile completes one coherent Inventory Unit task. -->
+<svg class="sr-only" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-add" viewBox="0 0 24 24"><path d="M12 22c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10ZM8 12h8M12 16V8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><path d="M11.5 21a9.5 9.5 0 1 0 0-19 9.5 9.5 0 0 0 0 19ZM22 22l-2-2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-filter" viewBox="0 0 24 24"><path d="M5.4 2.1h13.2c1.1 0 2 .9 2 2v2.2c0 .8-.5 1.8-1 2.3l-4.3 3.8c-.6.5-1 1.5-1 2.3V19c0 .6-.4 1.4-.9 1.7l-1.4.9c-1.3.8-3.1-.1-3.1-1.7v-5.3c0-.7-.4-1.6-.8-2.1l-3.8-4c-.5-.5-.9-1.4-.9-2V4.2c0-1.2.9-2.1 2-2.1ZM10.93 2.1 6 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M21 5.98c-3.33-.33-6.68-.5-10.02-.5-1.98 0-3.96.1-5.94.3L3 5.98M8.5 4.97l.22-1.31C8.88 2.71 9 2 10.69 2h2.62c1.69 0 1.82.75 1.97 1.67l.22 1.3M18.85 9.14l-.65 10.07C18.09 20.78 18 22 15.21 22H8.79C6 22 5.91 20.78 5.8 19.21L5.15 9.14M10.33 16.5h3.33M9.5 12.5h5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-export" viewBox="0 0 24 24"><path d="M16.44 8.9c3.6.31 5.07 2.16 5.07 6.21v.13c0 4.47-1.79 6.26-6.26 6.26H8.74c-4.47 0-6.26-1.79-6.26-6.26v-.13c0-4.02 1.45-5.87 4.99-6.2M12 15V3.62M15.35 5.85 12 2.5 8.65 5.85" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-tick" viewBox="0 0 24 24"><path d="M12 22c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10Z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m7.75 12 2.83 2.83 5.67-5.66" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M12 22c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10ZM9.17 14.83l5.66-5.66M14.83 14.83 9.17 9.17" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><path d="M8 2v3M16 2v3M3.5 9.09h17M21 8.5V17c0 3-1.5 5-5 5H8c-3.5 0-5-2-5-5V8.5c0-3 1.5-5 5-5h8c3.5 0 5 2 5 5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><path d="M12 22c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10ZM12 8v5M11.995 16h.009" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-location" viewBox="0 0 24 24"><path d="M12 13.43a3.12 3.12 0 1 0 0-6.24 3.12 3.12 0 0 0 0 6.24ZM3.62 8.49c1.97-8.66 14.8-8.65 16.76.01 1.15 5.08-2.01 9.38-4.78 12.04a5.193 5.193 0 0 1-7.21 0C5.63 17.88 2.47 13.57 3.62 8.49Z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M14.55 21.67C18.84 20.54 22 16.64 22 12c0-5.52-4.44-10-10-10C5.33 2 2 7.56 2 7.56V3m0 4.56H6.44M2 12c0 5.52 4.48 10 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+<div class="review-page">
+  <header class="review-header">
+    <div><h1>Actions &amp; Inputs</h1><p>Intent hierarchy, owned data, and touch-comfortable completion.</p></div>
+    <div class="review-actions">
+      <div class="mode-switch" role="group" aria-label="Demo state"><button type="button" data-demo-target="normal" aria-pressed="true">Normal</button><button type="button" data-demo-target="validation" aria-pressed="false">Validation</button><button type="button" data-demo-target="busy" aria-pressed="false">Busy</button></div>
+      <div class="mode-switch" role="group" aria-label="Viewport"><button type="button" data-mode-target="desktop" aria-pressed="true">Desktop</button><button type="button" data-mode-target="tablet" aria-pressed="false">Tablet</button><button type="button" data-mode-target="mobile" aria-pressed="false">Mobile</button></div>
+    </div>
+  </header>
+  <main class="device-stage">
+    <section class="device" data-mode="desktop" data-demo-state="normal" aria-label="Responsive Actions and Inputs specimen">
+      <div class="control-app">
+        <aside class="section-rail" aria-label="Specimen sections"><span class="product-mark">IN</span><a class="rail-tab active" href="#action-family" aria-label="Actions" title="Actions" aria-current="location"><b>A</b></a><a class="rail-tab" href="#input-family" aria-label="Inputs" title="Inputs"><b>I</b></a><a class="rail-tab" href="#selection-family" aria-label="Selection" title="Selection"><b>S</b></a><span class="rail-caption">v0.2.2</span></aside>
+        <section class="workspace">
+          <header class="workspace-head">
+            <div><span class="eyebrow">Component board 01</span><h2>Every action earns its weight.</h2><p>Find the unit, narrow the decision, then commit one owned change.</p></div>
+            <div class="workspace-actions"><button type="button" class="icon-button" aria-label="Export component notes" title="Export component notes"><span class="icon"><svg aria-hidden="true"><use href="#i-export"/></svg></span></button><button type="submit" form="inventory-form" class="button button-primary button-commit header-save" aria-label="Save inventory unit" title="Save inventory unit"><span class="icon"><svg aria-hidden="true"><use href="#i-tick"/></svg></span><span data-save-label>Save unit</span></button></div>
+          </header>
+          <div class="board-grid">
+            <article class="specimen-panel action-panel" id="action-family">
+              <header class="panel-head"><div><span>01 · Intent ladder</span><h3>Priority before decoration</h3></div><small>44px minimum</small></header>
+              <div class="action-list"><button type="button" class="button button-primary"><span class="icon"><svg aria-hidden="true"><use href="#i-add"/></svg></span>Add inventory unit</button><button type="button" class="button button-secondary"><span class="icon"><svg aria-hidden="true"><use href="#i-export"/></svg></span>Export view</button><button type="button" class="button button-contextual"><span class="icon"><svg aria-hidden="true"><use href="#i-location"/></svg></span>Assign slot</button><button type="button" class="button button-destructive"><span class="icon"><svg aria-hidden="true"><use href="#i-trash"/></svg></span>Remove assignment</button><button type="button" class="button button-secondary" disabled>Unavailable</button></div>
+              <div class="utility-row"><button type="button" class="icon-button" aria-label="Add inventory unit" title="Add inventory unit"><span class="icon"><svg aria-hidden="true"><use href="#i-add"/></svg></span></button><button type="button" class="icon-button" aria-label="Filter inventory" title="Filter inventory"><span class="icon"><svg aria-hidden="true"><use href="#i-filter"/></svg></span></button><button type="button" class="icon-button destructive-icon" aria-label="Remove current assignment" title="Remove current assignment"><span class="icon"><svg aria-hidden="true"><use href="#i-trash"/></svg></span></button><span>Icon utilities keep names and tooltips.</span></div>
+            </article>
+            <article class="specimen-panel filter-panel" id="input-family">
+              <header class="panel-head"><div><span>02 · Find &amp; narrow</span><h3>Meaning stays visible</h3></div><button type="button" class="text-button" data-clear-filters>Clear</button></header>
+              <label class="field search-field"><span class="field-label">Search inventory</span><span class="input-shell"><span class="icon"><svg aria-hidden="true"><use href="#i-search"/></svg></span><input type="search" placeholder="VIN, stock or model" aria-label="Search inventory"></span></label>
+              <div class="filter-chips" aria-label="Inventory filters"><button type="button" class="filter-chip" aria-pressed="true" data-filter-chip><span class="icon"><svg aria-hidden="true"><use href="#i-filter"/></svg></span>Needs attention · 3</button><button type="button" class="filter-chip" aria-pressed="false" data-filter-chip>Unassigned · 2</button><button type="button" class="filter-chip" aria-pressed="false" data-filter-chip>Over 90 days</button></div>
+              <label class="field compact-field"><span class="field-label">Age range</span><select><option>All inventory ages</option><option>Over 90 days</option><option>30–90 days</option></select></label>
+            </article>
+            <article class="specimen-panel form-panel">
+              <header class="panel-head"><div><span>03 · Owned data</span><h3>New inventory unit</h3></div><span class="form-status" data-form-status><span></span>Draft</span></header>
+              <form id="inventory-form" novalidate>
+                <label class="field field-wide"><span class="field-label">Vehicle master</span><select id="vehicle-master"><option>Aster A7 Touring · VM-014</option><option>Northstar E2 · VM-021</option></select><small>Shared make, model, variant, and type.</small></label>
+                <label class="field"><span class="field-label">VIN</span><input id="vin" name="vin" value="WDD2231861A002048" aria-describedby="vin-message"><small id="vin-message"><span class="field-state-icon error-icon" aria-hidden="true"><svg><use href="#i-close"/></svg></span><span data-vin-message>17-character vehicle identifier.</span></small></label>
+                <label class="field"><span class="field-label">Arrival date</span><span class="input-shell"><input type="text" value="14 Apr 2026" aria-label="Arrival date"><span class="icon"><svg aria-hidden="true"><use href="#i-calendar"/></svg></span></span></label>
+                <label class="field"><span class="field-label">Zone</span><select id="zone" aria-describedby="zone-message"><option>North Zone</option><option>South Zone</option><option>East Zone</option></select><small id="zone-message"><span class="field-state-icon success-icon" aria-hidden="true"><svg><use href="#i-tick"/></svg></span><span data-zone-message>Choose a Zone before its Slot.</span></small></label>
+                <label class="field"><span class="field-label">Slot</span><select id="slot"><option>N-04 · Available</option><option>N-08 · Available</option></select></label>
+                <label class="field field-wide"><span class="field-label">Manager note <em>Optional</em></span><textarea rows="2" placeholder="Reason for assignment or follow-up">Ready for showroom inspection.</textarea></label>
+                <div class="form-actions field-wide"><button type="reset" class="button button-secondary" data-reset-form>Reset</button><button type="submit" class="button button-primary button-commit"><span class="icon"><svg aria-hidden="true"><use href="#i-tick"/></svg></span><span data-save-label>Save inventory unit</span></button></div>
+              </form>
+            </article>
+            <article class="specimen-panel selection-panel" id="selection-family">
+              <header class="panel-head"><div><span>04 · Selection</span><h3>Choice is explicit</h3></div></header>
+              <fieldset><legend>Record view</legend><label class="choice"><input type="radio" name="record-view" checked><span>Inventory units</span></label><label class="choice"><input type="radio" name="record-view"><span>Vehicle masters</span></label></fieldset>
+              <label class="choice"><input type="checkbox" checked><span>Show unassigned first</span></label>
+              <button type="button" class="switch-row" role="switch" aria-checked="false" data-switch><span><b>Include archived masters</b><small data-switch-copy>Off · current records only</small></span><i aria-hidden="true"></i></button>
+              <div class="state-note"><span class="icon"><svg aria-hidden="true"><use href="#i-info"/></svg></span><p>Labels, shapes, and native checked state carry meaning with color.</p></div>
+            </article>
+          </div>
+          <p class="sr-only" aria-live="polite" data-live-region></p>
+        </section>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="../scripts/showcase-controls.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+:root {
+  --color-carbon-900: #11181c;
+  --color-carbon-800: #162228;
+  --color-carbon-700: #2e4758;
+  --color-white: #ffffff;
+  --color-stone-800: #f1f1f3;
+  --color-stone-900: #d9e0e4;
+  --color-signal-blue: #3da5ff;
+  --color-fusion-blue: #00c7f2;
+  --color-focus: #006d9c;
+  --color-control-boundary: #6b7d87;
+
+  --color-ready-marker: #155e49;
+  --color-ready-surface: #e4f8f2;
+  --color-ready-border: #155e49;
+  --color-ready-text: #155e49;
+  --color-attention-marker: #9d2e20;
+  --color-attention-surface: #fff0ed;
+  --color-attention-border: #9d2e20;
+  --color-attention-text: #9d2e20;
+  --color-info-marker: #1e5e87;
+  --color-info-surface: #ebf6fd;
+  --color-info-border: #1e5e87;
+  --color-info-text: #1e5e87;
+  --color-pending-marker: #725000;
+  --color-pending-surface: #fff5d6;
+  --color-pending-border: #725000;
+  --color-pending-text: #725000;
+  --color-error-marker: #a11f21;
+  --color-error-surface: #ffefef;
+  --color-error-border: #a11f21;
+  --color-error-text: #a11f21;
+
+  --font-display: "Plus Jakarta Sans", "IBM Plex Sans", system-ui, sans-serif;
+  --font-ui: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  --radius-control: 9px;
+  --radius-widget: 13px;
+  --radius-panel: 19px;
+  --radius-sheet: 24px;
+
+  --border-default: 1px solid var(--color-stone-900);
+  --border-control: 1px solid var(--color-control-boundary);
+  --focus-ring: 0 0 0 2px var(--color-white), 0 0 0 5px var(--color-focus);
+  --shadow-overlay: 0 18px 42px rgb(17 24 28 / 18%);
+
+  --target-min: 44px;
+  --target-frequent: 48px;
+  --grid-row-desktop: 60px;
+  --grid-row-touch: 64px;
+}

@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Connected Lanes — Keyloop-aligned brand foundation direction for an intelligent inventory dashboard.">
+<title>Connected Lanes — Brand Foundation Direction B</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<!--
+    ASSUMPTIONS
+    - This is a review artifact for brand foundation v0.1, not a production screen.
+    - Direction B must feel spatial and connected, so a continuous rail links every chapter.
+    - Vehicle, Zone, Slot, and status labels are representative interface content, not live data.
+    - The supplied official slate wordmark is referenced intact from ../assets/keyloop-logo-slate.svg.
+
+    REASONING
+    - The Keyloop loop becomes a navigational and relational rail rather than decorative artwork.
+    - An asymmetric editorial grid keeps the guide distinct from a conventional card catalogue.
+    - Lane dividers and linked records explain Zone/Slot hierarchy without literal vehicle art.
+
+    PLACEHOLDERS
+    - Review fonts load from Google Fonts with local/system fallbacks.
+      Production should use approved, locally hosted WOFF2 assets.
+    - Representative record names should be replaced with accepted product fixtures at v0.2.
+  -->
+<style>
+:root{--carbon-900:#11181c;--carbon-800:#162228;--carbon-700:#2e4758;--slate:#3c576b;--white:#ffffff;--stone-800:#f1f1f3;--stone-900:#d9e0e4;--signal-blue:#3da5ff;--fusion-blue:#00c7f2;--success:#18e0a4;--coral:#ff6b57;--warning:#ffb800;--error:#ff4d4f;--page-pad:clamp(20px, 4.2vw, 68px);--display:"Plus Jakarta Sans","Avenir Next","Segoe UI",sans-serif;--ui:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif}*{box-sizing:border-box}html{color-scheme:light;scroll-behavior:smooth}body{margin:0;background:var(--stone-800);color:var(--carbon-900);font-family:var(--ui);font-size:16px;line-height:1.55;text-rendering:optimizeLegibility}a,button{font:inherit}button{color:inherit}a{color:inherit}:focus-visible{outline:3px solid var(--signal-blue);outline-offset:3px}.site-shell{width:min(100%,1440px);margin:0 auto;overflow:clip;background:var(--white)}.masthead{display:grid;grid-template-columns:minmax(180px,0.8fr) minmax(0,2.2fr);gap:clamp(28px,6vw,100px);align-items:center;min-height:104px;padding:20px var(--page-pad);border-bottom:1px solid var(--stone-900)}.masthead img{display:block;width:170px;height:auto}.masthead-meta{display:flex;justify-content:space-between;gap:24px;color:var(--slate);font-size:14px;font-weight:650}.chapter-nav{position:sticky;z-index:20;top:12px;display:flex;width:fit-content;max-width:calc(100% - (2 * var(--page-pad)));margin:18px var(--page-pad) 0 auto;overflow-x:auto;border:1px solid var(--stone-900);border-radius:999px;background:var(--white);box-shadow:0 10px 26px rgba(17,24,28,.08);scrollbar-width:none}.chapter-nav::-webkit-scrollbar{display:none}.chapter-nav a{min-height:44px;padding:11px 17px;border-right:1px solid var(--stone-900);color:var(--slate);font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap}.chapter-nav a:last-child{border-right:0}.chapter-nav a:hover,.chapter-nav a[aria-current=true]{background:var(--carbon-800);color:var(--white)}.hero{display:grid;grid-template-columns:minmax(250px,0.75fr) minmax(0,1.65fr);gap:clamp(36px,8vw,132px);min-height:650px;padding:clamp(72px,9vw,132px) var(--page-pad) 88px}.eyebrow{margin:0 0 16px;color:var(--slate);font-size:12px;font-weight:800;letter-spacing:.13em;text-transform:uppercase}h1,h2,h3,p{text-wrap:pretty}h1,h2,h3{margin-top:0;font-family:var(--display);letter-spacing:-.035em}h1{max-width:720px;margin-bottom:28px;font-size:clamp(58px, 8vw, 116px);font-weight:760;line-height:.91}h2{margin-bottom:18px;font-size:clamp(36px, 4.4vw, 66px);line-height:1}h3{margin-bottom:10px;font-size:clamp(22px, 2vw, 30px);line-height:1.12}.hero-intro{max-width:500px;margin:0;color:var(--slate);font-size:clamp(18px, 1.8vw, 24px);line-height:1.5}.direction-note{align-self:end;padding-bottom:10px;color:var(--slate)}.direction-note strong{display:block;margin-bottom:10px;color:var(--carbon-900);font-family:var(--display);font-size:18px}.loop-map{position:relative;min-height:390px;padding:44px 28px;overflow:hidden;border:1px solid var(--stone-900);border-radius:36px 4px 36px 4px;background:var(--stone-800)}.loop-line{position:absolute;inset:58px 36px;border:3px solid var(--slate);border-left-color:var(--fusion-blue);border-radius:110px}.loop-node{position:absolute;z-index:2;min-width:138px;padding:14px 16px;border:1px solid var(--stone-900);background:var(--white);box-shadow:0 8px 20px rgba(17,24,28,.08)}.loop-node b,.loop-node span{display:block}.loop-node b{margin-bottom:3px;font-size:15px}.loop-node span{color:var(--slate);font-size:12px;font-weight:650}.node-master{top:24px;left:15%}.node-zone{top:43%;right:3%}.node-slot{bottom:22px;left:42%}.node-history{top:42%;left:1%}.hero-caption{position:absolute;right:34px;bottom:28px;max-width:190px;margin:0;color:var(--slate);font-size:13px;font-weight:650;text-align:right}.chapter{display:grid;grid-template-columns:minmax(180px,0.55fr) minmax(0,2.45fr);gap:clamp(30px,6vw,90px);padding:88px var(--page-pad) 104px;border-top:1px solid var(--stone-900)}.chapter-rail{position:relative;min-height:100%;padding-left:34px;color:var(--slate)}.chapter-rail::before{position:absolute;top:4px;bottom:-105px;left:8px;width:2px;background:var(--slate);content:""}.chapter-rail::after{position:absolute;top:2px;left:1px;width:14px;height:14px;border:2px solid var(--slate);border-radius:50%;background:var(--white);content:""}.chapter-index{display:block;margin-bottom:14px;color:var(--carbon-900);font-family:var(--display);font-size:28px;font-weight:750}.chapter-rail p{max-width:170px;margin:0;font-size:14px}.lead{max-width:690px;margin:0 0 44px;color:var(--slate);font-size:18px}.palette-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:1px solid var(--stone-900)}.swatch-row{display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:18px;align-items:center;min-height:88px;padding:16px 20px 16px 0;border-bottom:1px solid var(--stone-900)}.swatch-row:nth-child(odd){border-right:1px solid var(--stone-900)}.swatch-row:nth-child(2n){padding-left:20px}.swatch{width:56px;height:56px;border:1px solid rgba(17,24,28,.22);border-radius:50% 50% 8px 50%}.swatch-name b,.swatch-name span{display:block}.swatch-name b{font-size:15px}.swatch-name span,.swatch-row code{color:var(--slate);font-size:13px}.swatch-row code{font-variant-numeric:tabular-nums}.color-carbon{background:var(--carbon-900)}.color-slate{background:var(--slate)}.color-stone{background:var(--stone-800)}.color-blue{background:var(--signal-blue)}.color-fusion{background:var(--fusion-blue)}.color-coral{background:var(--coral)}.type-layout{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(260px,0.55fr);gap:clamp(28px,5vw,72px);align-items:start}.display-sample{margin:0;font-family:var(--display);font-size:clamp(46px, 7vw, 92px);font-weight:760;line-height:.98;letter-spacing:-.05em}.body-sample{max-width:480px;margin:28px 0 0 auto;color:var(--slate);font-size:18px}.type-notes{border-top:2px solid var(--carbon-900)}.type-note{padding:20px 0;border-bottom:1px solid var(--stone-900)}.type-note b,.type-note span{display:block}.type-note span{margin-top:4px;color:var(--slate);font-size:14px}.navigation-layout{display:grid;grid-template-columns:minmax(240px,0.62fr) minmax(0,1.38fr);gap:28px;align-items:stretch}.floating-nav-demo{padding:24px;border-radius:28px 4px 28px 4px;background:var(--carbon-800);color:var(--white)}.demo-brand{margin:0 0 30px;color:#c7d4dc;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}.app-nav{display:grid;gap:7px}.app-nav button{display:grid;grid-template-columns:34px 1fr;align-items:center;min-height:48px;padding:4px 14px 4px 8px;border:0;border-radius:999px;background:0 0;color:#d9e0e4;cursor:pointer;text-align:left}.app-nav button:hover{background:#2e4758}.app-nav button[aria-selected=true]{background:var(--white);color:var(--carbon-900)}.nav-marker{display:grid;width:28px;height:28px;place-items:center;border:1px solid currentColor;border-radius:50%;font-size:12px;font-weight:800}.nav-stage{position:relative;min-height:400px;padding:36px;overflow:hidden;border:1px solid var(--stone-900);border-radius:4px 28px 4px 28px;background:var(--stone-800)}.nav-stage::after{position:absolute;right:-40px;bottom:58px;left:38%;height:88px;border:2px solid var(--fusion-blue);border-right:0;border-radius:54px 0 0 54px;content:""}.nav-state-label{margin:0 0 12px;color:var(--slate);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.nav-stage h3{max-width:460px}.nav-state-copy{position:relative;z-index:2;max-width:430px;margin:0;color:var(--slate)}.nav-principle{position:absolute;z-index:2;right:32px;bottom:28px;width:220px;margin:0;padding:14px 16px;border:1px solid var(--stone-900);background:var(--white);color:var(--carbon-900);font-size:13px;font-weight:700}.relationship-board{display:grid;grid-template-columns:minmax(130px,0.38fr) minmax(170px,0.58fr) minmax(260px,1.04fr);min-height:390px;border:1px solid var(--stone-900);background:var(--white)}.lane{position:relative;padding:26px 22px;border-right:1px solid var(--stone-900)}.lane:last-child{border-right:0}.lane-label{display:block;margin-bottom:28px;color:var(--slate);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}.zone-name{margin:0;font-family:var(--display);font-size:27px;font-weight:760;line-height:1.08}.zone-type{margin:12px 0 0;color:var(--slate);font-size:14px}.slot-stack{display:grid;gap:12px}.slot{min-height:52px;padding:13px 14px;border:1px solid var(--stone-900);border-radius:26px 4px 4px 26px;color:var(--slate);font-size:14px;font-weight:700}.slot.is-linked{border-color:var(--signal-blue);background:#eaf5ff;color:var(--carbon-900)}.inventory-record{position:relative;z-index:2;padding:24px;border:1px solid var(--stone-900);border-radius:4px 26px 4px 26px;background:var(--stone-800)}.record-overline{margin:0 0 10px;color:var(--slate);font-size:12px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}.record-title{margin:0 0 20px;font-family:var(--display);font-size:28px;font-weight:760;line-height:1.08}.record-dl{display:grid;grid-template-columns:auto 1fr;gap:9px 20px;margin:0;font-size:14px}.record-dl dt{color:var(--slate)}.record-dl dd{margin:0;font-weight:700}.connection-line{position:absolute;z-index:1;top:162px;left:-41%;width:49%;height:46px;border:3px solid var(--signal-blue);border-right:0;border-radius:28px 0 0 28px}.representative-note{margin:18px 0 0;color:var(--slate);font-size:13px}.semantics-grid{border-top:2px solid var(--carbon-900)}.semantic-row{display:grid;grid-template-columns:210px minmax(160px,0.7fr) minmax(240px,1.3fr);gap:24px;align-items:center;min-height:86px;border-bottom:1px solid var(--stone-900)}.status-chip{display:inline-flex;width:fit-content;min-height:36px;align-items:center;gap:10px;padding:7px 13px;border:1px solid var(--stone-900);border-radius:999px;background:var(--white);font-size:14px;font-weight:750}.status-mark{width:11px;height:11px;background:currentColor}.ready{color:#08795b}.attention{color:#a93222}.pending{color:#7b5700}.issue{color:#b31e20}.ready .status-mark{border-radius:50%}.attention .status-mark{transform:rotate(45deg)}.pending .status-mark{border-radius:6px 6px 0 0}.issue .status-mark{border-radius:2px}.semantic-name{font-weight:750}.semantic-use{color:var(--slate);font-size:14px}.controls-layout{display:grid;grid-template-columns:minmax(280px,0.8fr) minmax(0,1.2fr);gap:28px}.control-rules{padding:30px;border:1px solid var(--stone-900)}.control-rule{display:grid;grid-template-columns:64px 1fr;gap:18px;padding:18px 0;border-bottom:1px solid var(--stone-900)}.control-rule:last-child{border-bottom:0}.rule-size{display:grid;width:56px;height:56px;place-items:center;border:2px solid var(--slate);border-radius:50%;color:var(--slate);font-size:13px;font-weight:800}.control-rule b,.control-rule span{display:block}.control-rule span{margin-top:5px;color:var(--slate);font-size:14px}.touch-stage{position:relative;min-height:420px;padding:34px;overflow:hidden;border-radius:28px 4px 28px 4px;background:var(--carbon-800);color:var(--white)}.touch-stage .eyebrow{color:#bdcbd3}.touch-stage p{max-width:440px;color:#d9e0e4}.button-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.button{min-height:48px;padding:12px 20px;border:1px solid transparent;border-radius:999px;cursor:pointer;font-weight:750}.button-primary{background:var(--signal-blue);color:var(--carbon-900)}.button-secondary{border-color:#7d929f;background:0 0;color:var(--white)}.action-tray{position:absolute;right:16px;bottom:16px;left:16px;z-index:4;padding:24px;transform:translateY(calc(100% + 20px));border-radius:24px 24px 4px 4px;background:var(--white);color:var(--carbon-900);box-shadow:0 -18px 34px rgba(17,24,28,.28);transition:transform 220ms ease}.action-tray.is-open{transform:translateY(0)}.tray-handle{width:48px;height:4px;margin:-8px auto 18px;border-radius:4px;background:var(--stone-900)}.tray-head{display:flex;justify-content:space-between;gap:16px;align-items:center}.tray-head h3{margin-bottom:0}.tray-close{min-width:44px;min-height:44px;border:1px solid var(--stone-900);border-radius:50%;background:var(--white);cursor:pointer;font-weight:800}.tray-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}.tray-actions button{min-height:48px;border:1px solid var(--stone-900);border-radius:12px;background:var(--stone-800);cursor:pointer;font-weight:750}.responsive-specimens{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(260px,0.75fr) minmax(220px,0.5fr);gap:18px;align-items:end}.specimen{overflow:hidden;border:1px solid var(--stone-900);background:var(--stone-800);box-shadow:0 12px 24px rgba(17,24,28,.08)}.specimen-label{display:flex;min-height:48px;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;border-bottom:1px solid var(--stone-900);background:var(--white);color:var(--slate);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.mini-app{display:grid;min-height:330px;grid-template-columns:82px 1fr}.mini-sidebar{padding:18px 12px;background:var(--carbon-800);color:var(--white)}.mini-logo{display:block;margin-bottom:28px;font-family:var(--display);font-size:14px;font-weight:800;letter-spacing:-.03em}.mini-nav-item{width:34px;height:34px;margin-bottom:10px;border:1px solid #77909f;border-radius:50%}.mini-nav-item.is-active{background:var(--white)}.mini-content{padding:22px}.mini-title{margin:0 0 20px;font-family:var(--display);font-size:22px;font-weight:760}.mini-lanes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid var(--slate)}.mini-lane{min-height:180px;padding:14px;border-right:1px solid var(--stone-900);color:var(--slate);font-size:12px;font-weight:700}.mini-lane:last-child{border-right:0}.mini-record{margin-top:12px;padding:10px;border:1px solid var(--signal-blue);border-radius:12px 3px 12px 3px;background:var(--white);color:var(--carbon-900);font-size:12px}.tablet .mini-app{grid-template-columns:1fr}.tablet .mini-sidebar{display:none}.tablet .mini-lanes{grid-template-columns:repeat(2,1fr)}.tablet .mini-lane:last-child{display:none}.mobile{max-width:270px;border-radius:28px}.mobile .mini-app{display:block;min-height:390px}.mobile .mini-lanes,.mobile .mini-sidebar{display:none}.mobile .mini-content{padding:18px}.mobile-check{display:none;padding:14px 0;border-top:1px solid var(--stone-900)}.mobile .mobile-check{display:block}.mobile-check b,.mobile-check span{display:block}.mobile-check span{margin-top:4px;color:var(--slate);font-size:13px}.mobile-action{display:none;width:100%;min-height:48px;margin-top:18px;border:0;border-radius:999px;background:var(--signal-blue);color:var(--carbon-900);font-weight:800}.mobile .mobile-action{display:block}.specimen-notes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px;color:var(--slate);font-size:13px}.specimen-notes p{margin:0;padding-top:12px;border-top:2px solid var(--slate)}.footer{display:grid;grid-template-columns:minmax(180px,0.55fr) minmax(0,2.45fr);gap:clamp(30px,6vw,90px);padding:64px var(--page-pad) 72px;border-top:1px solid var(--stone-900);background:var(--carbon-800);color:var(--white)}.footer img{width:156px;padding:10px;border-radius:4px;background:var(--white)}.footer p{max-width:680px;margin:0;color:#d9e0e4}@media (max-width:1024px){.chapter,.footer,.hero,.masthead{grid-template-columns:1fr}.masthead{gap:18px}.masthead-meta{justify-content:flex-start}.hero{min-height:auto}.direction-note{max-width:520px}.chapter-rail{min-height:58px;padding-left:36px}.chapter-rail::before{right:-70px;bottom:auto;width:auto;height:2px}.chapter-rail p{max-width:540px}.chapter-index{display:inline;margin-right:12px}.controls-layout,.navigation-layout{grid-template-columns:1fr}.responsive-specimens{grid-template-columns:minmax(0,1fr) minmax(240px,0.52fr)}.responsive-specimens .mobile{grid-column:2}.responsive-specimens .tablet{grid-column:1}.responsive-specimens .desktop{grid-column:1/-1}}@media (max-width:700px){.masthead-meta{display:grid;gap:3px}.chapter-nav{margin-left:var(--page-pad)}.hero{padding-top:64px}h1{font-size:clamp(54px, 17vw, 76px)}.loop-map{min-height:430px}.node-master{left:8%}.node-zone{right:0}.node-slot{left:28%}.node-history{top:48%}.hero-caption{display:none}.palette-list,.type-layout{grid-template-columns:1fr}.swatch-row:nth-child(odd){border-right:0}.swatch-row:nth-child(2n){padding-left:0}.relationship-board{grid-template-columns:1fr}.lane{border-right:0;border-bottom:1px solid var(--stone-900)}.lane:last-child{border-bottom:0}.connection-line{display:none}.semantic-row{grid-template-columns:1fr;gap:9px;padding:18px 0}.responsive-specimens{grid-template-columns:1fr}.responsive-specimens .desktop,.responsive-specimens .mobile,.responsive-specimens .tablet{grid-column:1}.mobile{max-width:100%}.specimen-notes{grid-template-columns:1fr}}@media (max-width:430px){:root{--page-pad:18px}.masthead{min-height:92px;padding-block:16px}.masthead img{width:150px}.chapter-nav{top:8px;max-width:calc(100% - 36px)}.chapter-nav a{padding-inline:14px}.hero{gap:30px;padding-bottom:68px}.loop-map{margin-inline:-6px;padding-inline:18px}.loop-line{inset-inline:22px}.loop-node{min-width:128px;padding:12px}.chapter{padding-top:68px;padding-bottom:80px}.chapter-rail::before{right:-20px}.swatch-row{grid-template-columns:48px 1fr}.swatch-row code{grid-column:2}.swatch{width:48px;height:48px}.display-sample{font-size:45px}.control-rules,.floating-nav-demo,.nav-stage,.touch-stage{padding:22px}.nav-principle{right:18px;bottom:18px;width:205px}.tray-actions{grid-template-columns:1fr}.mini-app{grid-template-columns:64px 1fr}.mini-sidebar{padding-inline:9px}.mini-content{padding:16px}.footer{padding-bottom:58px}}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.action-tray{transition:none}}
+</style>
+<style>
+/* Review corrections: distinguish UI tech slate from the baked-in logo slate. */
+:root { --slate: #2e4758; }
+.action-tray {
+  position: fixed;
+  inset: auto 16px 16px;
+  width: auto;
+  max-width: none;
+  margin: 0;
+  border: 0;
+  overscroll-behavior: contain;
+}
+.action-tray::backdrop { background: rgba(17, 24, 28, .48); }
+</style>
+</head>
+<body>
+<main class="site-shell">
+<header class="masthead">
+<img src="../assets/keyloop-logo-slate.svg" alt="Keyloop">
+<div class="masthead-meta">
+<span>Intelligent Inventory Dashboard</span>
+<span>Brand foundation · v0.1</span>
+<span>Direction B</span>
+</div>
+</header>
+<nav class="chapter-nav" aria-label="Brand guide chapters">
+<a href="#intro" aria-current="true">Intro</a>
+<a href="#palette">Palette</a>
+<a href="#type">Typography</a>
+<a href="#navigation">Navigation</a>
+<a href="#relationships">Relationships</a>
+<a href="#semantics">Status</a>
+<a href="#responsive">Responsive</a>
+</nav>
+<section class="hero" id="intro">
+<div class="direction-note">
+<p class="eyebrow">Connected Lanes</p>
+<strong>Form from content</strong>
+<p>Zone and Slot relationships become the page structure: one rail, clear junctions, and a visible path from record to action.</p>
+</div>
+<div>
+<h1>Every record has a place.</h1>
+<p class="hero-intro">A calm operational language where inventory, locations, and activity stay visibly connected—without reducing the work to a dashboard of isolated cards.</p>
+<div class="loop-map" aria-label="Representative connected record flow">
+<div class="loop-line" aria-hidden="true"></div>
+<div class="loop-node node-master"><b>Vehicle master</b><span>Identity source</span></div>
+<div class="loop-node node-zone"><b>North Zone</b><span>Location group</span></div>
+<div class="loop-node node-slot"><b>Slot N-04</b><span>Physical position</span></div>
+<div class="loop-node node-history"><b>Inventory unit</b><span>VIN-linked record</span></div>
+<p class="hero-caption">Continuous context, not decorative connectivity.</p>
+</div>
+</div>
+</section>
+<section class="chapter" id="palette">
+<aside class="chapter-rail"><span class="chapter-index">01</span><p>Palette works as hierarchy. Bright signals belong to decisions, not wallpaper.</p></aside>
+<div>
+<p class="eyebrow">Colour system</p>
+<h2>Quiet surfaces.<br>Decisive signals.</h2>
+<p class="lead">Carbon and slate carry the reading experience. Stone makes dense information breathable. Blue marks interaction; coral marks attention. Each accent has a job.</p>
+<div class="palette-list" aria-label="Keyloop-aligned colour palette">
+<div class="swatch-row"><span class="swatch color-carbon"></span><span class="swatch-name"><b>Carbon black</b><span>Primary text</span></span><code>#11181C</code></div>
+<div class="swatch-row"><span class="swatch color-slate"></span><span class="swatch-name"><b>Tech slate</b><span>Secondary hierarchy</span></span><code>#2E4758</code></div>
+<div class="swatch-row"><span class="swatch color-stone"></span><span class="swatch-name"><b>Website grey</b><span>Soft operational surface</span></span><code>#F1F1F3</code></div>
+<div class="swatch-row"><span class="swatch color-blue"></span><span class="swatch-name"><b>Signal blue</b><span>Primary interaction</span></span><code>#3DA5FF</code></div>
+<div class="swatch-row"><span class="swatch color-fusion"></span><span class="swatch-name"><b>Fusion blue</b><span>Linked context</span></span><code>#00C7F2</code></div>
+<div class="swatch-row"><span class="swatch color-coral"></span><span class="swatch-name"><b>Energy coral</b><span>Aging attention</span></span><code>#FF6B57</code></div>
+</div>
+</div>
+</section>
+<section class="chapter" id="type">
+<aside class="chapter-rail"><span class="chapter-index">02</span><p>Editorial headings establish confidence. UI text stays practical and measured.</p></aside>
+<div>
+<p class="eyebrow">Typography</p>
+<div class="type-layout">
+<div>
+<p class="display-sample">See the whole lane.</p>
+<p class="body-sample">Plus Jakarta Sans gives the system its voice. IBM Plex Sans carries labels, actions, and dense operational detail with an open, readable rhythm.</p>
+</div>
+<div class="type-notes">
+<div class="type-note"><b>Display / Plus Jakarta Sans</b><span>Confident, compact headings with careful line breaks.</span></div>
+<div class="type-note"><b>Interface / IBM Plex Sans</b><span>Readable controls, tables, descriptions, and status labels.</span></div>
+<div class="type-note"><b>Operational values</b><span>Tabular numerals for age, capacity, and aligned comparisons.</span></div>
+<div class="type-note"><b>Touch baseline</b><span>Body copy begins at 16px on touch surfaces.</span></div>
+</div>
+</div>
+</div>
+</section>
+<section class="chapter" id="navigation">
+<aside class="chapter-rail"><span class="chapter-index">03</span><p>Navigation is a persistent lane with one unmistakable active destination.</p></aside>
+<div>
+<p class="eyebrow">Navigation language</p>
+<h2>One rail.<br>Five destinations.</h2>
+<p class="lead">
+The floating sidebar remains stable while content changes. Every item is a complete touch target; the active state is carried by shape, contrast, and text—not hover alone.</p>
+<div class="navigation-layout">
+<div class="floating-nav-demo">
+<p class="demo-brand">Primary rail</p>
+<div class="app-nav" role="tablist" aria-label="Navigation state specimen">
+<button type="button" role="tab" aria-selected="true" data-title="Overview stays oriented"
+data-copy="Begin with current priorities and exceptions, then follow the rail into deeper operational context."><span class="nav-marker">O</span><span>Overview</span></button>
+<button type="button" role="tab" aria-selected="false" data-title="Inventory holds the record"
+data-copy="Vehicle rows retain status and location context, preserving the route to the master record."><span class="nav-marker">I</span><span>Inventory</span></button>
+<button type="button" role="tab" aria-selected="false" data-title="Locations show relationships"
+data-copy="Zones group the site; Slots identify the precise position. The selected lane remains visible."><span class="nav-marker">L</span><span>Locations</span></button>
+<button type="button" role="tab" aria-selected="false" data-title="Activity explains change"
+data-copy="Actions become a readable history connected to the inventory record that produced them."><span class="nav-marker">A</span><span>Activity</span></button>
+<button type="button" role="tab" aria-selected="false" data-title="Master Data anchors identity"
+data-copy="The source record stays available without competing with daily operational tasks."><span class="nav-marker">M</span><span>Master Data</span></button>
+</div>
+</div>
+<div class="nav-stage" role="tabpanel" aria-live="polite">
+<p class="nav-state-label">Selected destination</p>
+<h3 id="navStateTitle">Overview stays oriented</h3>
+<p class="nav-state-copy" id="navStateCopy">Begin with current priorities and exceptions, then follow the rail into deeper operational context.</p>
+<p class="nav-principle">48px frequent targets on tablet. Keyboard focus is always visible.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="chapter" id="relationships">
+<aside class="chapter-rail"><span class="chapter-index">04</span><p>The spatial model is visible: a Vehicle Master defines an Inventory Unit; Zone contains Slot; Slot locates that unit.</p></aside>
+<div>
+<p class="eyebrow">Representative relationship</p>
+<h2>Zone → Slot → Inventory Unit</h2>
+<p class="lead">Treat location as part of the inventory story, not a detached lookup. Each VIN-linked Inventory Unit references a reusable Vehicle Master while its Slot carries the physical position.</p>
+<div class="relationship-board">
+<div class="lane">
+<span class="lane-label">Zone</span>
+<p class="zone-name">North Zone</p>
+<p class="zone-type">Retail-ready area</p>
+</div>
+<div class="lane">
+<span class="lane-label">Slot</span>
+<div class="slot-stack">
+<div class="slot">Slot N-03</div>
+<div class="slot is-linked">Slot N-04 · selected</div>
+<div class="slot">Slot N-05</div>
+</div>
+</div>
+<div class="lane">
+<span class="lane-label">Inventory unit</span>
+<div class="connection-line" aria-hidden="true"></div>
+<article class="inventory-record">
+<p class="record-overline">Representative content</p>
+<p class="record-title">Inventory unit KR-024</p>
+<dl class="record-dl">
+<dt>Vehicle master</dt><dd>Mercedes-Benz · DEF</dd>
+<dt>Location</dt><dd>North Zone / N-04</dd>
+<dt>Status</dt><dd>Ready for retail</dd>
+<dt>Next action</dt><dd>Open record</dd>
+</dl>
+</article>
+</div>
+</div>
+<p class="representative-note">Example labels demonstrate hierarchy only. They are not production inventory values.</p>
+</div>
+</section>
+<section class="chapter" id="semantics">
+<aside class="chapter-rail"><span class="chapter-index">05</span><p>Status is always redundant: colour, shape, and plain-language label travel together.</p></aside>
+<div>
+<p class="eyebrow">Status semantics</p>
+<h2>Signal meaning,<br>not decoration.</h2>
+<p class="lead">A status treatment should answer what state this is and what kind of attention it needs. Never ask colour to carry that message alone.</p>
+<div class="semantics-grid">
+<div class="semantic-row"><span class="status-chip ready"><span class="status-mark"></span>Ready</span><span class="semantic-name">Positive / available</span><span
+class="semantic-use">Confirmed state; no immediate intervention implied.</span></div>
+<div class="semantic-row"><span class="status-chip attention"><span class="status-mark"></span>Aging attention</span><span class="semantic-name">Review needed</span><span
+class="semantic-use">Coral is reserved for aging stock and high-attention feedback.</span></div>
+<div class="semantic-row"><span class="status-chip pending"><span class="status-mark"></span>Pending move</span><span class="semantic-name">In progress</span><span
+class="semantic-use">Warn without suggesting failure; pair with next-step copy.</span></div>
+<div class="semantic-row"><span class="status-chip issue"><span class="status-mark"></span>Data issue</span><span class="semantic-name">Action required</span><span
+class="semantic-use">Error red denotes a failed or invalid state that needs correction.</span></div>
+</div>
+</div>
+</section>
+<section class="chapter" id="controls">
+<aside class="chapter-rail"><span class="chapter-index">06</span><p>Touch comfort is structural: generous targets, visible focus, and action trays.</p></aside>
+<div>
+<p class="eyebrow">Touch controls</p>
+<h2>Fast without<br>feeling fragile.</h2>
+<p class="lead">Primary actions stay reachable and explicit. Sheets preserve context for location moves and quick reviews without depending on hover or precision pointing.</p>
+<div class="controls-layout">
+<div class="control-rules">
+<div class="control-rule"><span class="rule-size">44</span><span><b>Minimum control</b><span>Baseline target for all pointer and touch interactions.</span></span></div>
+<div class="control-rule"><span class="rule-size">48</span><span><b>Frequent tablet action</b><span>Preferred height for repeated operational controls.</span></span></div>
+<div class="control-rule"><span class="rule-size">Aa</span><span><b>Visible state</b><span>Selection uses label, shape, and contrast—not colour alone.</span></span></div>
+</div>
+<div class="touch-stage">
+<p class="eyebrow">Interactive specimen</p>
+<h3>Vehicle record KR-024</h3>
+<p>Location: North Zone / Slot N-04. Use the action tray to review the touch pattern.</p>
+<div class="button-row">
+<button class="button button-primary" id="openTray" type="button" aria-expanded="false" aria-controls="actionTray">Move location</button>
+<button class="button button-secondary" type="button">Open record</button>
+</div>
+<dialog class="action-tray" id="actionTray" aria-labelledby="trayTitle">
+<div class="tray-handle" aria-hidden="true"></div>
+<div class="tray-head">
+<h3 id="trayTitle">Move location</h3>
+<button class="tray-close" id="closeTray" type="button" aria-label="Close action tray">×</button>
+</div>
+<div class="tray-actions">
+<button type="button">Choose Zone</button>
+<button type="button">Choose Slot</button>
+</div>
+</dialog>
+</div>
+</div>
+</div>
+</section>
+<section class="chapter" id="responsive">
+<aside class="chapter-rail"><span class="chapter-index">07</span><p>Responsive change is prioritization, not simple shrinking.</p></aside>
+<div>
+<p class="eyebrow">Responsive specimens</p>
+<h2>Detail to decision,<br>across every width.</h2>
+<p class="lead">
+Desktop keeps relationships visible. Tablet reduces columns and enlarges repeated actions. Mobile becomes a fast-check surface focused on exceptions and the next decision.</p>
+<div class="responsive-specimens" aria-label="Desktop, tablet, and mobile design specimens">
+<article class="specimen desktop">
+<div class="specimen-label"><span>Desktop</span><span>1440 review</span></div>
+<div class="mini-app">
+<aside class="mini-sidebar"><span class="mini-logo">keyloop</span><div class="mini-nav-item is-active"></div><div class="mini-nav-item"></div><div class="mini-nav-item"></div>
+</aside>
+<div class="mini-content"><p class="mini-title">Location relationships</p><div class="mini-lanes"><div class="mini-lane">Zone<div class="mini-record">North Zone</div></div><div
+class="mini-lane">Slot<div class="mini-record">N-04 selected</div></div><div class="mini-lane">Inventory<div class="mini-record">KR-024 · Ready</div></div></div></div>
+</div>
+</article>
+<article class="specimen tablet">
+<div class="specimen-label"><span>Tablet</span><span>1024 target</span></div>
+<div class="mini-app"><div class="mini-content"><p class="mini-title">Locations</p><div class="mini-lanes"><div class="mini-lane">Zone<div class="mini-record">North Zone</div>
+</div><div class="mini-lane">Slot<div class="mini-record">N-04 selected</div></div><div class="mini-lane">Inventory</div></div></div></div>
+</article>
+<article class="specimen mobile">
+<div class="specimen-label"><span>Mobile</span><span>390 target</span></div>
+<div class="mini-app"><div class="mini-content"><p class="mini-title">Fast check</p><div class="mobile-check"><b>Aging attention</b><span>Review inventory exceptions</span></div>
+<div class="mobile-check"><b>Pending move</b><span>Confirm Zone and Slot</span></div><button class="mobile-action" type="button">Review next</button></div></div>
+</article>
+</div>
+<div class="specimen-notes"><p><b>Desktop:</b> persistent rail, dense context, adjacent details.</p><p><b>Tablet:</b>
+ reduced columns, 48–56px high-frequency targets, sticky actions.</p><p><b>Mobile:</b> prioritized exceptions, progressive disclosure, bottom actions.</p></div>
+</div>
+</section>
+<footer class="footer">
+<div><img src="../assets/keyloop-logo-slate.svg" alt="Keyloop"></div>
+<div><p><strong>Connected Lanes</strong>
+ is a Keyloop-aligned coding-challenge exploration, not an official released Keyloop product. The direction is ready for review against contrast, touch, and component-language criteria before v0.2.
+</p></div>
+</footer>
+</main>
+<script>
+(() => {
+  const chapterLinks = [...document.querySelectorAll('.chapter-nav a')];
+  chapterLinks.forEach((link) => link.addEventListener('click', () => {
+    chapterLinks.forEach((item) => item.removeAttribute('aria-current'));
+    link.setAttribute('aria-current', 'true');
+  }));
+
+  const tabs = [...document.querySelectorAll('.app-nav [role="tab"]')];
+  const title = document.getElementById('navStateTitle');
+  const copy = document.getElementById('navStateCopy');
+  const selectTab = (tab) => {
+    tabs.forEach((item) => item.setAttribute('aria-selected', String(item === tab)));
+    title.textContent = tab.dataset.title;
+    copy.textContent = tab.dataset.copy;
+  };
+  tabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => selectTab(tab));
+    tab.addEventListener('keydown', (event) => {
+      if (!['ArrowDown', 'ArrowUp'].includes(event.key)) return;
+      event.preventDefault();
+      const offset = event.key === 'ArrowDown' ? 1 : -1;
+      const next = tabs[(index + offset + tabs.length) % tabs.length];
+      next.focus();
+      selectTab(next);
+    });
+  });
+
+  const openButton = document.getElementById('openTray');
+  const closeButton = document.getElementById('closeTray');
+  const tray = document.getElementById('actionTray');
+  const openTray = () => {
+    tray.showModal();
+    tray.classList.add('is-open');
+    openButton.setAttribute('aria-expanded', 'true');
+    closeButton.focus();
+  };
+  const closeTray = () => {
+    tray.classList.remove('is-open');
+    tray.close();
+    openButton.setAttribute('aria-expanded', 'false');
+    openButton.focus();
+  };
+  openButton.addEventListener('click', openTray);
+  closeButton.addEventListener('click', closeTray);
+  tray.addEventListener('cancel', (event) => {
+    event.preventDefault();
+    closeTray();
+  });
+  tray.addEventListener('click', (event) => {
+    if (event.target === tray) closeTray();
+  });
+})();
+</script>
+</body>
+</html>

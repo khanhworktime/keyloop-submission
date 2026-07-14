@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Precision v0.4 — North Zone Slots</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../v0.3-responsive-screens/styles/screen-foundation.css">
+  <link rel="stylesheet" href="../../v0.3-responsive-screens/styles/application-shell.css">
+  <link rel="stylesheet" href="../styles/review-controls.css">
+  <link rel="stylesheet" href="../styles/zone-slots.css">
+  <link rel="stylesheet" href="../../v0.3-responsive-screens/styles/responsive-tablet.css">
+  <link rel="stylesheet" href="../../v0.3-responsive-screens/styles/responsive-mobile.css">
+</head>
+<body>
+<a class="skip-link" href="#slots-screen">Skip to Slot selection</a>
+<svg class="sr-only" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-overview" viewBox="0 0 24 24"><path d="M17 10h2c2 0 3-1 3-3V5c0-2-1-3-3-3h-2c-2 0-3 1-3 3v2c0 2 1 3 3 3ZM5 22h2c2 0 3-1 3-3v-2c0-2-1-3-3-3H5c-2 0-3 1-3 3v2c0 2 1 3 3 3ZM6 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM18 22a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M3.17 7.44 12 12.55l8.77-5.08M12 21.61v-9.07M9.93 2.48 4.59 5.45c-1.21.67-2.2 2.35-2.2 3.73v5.65c0 1.38.99 3.06 2.2 3.73l5.34 2.97c1.14.63 3.01.63 4.15 0l5.34-2.97c1.21-.67 2.2-2.35 2.2-3.73V9.18c0-1.38-.99-3.06-2.2-3.73l-5.34-2.97c-1.15-.64-3.01-.64-4.15 0Z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-location-bold" viewBox="0 0 24 24"><path d="M20.62 8.45C19.57 3.83 15.54 1.75 12 1.75S4.43 3.83 3.38 8.45c-1.17 5.16 1.99 9.61 4.84 12.35a5.45 5.45 0 0 0 7.56 0c2.85-2.74 6.01-7.19 4.84-12.35ZM12 13.75a3.62 3.62 0 1 1 0-7.24 3.62 3.62 0 0 1 0 7.24Z" fill="currentColor"/></symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24"><path d="M9 22h6c5 0 7-2 7-7V9c0-5-2-7-7-7H9C4 2 2 4 2 9v6c0 5 2 7 7 7Zm-1.67-7.51 2.38-3.09c.34-.44.97-.52 1.41-.18l1.83 1.44c.44.34 1.07.26 1.41-.17l2.31-2.98" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-database" viewBox="0 0 24 24"><path d="M19.32 10H4.69C3.21 10 2 8.79 2 7.32V4.69C2 3.21 3.21 2 4.69 2h14.63C20.8 2 22 3.21 22 4.69v2.63C22 8.79 20.79 10 19.32 10ZM19.32 22H4.69C3.21 22 2 20.79 2 19.32v-2.63C2 15.21 3.21 14 4.69 14h14.63C20.8 14 22 15.21 22 16.69v2.63C22 20.79 20.79 22 19.32 22Z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10ZM9 12l2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><path d="M6 10V8a6 6 0 0 1 12 0v2M5 10h14v11H5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<div class="review-page">
+  <header class="review-header">
+    <div><h1>07 · Zone / Slot</h1><p>Available destinations stay distinct from occupied inventory.</p></div>
+    <div class="mode-switch" role="group" aria-label="Viewport">
+      <button data-mode-target="desktop" aria-pressed="true">Desktop</button>
+      <button data-mode-target="tablet" aria-pressed="false">Tablet</button>
+      <button data-mode-target="mobile" aria-pressed="false">Mobile</button>
+    </div>
+  </header>
+  <main class="device-stage">
+    <section class="device" data-mode="desktop">
+      <div class="app">
+        <aside class="sidebar">
+          <div class="brand"><img src="../../v0.1-brand-foundation/assets/keyloop-logo-slate.svg" alt="Keyloop"><span class="product-mark">IN</span></div>
+          <nav aria-label="Primary"><ul class="nav-list">
+            <li><a class="nav-link" href="../../v0.3-responsive-screens/screens/dashboard.html" data-screen-link><span class="icon"><svg aria-hidden="true"><use href="#i-overview"/></svg></span><span>Overview</span></a></li>
+            <li><a class="nav-link" href="../../v0.3-responsive-screens/screens/inventory.html" data-screen-link><span class="icon"><svg aria-hidden="true"><use href="#i-box"/></svg></span><span>Inventory</span></a></li>
+            <li><a class="nav-link" aria-current="page" href="locations.html" data-screen-link><span class="icon"><svg aria-hidden="true"><use href="#i-location-bold"/></svg></span><span>Locations</span></a></li>
+            <li><a class="nav-link" href="../../v0.3-responsive-screens/screens/activity.html" data-screen-link><span class="icon"><svg aria-hidden="true"><use href="#i-activity"/></svg></span><span>Activity</span></a></li>
+            <li><a class="nav-link" href="vehicle-masters.html" data-screen-link><span class="icon"><svg aria-hidden="true"><use href="#i-database"/></svg></span><span>Master Data</span></a></li>
+          </ul></nav>
+          <div class="sidebar-foot"><div class="sidebar-note"><b>Northside Motors</b><span>Manager workspace</span></div></div>
+        </aside>
+        <section class="workspace">
+          <header class="app-bar"><div class="title-lockup"><span class="product-mark">IN</span><div><strong>Inventory Intelligence</strong><small>Locations · North Zone</small></div></div><div class="bar-actions"><a class="button button-secondary" href="locations.html" data-screen-link>All Zones</a></div></header>
+          <header class="mobile-top"><a class="icon-button" href="locations.html" data-screen-link aria-label="Back to Locations">‹</a><strong>North Zone</strong><span class="status status-ready">2 free</span></header>
+          <div class="screen" id="slots-screen" tabindex="-1">
+            <div class="context-strip"><a href="locations.html" data-screen-link>Locations</a><span>›</span><b>North</b></div>
+            <header class="page-head"><div><span class="eyebrow">North Zone · 24 Slots</span><h2>Choose an available Slot.</h2><p>Occupied Slots cannot be selected. Assigning a Slot derives the unit's Zone automatically.</p></div><div class="page-actions"><span class="move-context"><b>STK-1918</b><small>Currently unassigned</small></span></div></header>
+            <section class="zone-summary" aria-label="North Zone capacity">
+              <div><span>Total</span><strong>24</strong></div><div><span>Occupied</span><strong>22</strong></div><div class="available"><span>Available</span><strong>2</strong></div>
+            </section>
+            <section class="slot-panel" aria-labelledby="slot-map-title">
+              <header class="slot-panel-head"><div><span class="eyebrow">Slot map</span><h3 id="slot-map-title">North · rows 01–24</h3></div><div class="slot-legend" aria-label="Slot legend"><span><i class="legend-available"></i>Available</span><span><i class="legend-occupied"></i>Occupied</span></div></header>
+              <div class="slot-grid">
+                <button class="slot occupied" disabled aria-label="N-01 occupied by STK-1982"><b>N-01</b><span>STK-1982</span><small>Occupied</small></button>
+                <button class="slot occupied" disabled aria-label="N-02 occupied by STK-2011"><b>N-02</b><span>STK-2011</span><small>Occupied</small></button>
+                <button class="slot occupied" disabled aria-label="N-03 occupied by STK-2033"><b>N-03</b><span>STK-2033</span><small>Occupied</small></button>
+                <button class="slot occupied" disabled aria-label="N-04 occupied by STK-2048"><b>N-04</b><span>STK-2048</span><small>Occupied</small></button>
+                <button class="slot occupied" disabled aria-label="N-05 occupied by STK-1967"><b>N-05</b><span>STK-1967</span><small>Occupied</small></button>
+                <button class="slot occupied" disabled aria-label="N-06 occupied by STK-2052"><b>N-06</b><span>STK-2052</span><small>Occupied</small></button>
+                <button class="slot occupied" disabled aria-label="N-07 occupied by STK-1994"><b>N-07</b><span>STK-1994</span><small>Occupied</small></button>
+                <button class="slot occupied" disabled aria-label="N-08 occupied by STK-2026"><b>N-08</b><span>STK-2026</span><small>Occupied</small></button>
+                <button class="slot occupied" disabled aria-label="N-09 occupied by STK-1978"><b>N-09</b><span>STK-1978</span><small>Occupied</small></button>
+                <button class="slot occupied" disabled aria-label="N-10 occupied by STK-2060"><b>N-10</b><span>STK-2060</span><small>Occupied</small></button>
+                <button class="slot occupied" disabled aria-label="N-11 occupied by STK-2019"><b>N-11</b><span>STK-2019</span><small>Occupied</small></button>
+                <button class="slot occupied" disabled aria-label="N-12 occupied by STK-2038"><b>N-12</b><span>STK-2038</span><small>Occupied</small></button>
+                <button class="slot occupied" disabled aria-label="N-13 occupied by STK-1954"><b>N-13</b><span>STK-1954</span><small>Occupied</small></button>
+                <button class="slot occupied" disabled aria-label="N-14 occupied by STK-2077"><b>N-14</b><span>STK-2077</span><small>Occupied</small></button>
+                <button class="slot occupied" disabled aria-label="N-15 occupied by STK-2004"><b>N-15</b><span>STK-2004</span><small>Occupied</small></button>
+                <button class="slot occupied" disabled aria-label="N-16 occupied by STK-1949"><b>N-16</b><span>STK-1949</span><small>Occupied</small></button>
+                <button class="slot occupied" disabled aria-label="N-17 occupied by STK-2059"><b>N-17</b><span>STK-2059</span><small>Occupied</small></button>
+                <button class="slot occupied" disabled aria-label="N-18 occupied by STK-1998"><b>N-18</b><span>STK-1998</span><small>Occupied</small></button>
+                <button class="slot available selected" data-open-action data-slot="N-19" aria-pressed="true" aria-label="Selected available Slot N-19"><b>N-19</b><span>No unit</span><small>Selected</small></button>
+                <button class="slot occupied" disabled aria-label="N-20 occupied by STK-2083"><b>N-20</b><span>STK-2083</span><small>Occupied</small></button>
+                <button class="slot occupied" disabled aria-label="N-21 occupied by STK-1971"><b>N-21</b><span>STK-1971</span><small>Occupied</small></button>
+                <button class="slot occupied" disabled aria-label="N-22 occupied by STK-2043"><b>N-22</b><span>STK-2043</span><small>Occupied</small></button>
+                <button class="slot available" data-open-action data-slot="N-23" aria-pressed="false" aria-label="Select available Slot N-23"><b>N-23</b><span>No unit</span><small>Available</small></button>
+                <button class="slot occupied" disabled aria-label="N-24 occupied by STK-2022"><b>N-24</b><span>STK-2022</span><small>Occupied</small></button>
+              </div>
+            </section>
+          </div>
+          <div class="action-sheet" data-action-sheet hidden>
+            <section class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="assign-slot-title" aria-describedby="assign-slot-copy">
+              <header><div><span class="eyebrow">Selected destination</span><h3 id="assign-slot-title">Assign STK-1918</h3><p id="assign-slot-copy">Review the derived location before confirming.</p></div><button class="icon-button" data-close-action aria-label="Close Slot assignment"><span class="icon"><svg aria-hidden="true"><use href="#i-close"/></svg></span></button></header>
+              <div class="destination-card"><span>Destination Slot</span><strong data-slot-value>North · N-19</strong><small data-slot-state>Available now</small></div>
+              <dl class="location-change"><div><dt>Current location</dt><dd>Unassigned</dd></div><div><dt>Derived Zone</dt><dd>North</dd></div></dl>
+              <p class="derive-note"><span class="icon"><svg aria-hidden="true"><use href="#i-shield"/></svg></span><span>Zone is derived from Slot <b data-derived-slot>N-19</b>. There is no separate Zone value to update.</span></p>
+              <div class="revalidation-note"><span class="icon"><svg aria-hidden="true"><use href="#i-lock"/></svg></span><div><b>Capacity is checked again on confirm.</b><p>If another manager takes this Slot first, the move stops and you will be asked to choose another available destination.</p></div></div>
+              <div class="sheet-actions"><button class="button button-secondary" data-close-action>Cancel</button><button class="button button-commit" data-confirm-slot data-close-action>Assign to N-19</button></div>
+              <p class="prototype-note">Prototype only · confirmation closes this review without persistence.</p>
+            </section>
+          </div>
+          <nav class="bottom-nav" aria-label="Mobile navigation">
+            <a href="../../v0.3-responsive-screens/screens/dashboard.html" data-screen-link><span class="icon"><svg aria-hidden="true"><use href="#i-overview"/></svg></span>Overview</a>
+            <a href="../../v0.3-responsive-screens/screens/inventory.html" data-screen-link><span class="icon"><svg aria-hidden="true"><use href="#i-box"/></svg></span>Inventory</a>
+            <a aria-current="page" href="locations.html" data-screen-link><span class="icon"><svg aria-hidden="true"><use href="#i-location-bold"/></svg></span>Locations</a>
+            <a href="../../v0.3-responsive-screens/screens/activity.html" data-screen-link><span class="icon"><svg aria-hidden="true"><use href="#i-activity"/></svg></span>Activity</a>
+            <a href="vehicle-masters.html" data-screen-link><span class="icon"><svg aria-hidden="true"><use href="#i-database"/></svg></span>Masters</a>
+          </nav>
+        </section>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="../../v0.3-responsive-screens/scripts/responsive-screen-controls.js"></script>
+<script>
+  document.querySelectorAll('[data-slot]').forEach((slot) => {
+    slot.addEventListener('click', () => {
+      document.querySelectorAll('[data-slot]').forEach((peer) => {
+        const selected = peer === slot;
+        peer.classList.toggle('selected', selected);
+        peer.setAttribute('aria-pressed', String(selected));
+        peer.setAttribute('aria-label', `${selected ? 'Selected' : 'Select'} available Slot ${peer.dataset.slot}`);
+        peer.querySelector('small').textContent = selected ? 'Selected' : 'Available';
+      });
+      document.querySelector('[data-slot-value]').textContent = `North · ${slot.dataset.slot}`;
+      document.querySelector('[data-derived-slot]').textContent = slot.dataset.slot;
+      document.querySelector('[data-confirm-slot]').textContent = `Assign to ${slot.dataset.slot}`;
+    });
+  });
+</script>
+</body>
+</html>

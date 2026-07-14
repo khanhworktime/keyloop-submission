@@ -1,0 +1,2 @@
+.mode-switch button{min-height:44px}
+.skip-link{position:fixed;z-index:30;top:8px;left:8px;transform:translateY(-140%);padding:10px 14px;border-radius:8px;background:white;color:var(--color-carbon-900);font-weight:700}.skip-link:focus{transform:none}

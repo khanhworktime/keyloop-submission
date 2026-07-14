@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Precision v0.2.3 — Status &amp; Feedback</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../v0.2.2-component-families/styles/component-foundation.css">
+  <link rel="stylesheet" href="../styles/status-and-feedback.css">
+  <link rel="stylesheet" href="../styles/status-and-feedback-responsive.css">
+</head>
+<body>
+<svg class="sr-only" aria-hidden="true">
+  <symbol id="i-tick" viewBox="0 0 24 24"><path d="m8.5 12 2.2 2.2 4.8-5.1M12 22c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-warning" viewBox="0 0 24 24"><path d="M12 8v5M12 16.5v.1M10.3 3.7 2.1 18a2 2 0 0 0 1.8 3h16.2a2 2 0 0 0 1.8-3L13.7 3.7a2 2 0 0 0-3.4 0Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><path d="M12 11v6M12 7.5v.1M12 22c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m8 8 8 8m0-8-8 8M12 22c5.5 0 10-4.5 10-10S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5M6.1 8.5A7 7 0 0 1 18.8 7M5.2 17A7 7 0 0 0 17.9 15.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+<div class="review-page">
+  <header class="review-header">
+    <div><h1>Status &amp; feedback</h1><p>Durable meaning, timely response, and recoverable async work.</p></div>
+    <div class="review-actions">
+      <div class="mode-switch" role="group" aria-label="Feedback state"><button type="button" aria-pressed="true" data-state="normal">Normal</button><button type="button" aria-pressed="false" data-state="busy">Busy</button><button type="button" aria-pressed="false" data-state="success">Success</button><button type="button" aria-pressed="false" data-state="error">Error</button><button type="button" aria-pressed="false" data-state="offline">Offline</button></div>
+      <div class="mode-switch" role="group" aria-label="Responsive mode"><button type="button" aria-pressed="true" data-mode="desktop">Desktop</button><button type="button" aria-pressed="false" data-mode="tablet">Tablet</button><button type="button" aria-pressed="false" data-mode="mobile">Mobile</button></div>
+    </div>
+  </header>
+  <main class="device-stage">
+    <section class="device" data-mode="desktop" data-demo-state="normal" aria-label="Responsive Status and Feedback specimen">
+      <div class="feedback-app">
+        <aside class="section-rail" aria-label="Specimen sections"><a class="rail-tab active" href="#status-family" aria-label="Status" title="Status"><b>S</b></a><a class="rail-tab" href="#feedback-family" aria-label="Feedback" title="Feedback"><b>F</b></a><a class="rail-tab" href="#recovery-family" aria-label="Recovery" title="Recovery"><b>R</b></a><span class="rail-caption">v0.2.3</span></aside>
+        <section class="workspace">
+          <header class="workspace-head"><div><span class="eyebrow">Component board 02</span><h2>Meaning survives the moment.</h2><p>Know the record state, understand the last action, and keep the next step available.</p></div><span class="sync-indicator" data-sync-indicator><i></i><span data-sync-copy>All changes synced</span></span></header>
+          <div class="board-grid">
+            <article class="specimen-panel status-panel" id="status-family">
+              <header class="panel-head"><div><span>01 · Domain status</span><h3>Persistent, not promotional</h3></div><small>Label + shape</small></header>
+              <div class="status-list">
+                <div class="status-row ready"><span class="status-mark"></span><div><b>Ready</b><small>Inventory unit can progress.</small></div><span>12</span></div>
+                <div class="status-row attention"><span class="status-mark"></span><div><b>Needs attention</b><small>Manager review is required.</small></div><span>3</span></div>
+                <div class="status-row transit"><span class="status-mark"></span><div><b>In transit</b><small>Location is changing.</small></div><span>4</span></div>
+                <div class="status-row pending"><span class="status-mark"></span><div><b>Pending</b><small>Waiting on another step.</small></div><span>2</span></div>
+                <div class="status-row blocked"><span class="status-mark"></span><div><b>Blocked</b><small>Slot conflict prevents assignment.</small></div><span>1</span></div>
+              </div>
+            </article>
+            <article class="specimen-panel feedback-panel" id="feedback-family">
+              <header class="panel-head"><div><span>02 · Action feedback</span><h3>One event, one response</h3></div><small>Polite by default</small></header>
+              <div class="inline-feedback success"><span class="icon"><svg aria-hidden="true"><use href="#i-tick"/></svg></span><div><b>Slot assignment saved</b><p>STK-2048 moved to North · N-04.</p></div></div>
+              <div class="inline-feedback warning"><span class="icon"><svg aria-hidden="true"><use href="#i-warning"/></svg></span><div><b>Capacity is nearly full</b><p>North Zone has 2 available Slots remaining.</p></div><button type="button">Review</button></div>
+              <div class="inline-feedback information"><span class="icon"><svg aria-hidden="true"><use href="#i-info"/></svg></span><div><b>Filters preserved</b><p>Your inventory view stays active after refresh.</p></div></div>
+            </article>
+            <article class="specimen-panel recovery-panel" id="recovery-family" data-recovery-panel aria-busy="false">
+              <header class="panel-head"><div><span>03 · Async recovery</span><h3 data-recovery-title>Move inventory unit</h3></div><span class="operation-tag" data-operation-tag>Ready</span></header>
+              <div class="record-context"><div><span>Inventory unit</span><b>STK-2048 · Aster A7 Touring</b></div><div><span>Destination</span><b>North · N-04</b></div></div>
+              <div class="progress-track" aria-hidden="true"><i data-progress></i></div>
+              <p class="operation-copy" data-operation-copy>Assignment checks are ready. Context remains visible while the operation runs.</p>
+              <div class="operation-actions"><button type="button" class="button button-secondary" data-secondary-action>View activity</button><button type="button" class="button button-primary button-commit" data-primary-action>Move unit</button></div>
+            </article>
+            <article class="specimen-panel collection-panel">
+              <header class="panel-head"><div><span>04 · Collection state</span><h3 data-collection-title>Inventory is up to date</h3></div></header>
+              <div class="collection-state" data-collection-state><span class="collection-icon icon"><svg aria-hidden="true"><use href="#i-tick" data-collection-icon-use/></svg></span><div><b data-collection-heading>24 units match this view</b><p data-collection-copy>No new exceptions since the last refresh.</p></div><button type="button" class="button button-secondary" data-collection-action>Refresh</button></div>
+            </article>
+          </div>
+          <aside class="toast" role="status" aria-live="polite" aria-atomic="true" data-toast><span class="icon"><svg aria-hidden="true"><use href="#i-info"/></svg></span><div><b data-toast-title>Inventory ready</b><p data-toast-copy>All manager actions are available.</p></div><button type="button" aria-label="Dismiss notification" title="Dismiss notification" data-dismiss><span class="icon"><svg aria-hidden="true"><use href="#i-close"/></svg></span></button></aside>
+        </section>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="../scripts/status-and-feedback-controls.js"></script>
+</body>
+</html>

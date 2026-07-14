@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Precision v0.4 — Locations</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../v0.3-responsive-screens/styles/screen-foundation.css">
+  <link rel="stylesheet" href="../../v0.3-responsive-screens/styles/application-shell.css">
+  <link rel="stylesheet" href="../styles/review-controls.css">
+  <link rel="stylesheet" href="../styles/locations.css">
+  <link rel="stylesheet" href="../../v0.3-responsive-screens/styles/responsive-tablet.css">
+  <link rel="stylesheet" href="../../v0.3-responsive-screens/styles/responsive-mobile.css">
+</head>
+<body>
+<a class="skip-link" href="#locations-screen">Skip to Locations</a>
+<svg class="sr-only" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-overview" viewBox="0 0 24 24"><path d="M17 10h2c2 0 3-1 3-3V5c0-2-1-3-3-3h-2c-2 0-3 1-3 3v2c0 2 1 3 3 3ZM5 22h2c2 0 3-1 3-3v-2c0-2-1-3-3-3H5c-2 0-3 1-3 3v2c0 2 1 3 3 3ZM6 10a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM18 22a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M3.17 7.44 12 12.55l8.77-5.08M12 21.61v-9.07M9.93 2.48 4.59 5.45c-1.21.67-2.2 2.35-2.2 3.73v5.65c0 1.38.99 3.06 2.2 3.73l5.34 2.97c1.14.63 3.01.63 4.15 0l5.34-2.97c1.21-.67 2.2-2.35 2.2-3.73V9.18c0-1.38-.99-3.06-2.2-3.73l-5.34-2.97c-1.15-.64-3.01-.64-4.15 0Z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-location" viewBox="0 0 24 24"><path d="M12 13.43a3.12 3.12 0 1 0 0-6.24 3.12 3.12 0 0 0 0 6.24ZM3.62 8.49c1.97-8.66 14.8-8.65 16.76.01 1.15 5.08-2.01 9.38-4.78 12.04a5.19 5.19 0 0 1-7.21 0C5.63 17.88 2.47 13.57 3.62 8.49Z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-location-bold" viewBox="0 0 24 24"><path d="M20.62 8.45C19.57 3.83 15.54 1.75 12 1.75S4.43 3.83 3.38 8.45c-1.17 5.16 1.99 9.61 4.84 12.35a5.45 5.45 0 0 0 7.56 0c2.85-2.74 6.01-7.19 4.84-12.35ZM12 13.75a3.62 3.62 0 1 1 0-7.24 3.62 3.62 0 0 1 0 7.24Z" fill="currentColor"/></symbol>
+  <symbol id="i-activity" viewBox="0 0 24 24"><path d="M9 22h6c5 0 7-2 7-7V9c0-5-2-7-7-7H9C4 2 2 4 2 9v6c0 5 2 7 7 7Zm-1.67-7.51 2.38-3.09c.34-.44.97-.52 1.41-.18l1.83 1.44c.44.34 1.07.26 1.41-.17l2.31-2.98" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-database" viewBox="0 0 24 24"><path d="M19.32 10H4.69C3.21 10 2 8.79 2 7.32V4.69C2 3.21 3.21 2 4.69 2h14.63C20.8 2 22 3.21 22 4.69v2.63C22 8.79 20.79 10 19.32 10ZM19.32 22H4.69C3.21 22 2 20.79 2 19.32v-2.63C2 15.21 3.21 14 4.69 14h14.63C20.8 14 22 15.21 22 16.69v2.63C22 20.79 20.79 22 19.32 22Z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-warning" viewBox="0 0 24 24"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0ZM12 9v4M12 17h.01" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+</svg>
+
+<div class="review-page">
+  <header class="review-header">
+    <div><h1>06 · Locations</h1><p>Capacity pressure and unassigned inventory share one operational view.</p></div>
+    <div class="mode-switch" role="group" aria-label="Viewport">
+      <button data-mode-target="desktop" aria-pressed="true">Desktop</button>
+      <button data-mode-target="tablet" aria-pressed="false">Tablet</button>
+      <button data-mode-target="mobile" aria-pressed="false">Mobile</button>
+    </div>
+  </header>
+  <main class="device-stage">
+    <section class="device" data-mode="desktop">
+      <div class="app">
+        <aside class="sidebar">
+          <div class="brand"><img src="../../v0.1-brand-foundation/assets/keyloop-logo-slate.svg" alt="Keyloop"><span class="product-mark">IN</span></div>
+          <nav aria-label="Primary"><ul class="nav-list">
+            <li><a class="nav-link" href="../../v0.3-responsive-screens/screens/dashboard.html" data-screen-link><span class="icon"><svg aria-hidden="true"><use href="#i-overview"/></svg></span><span>Overview</span></a></li>
+            <li><a class="nav-link" href="../../v0.3-responsive-screens/screens/inventory.html" data-screen-link><span class="icon"><svg aria-hidden="true"><use href="#i-box"/></svg></span><span>Inventory</span></a></li>
+            <li><a class="nav-link" aria-current="page" href="locations.html" data-screen-link><span class="icon"><svg aria-hidden="true"><use href="#i-location-bold"/></svg></span><span>Locations</span></a></li>
+            <li><a class="nav-link" href="../../v0.3-responsive-screens/screens/activity.html" data-screen-link><span class="icon"><svg aria-hidden="true"><use href="#i-activity"/></svg></span><span>Activity</span></a></li>
+            <li><a class="nav-link" href="vehicle-masters.html" data-screen-link><span class="icon"><svg aria-hidden="true"><use href="#i-database"/></svg></span><span>Master Data</span></a></li>
+          </ul></nav>
+          <div class="sidebar-foot"><div class="sidebar-note"><b>Northside Motors</b><span>Manager workspace</span></div></div>
+        </aside>
+        <section class="workspace">
+          <header class="app-bar"><div class="title-lockup"><span class="product-mark">IN</span><div><strong>Inventory Intelligence</strong><small>Locations · 4 operational Zones</small></div></div><div class="bar-actions"><a class="button button-secondary" href="zone-slots.html" data-screen-link>Open North Zone</a></div></header>
+          <header class="mobile-top"><strong>Locations</strong><span class="status status-info">18 available</span></header>
+          <div class="screen" id="locations-screen" tabindex="-1">
+            <div class="context-strip"><a href="../../v0.3-responsive-screens/screens/dashboard.html" data-screen-link>Overview</a><span>›</span><b>Locations</b></div>
+            <header class="page-head"><div><span class="eyebrow">Location capacity</span><h2>Protect space for incoming stock.</h2><p>Compare every Zone, then give each unassigned unit an available Slot.</p></div></header>
+            <section class="capacity-summary" aria-label="Location summary">
+              <div><span>Occupied</span><strong>83</strong><small>of 101 Slots</small></div>
+              <div class="available"><span>Available</span><strong>18</strong><small>across 4 Zones</small></div>
+              <div class="attention"><span>Unassigned</span><strong>3</strong><small>units need a Slot</small></div>
+            </section>
+            <div class="locations-layout">
+              <section class="zone-panel" aria-labelledby="zone-overview-title">
+                <header class="panel-heading"><div><span class="eyebrow">Zone overview</span><h3 id="zone-overview-title">Capacity by Zone</h3></div><span class="panel-note">83 / 101 occupied</span></header>
+                <div class="zone-grid">
+                  <a class="zone-card constrained" href="zone-slots.html" data-screen-link>
+                    <header><span class="zone-icon"><svg aria-hidden="true"><use href="#i-location"/></svg></span><div><b>North</b><span>22 of 24 occupied</span></div><span class="status status-attention">2 free</span></header>
+                    <div class="capacity-track" role="img" aria-label="North Zone is 92 percent occupied"><i style="width:91.67%"></i></div><footer><span>Highest pressure</span><span>Open map <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></footer>
+                  </a>
+                  <a class="zone-card" href="zone-slots.html" data-screen-link>
+                    <header><span class="zone-icon"><svg aria-hidden="true"><use href="#i-location"/></svg></span><div><b>East</b><span>22 of 28 occupied</span></div><span class="status status-ready">6 free</span></header>
+                    <div class="capacity-track" role="img" aria-label="East Zone is 79 percent occupied"><i style="width:78.57%"></i></div><footer><span>Balanced capacity</span><span>View Zone <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></footer>
+                  </a>
+                  <a class="zone-card" href="zone-slots.html" data-screen-link>
+                    <header><span class="zone-icon"><svg aria-hidden="true"><use href="#i-location"/></svg></span><div><b>South</b><span>22 of 27 occupied</span></div><span class="status status-ready">5 free</span></header>
+                    <div class="capacity-track" role="img" aria-label="South Zone is 81 percent occupied"><i style="width:81.48%"></i></div><footer><span>5 destinations</span><span>View Zone <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></footer>
+                  </a>
+                  <a class="zone-card" href="zone-slots.html" data-screen-link>
+                    <header><span class="zone-icon"><svg aria-hidden="true"><use href="#i-location"/></svg></span><div><b>West</b><span>17 of 22 occupied</span></div><span class="status status-ready">5 free</span></header>
+                    <div class="capacity-track" role="img" aria-label="West Zone is 77 percent occupied"><i style="width:77.27%"></i></div><footer><span>Most headroom</span><span>View Zone <svg aria-hidden="true"><use href="#i-arrow"/></svg></span></footer>
+                  </a>
+                </div>
+              </section>
+              <aside class="unassigned-panel" aria-labelledby="unassigned-title">
+                <header class="panel-heading"><div><span class="eyebrow">Needs placement</span><h3 id="unassigned-title">Unassigned queue</h3></div><span class="queue-count">3</span></header>
+                <p class="queue-intro"><span class="icon"><svg aria-hidden="true"><use href="#i-warning"/></svg></span>These units have no Slot, so their Zone is not set.</p>
+                <div class="unit-queue">
+                  <article><div><b>Vela C4 Urban</b><span>Stock number · STK-1918</span><small>104 days in stock</small></div><a href="zone-slots.html" data-screen-link aria-label="Find a Slot for STK-1918">Find Slot <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></article>
+                  <article><div><b>Aster B3 Core</b><span>Stock number · STK-2072</span><small>42 days in stock</small></div><a href="zone-slots.html" data-screen-link aria-label="Find a Slot for STK-2072">Find Slot <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></article>
+                  <article><div><b>Northstar E1 City</b><span>Stock number · STK-2091</span><small>8 days in stock</small></div><a href="zone-slots.html" data-screen-link aria-label="Find a Slot for STK-2091">Find Slot <svg aria-hidden="true"><use href="#i-arrow"/></svg></a></article>
+                </div>
+              </aside>
+            </div>
+          </div>
+          <nav class="bottom-nav" aria-label="Mobile navigation">
+            <a href="../../v0.3-responsive-screens/screens/dashboard.html" data-screen-link><span class="icon"><svg aria-hidden="true"><use href="#i-overview"/></svg></span>Overview</a>
+            <a href="../../v0.3-responsive-screens/screens/inventory.html" data-screen-link><span class="icon"><svg aria-hidden="true"><use href="#i-box"/></svg></span>Inventory</a>
+            <a aria-current="page" href="locations.html" data-screen-link><span class="icon"><svg aria-hidden="true"><use href="#i-location-bold"/></svg></span>Locations</a>
+            <a href="../../v0.3-responsive-screens/screens/activity.html" data-screen-link><span class="icon"><svg aria-hidden="true"><use href="#i-activity"/></svg></span>Activity</a>
+            <a href="vehicle-masters.html" data-screen-link><span class="icon"><svg aria-hidden="true"><use href="#i-database"/></svg></span>Masters</a>
+          </nav>
+        </section>
+      </div>
+    </section>
+  </main>
+</div>
+<script src="../../v0.3-responsive-screens/scripts/responsive-screen-controls.js"></script>
+</body>
+</html>

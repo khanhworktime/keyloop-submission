@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Precision v0.4 — Management Screens</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/review-gallery.css">
+</head>
+<body>
+  <main class="gallery">
+    <header class="gallery-head">
+      <div>
+        <span class="review-badge">v0.4 · Management system</span>
+        <h1>Definitions, capacity,<br>and accountable movement.</h1>
+        <p>Eight responsive screen families connect shared vehicle identity to VIN-specific stock, physical capacity, and durable manager history.</p>
+      </div>
+      <img src="../v0.1-brand-foundation/assets/keyloop-logo-slate.svg" alt="Keyloop">
+    </header>
+
+    <nav class="relationship-strip" aria-label="Inventory relationship model">
+      <a href="screens/vehicle-masters.html"><span>01</span><div><b>Vehicle Master</b><small>Shared definition</small></div></a>
+      <a href="../v0.3-responsive-screens/screens/inventory.html"><span>02</span><div><b>Inventory Unit</b><small>VIN-specific stock</small></div></a>
+      <a href="screens/locations.html"><span>03</span><div><b>Zone / Slot</b><small>Physical placement</small></div></a>
+      <a href="../v0.3-responsive-screens/screens/activity.html"><span>04</span><div><b>Activity</b><small>Durable evidence</small></div></a>
+    </nav>
+
+    <section class="section-head">
+      <div><span>Approved core</span><h2>Manager decision loop</h2></div>
+      <p>Inherited from v0.3 and kept available as the interaction baseline.</p>
+    </section>
+    <section class="screen-grid" aria-label="Approved responsive screens">
+      <article class="screen-card inherited"><header><div><span>Family 01</span><b>Dashboard</b></div><a href="../v0.3-responsive-screens/screens/dashboard.html">Open →</a></header><div class="frame"><iframe src="../v0.3-responsive-screens/screens/dashboard.html" title="Dashboard prototype"></iframe></div></article>
+      <article class="screen-card inherited"><header><div><span>Family 02</span><b>Inventory</b></div><a href="../v0.3-responsive-screens/screens/inventory.html">Open →</a></header><div class="frame"><iframe src="../v0.3-responsive-screens/screens/inventory.html" title="Inventory prototype"></iframe></div></article>
+      <article class="screen-card inherited"><header><div><span>Family 03</span><b>Inventory Unit</b></div><a href="../v0.3-responsive-screens/screens/inventory-unit.html">Open →</a></header><div class="frame"><iframe src="../v0.3-responsive-screens/screens/inventory-unit.html" title="Inventory Unit prototype"></iframe></div></article>
+      <article class="screen-card inherited"><header><div><span>Family 08</span><b>Activity</b></div><a href="../v0.3-responsive-screens/screens/activity.html">Open →</a></header><div class="frame"><iframe src="../v0.3-responsive-screens/screens/activity.html" title="Activity prototype"></iframe></div></article>
+    </section>
+
+    <section class="section-head new-family-head">
+      <div><span>v0.4 review</span><h2>Master Data and Locations</h2></div>
+      <p>New responsive compositions. Review hierarchy, ownership boundaries, and touch reduction.</p>
+    </section>
+    <section class="screen-grid" aria-label="New responsive management screens">
+      <article class="screen-card review"><header><div><span>Family 04</span><b>Vehicle Masters</b></div><a href="screens/vehicle-masters.html">Review →</a></header><div class="frame"><iframe src="screens/vehicle-masters.html" title="Vehicle Masters prototype"></iframe></div></article>
+      <article class="screen-card review"><header><div><span>Family 05</span><b>Vehicle Master</b></div><a href="screens/vehicle-master.html">Review →</a></header><div class="frame"><iframe src="screens/vehicle-master.html" title="Vehicle Master detail prototype"></iframe></div></article>
+      <article class="screen-card review"><header><div><span>Family 06</span><b>Locations</b></div><a href="screens/locations.html">Review →</a></header><div class="frame"><iframe src="screens/locations.html" title="Locations prototype"></iframe></div></article>
+      <article class="screen-card review"><header><div><span>Family 07</span><b>Zone / Slot</b></div><a href="screens/zone-slots.html">Review →</a></header><div class="frame"><iframe src="screens/zone-slots.html" title="Zone and Slot prototype"></iframe></div></article>
+    </section>
+
+    <section class="gate">
+      <div><span class="review-badge dark">Keep / Fix</span><h2>Review decisions, not decoration.</h2><p>Desktop compares. Tablet touches. Mobile checks or completes one placement task.</p></div>
+      <div class="gate-links"><a href="review.md">Review questions →</a><a href="validation.md">Validation record →</a></div>
+    </section>
+  </main>
+</body>
+</html>

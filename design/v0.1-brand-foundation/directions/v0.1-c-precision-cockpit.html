@@ -1,0 +1,719 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Keyloop Brand Foundation — Direction C: Precision Cockpit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;display=swap" rel="stylesheet">
+  <!--
+    ASSUMPTIONS
+    - This is a review artifact for brand-foundation selection, not production UI.
+    - Sample records are clearly marked specimens; they demonstrate hierarchy, never business metrics.
+    - Installed Plus Jakarta Sans and IBM Plex Sans fonts are preferred; fallbacks keep the file portable.
+
+    REASONING
+    - Dark slate is reserved for the cockpit frame: orientation, navigation, and controls.
+    - The working canvas stays light so operational density remains calm, legible, and Keyloop-aligned.
+    - The loop motif becomes an uninterrupted rail joining navigation, records, location, and history.
+
+    PLACEHOLDERS
+    - Vehicle names and record references are neutral specimen content pending accepted product data.
+    - Status thresholds and production actions remain intentionally unspecified at this foundation stage.
+  -->
+  <style>
+    :root {
+      --carbon-900: #11181c;
+      --carbon-800: #162228;
+      --carbon-700: #2e4758;
+      --slate-logo: #3c576b;
+      --white: #ffffff;
+      --stone-800: #f1f1f3;
+      --stone-900: #d9e0e4;
+      --signal-blue: #3da5ff;
+      --fusion-blue: #00c7f2;
+      --success: #18e0a4;
+      --coral: #ff6b57;
+      --warning: #ffb800;
+      --error: #ff4d4f;
+      --ink-muted: #526773;
+      --ink-soft: #6b7d87;
+      --paper-soft: #f8f9f9;
+      --heading: "Plus Jakarta Sans", "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+      --ui: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --shadow-frame: 0 24px 70px rgba(17, 24, 28, 0.14);
+      --shadow-float: 0 10px 32px rgba(17, 24, 28, 0.2);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--carbon-900);
+      background: var(--stone-800);
+      font-family: var(--ui);
+      font-size: 16px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    button, input { font: inherit; }
+    button { color: inherit; }
+    :focus-visible { outline: 3px solid var(--signal-blue); outline-offset: 3px; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: var(--heading); text-wrap: balance; }
+    p { text-wrap: pretty; }
+
+    .page-shell { max-width: 1600px; margin: 0 auto; padding: 28px 28px 140px; }
+    .review-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 62px;
+      padding: 10px 12px 10px 22px;
+      border: 1px solid var(--stone-900);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.9);
+    }
+    .logo-lockup { display: flex; align-items: center; gap: 22px; }
+    .logo-lockup img { display: block; width: 164px; height: auto; }
+    .review-rule { width: 1px; height: 28px; background: var(--stone-900); }
+    .eyebrow {
+      margin: 0;
+      color: var(--carbon-700);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .version-chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      padding: 0 15px;
+      border: 1px solid var(--stone-900);
+      border-radius: 999px;
+      background: var(--white);
+      color: var(--carbon-700);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 0.84fr) minmax(520px, 1.16fr);
+      gap: 52px;
+      align-items: end;
+      min-height: 520px;
+      padding: 78px 24px 64px;
+    }
+    .hero-kicker {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      color: var(--carbon-700);
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .hero-kicker::before { content: ""; width: 46px; height: 3px; background: var(--signal-blue); }
+    .hero h1 {
+      max-width: 720px;
+      margin-bottom: 28px;
+      font-size: clamp(52px, 6.5vw, 96px);
+      line-height: 0.94;
+      letter-spacing: -0.055em;
+    }
+    .hero h1 span { display: block; color: var(--slate-logo); }
+    .hero-copy { max-width: 620px; margin: 0; color: var(--ink-muted); font-size: 20px; line-height: 1.55; }
+    .hero-notes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid var(--stone-900);
+      border-radius: var(--radius-lg);
+      background: var(--stone-900);
+    }
+    .hero-note { min-height: 190px; padding: 24px; background: var(--white); }
+    .hero-note-index { display: block; margin-bottom: 54px; color: var(--signal-blue); font-weight: 800; }
+    .hero-note strong { display: block; margin-bottom: 8px; font-family: var(--heading); font-size: 19px; }
+    .hero-note p { margin: 0; color: var(--ink-muted); font-size: 14px; }
+
+    .section { padding: 74px 24px 0; scroll-margin-top: 100px; }
+    .section-heading {
+      display: grid;
+      grid-template-columns: 160px minmax(0, 1fr) minmax(280px, 0.48fr);
+      gap: 34px;
+      align-items: start;
+      margin-bottom: 34px;
+    }
+    .section-number { padding-top: 8px; color: var(--slate-logo); font-size: 14px; font-weight: 800; letter-spacing: 0.08em; }
+    .section-heading h2 { margin-bottom: 0; font-size: clamp(34px, 4vw, 58px); line-height: 1.05; letter-spacing: -0.035em; }
+    .section-heading p { margin: 8px 0 0; color: var(--ink-muted); font-size: 17px; }
+
+    .foundation-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 18px; }
+    .foundation-panel { border: 1px solid var(--stone-900); border-radius: var(--radius-xl); background: var(--white); overflow: hidden; }
+    .panel-head { display: flex; align-items: center; justify-content: space-between; min-height: 66px; padding: 0 24px; border-bottom: 1px solid var(--stone-900); }
+    .panel-head h3 { margin: 0; font-size: 18px; }
+    .panel-meta { color: var(--ink-muted); font-size: 13px; font-weight: 600; }
+    .swatch-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .swatch { min-height: 154px; padding: 18px; border-right: 1px solid var(--stone-900); border-bottom: 1px solid var(--stone-900); }
+    .swatch:nth-child(4n) { border-right: 0; }
+    .swatch:nth-last-child(-n + 4) { border-bottom: 0; }
+    .swatch-color { width: 100%; height: 62px; margin-bottom: 15px; border: 1px solid rgba(17, 24, 28, 0.12); border-radius: 12px; }
+    .swatch strong, .swatch code { display: block; }
+    .swatch strong { margin-bottom: 3px; font-size: 14px; }
+    .swatch code { color: var(--ink-muted); font-size: 12px; }
+    .type-board { padding: 30px; }
+    .type-sample + .type-sample { margin-top: 34px; padding-top: 28px; border-top: 1px solid var(--stone-900); }
+    .type-label { display: flex; justify-content: space-between; margin-bottom: 18px; color: var(--ink-muted); font-size: 13px; font-weight: 700; }
+    .display-sample { margin: 0; font-family: var(--heading); font-size: clamp(38px, 4vw, 62px); font-weight: 700; line-height: 1; letter-spacing: -0.04em; }
+    .ui-sample { display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: end; }
+    .ui-sample p { margin: 0; color: var(--ink-muted); }
+    .tabular { font-variant-numeric: tabular-nums; }
+    .numeral-sample { font-size: 26px; font-weight: 650; letter-spacing: 0.02em; }
+
+    .cockpit-stage { padding: 14px; border-radius: 36px; background: var(--carbon-800); box-shadow: var(--shadow-frame); }
+    .cockpit {
+      display: grid;
+      grid-template-columns: 230px minmax(0, 1fr);
+      min-height: 780px;
+      overflow: hidden;
+      border: 1px solid #34444c;
+      border-radius: 24px;
+      background: var(--paper-soft);
+    }
+    .cockpit-nav { display: flex; flex-direction: column; padding: 18px 14px 14px; background: var(--carbon-800); color: var(--white); }
+    .cockpit-logo { display: flex; align-items: center; min-height: 76px; margin-bottom: 28px; padding: 15px 17px; border-radius: 16px; background: var(--white); }
+    .cockpit-logo img { width: 156px; height: auto; }
+    .cockpit-nav-label { margin: 0 12px 10px; color: #b8c5cb; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+    .cockpit-nav-list { display: grid; gap: 6px; }
+    .cockpit-link {
+      position: relative;
+      display: flex;
+      align-items: center;
+      min-height: 48px;
+      padding: 0 16px;
+      border: 0;
+      border-radius: 12px;
+      background: transparent;
+      color: #d8e0e4;
+      font-size: 15px;
+      text-align: left;
+      cursor: pointer;
+    }
+    .cockpit-link::before { content: ""; width: 7px; height: 7px; margin-right: 13px; border: 2px solid #7c939e; border-radius: 50%; }
+    .cockpit-link.active { background: var(--white); color: var(--carbon-900); font-weight: 700; }
+    .cockpit-link.active::before { border-color: var(--signal-blue); background: var(--signal-blue); }
+    .nav-context { margin-top: auto; padding: 17px; border: 1px solid #405159; border-radius: 14px; color: #c9d3d8; }
+    .nav-context strong { display: block; margin-bottom: 7px; color: var(--white); font-size: 14px; }
+    .nav-context span { display: block; font-size: 12px; line-height: 1.5; }
+
+    .workspace { min-width: 0; padding: 22px; background: var(--paper-soft); }
+    .workspace-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+    .workspace-title p { margin: 0 0 3px; color: var(--ink-muted); font-size: 13px; font-weight: 700; }
+    .workspace-title h3 { margin: 0; font-size: 28px; letter-spacing: -0.025em; }
+    .workspace-actions { display: flex; gap: 8px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 17px;
+      border: 1px solid var(--stone-900);
+      border-radius: 12px;
+      background: var(--white);
+      color: var(--carbon-800);
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-primary { border-color: var(--carbon-800); background: var(--carbon-800); color: var(--white); }
+    .btn-soft { border-color: #c9e4f7; background: #eaf6ff; color: #173b54; }
+    .filter-bar { display: flex; gap: 8px; overflow-x: auto; margin-bottom: 14px; padding-bottom: 2px; scrollbar-width: none; }
+    .filter-bar::-webkit-scrollbar { display: none; }
+    .filter-button { min-height: 44px; padding: 0 15px; border: 1px solid var(--stone-900); border-radius: 999px; background: var(--white); color: var(--ink-muted); font-weight: 650; white-space: nowrap; cursor: pointer; }
+    .filter-button[aria-pressed="true"] { border-color: var(--carbon-800); background: var(--carbon-800); color: var(--white); }
+    .workspace-grid { display: grid; grid-template-columns: minmax(0, 1fr) 286px; gap: 14px; min-height: 646px; }
+    .data-panel, .detail-panel { border: 1px solid var(--stone-900); border-radius: 18px; background: var(--white); overflow: hidden; }
+    .data-caption { display: flex; align-items: center; justify-content: space-between; min-height: 58px; padding: 0 18px; border-bottom: 1px solid var(--stone-900); }
+    .data-caption strong { font-family: var(--heading); }
+    .specimen-label { color: var(--ink-muted); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .table-scroll { overflow-x: auto; }
+    table { width: 100%; min-width: 690px; border-collapse: collapse; font-size: 13px; }
+    th { height: 42px; padding: 0 14px; border-bottom: 1px solid var(--stone-900); background: #f4f6f7; color: var(--ink-muted); font-size: 12px; letter-spacing: 0.06em; text-align: left; text-transform: uppercase; }
+    td { height: 68px; padding: 10px 14px; border-bottom: 1px solid #e8ecee; vertical-align: middle; }
+    tbody tr { cursor: pointer; }
+    tbody tr:hover { background: #f8fbfc; }
+    tbody tr.selected { background: #eef7fd; box-shadow: inset 3px 0 0 var(--signal-blue); }
+    tbody tr:last-child td { border-bottom: 0; }
+    .record-ref { display: block; color: var(--carbon-900); font-weight: 750; }
+    .record-sub { display: block; margin-top: 3px; color: var(--ink-soft); font-size: 12px; }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 10px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+    .status::before { content: ""; width: 7px; height: 7px; margin-right: 7px; border-radius: 2px; background: currentColor; }
+    .status-ready { border-color: #9cdcc8; background: #e4f8f2; color: #155e49; }
+    .status-attention { border-color: #ffc0b7; background: #fff0ed; color: #9d2e20; }
+    .status-transit { border-color: #b8dcf5; background: #ebf6fd; color: #1e5e87; }
+    .status-blocked { border-color: #ffb4b5; background: #ffefef; color: #a11f21; }
+    .row-action { min-height: 44px; padding: 0 11px; border: 1px solid var(--stone-900); border-radius: 9px; background: var(--white); font-size: 12px; font-weight: 700; cursor: pointer; }
+
+    .detail-panel { display: flex; flex-direction: column; }
+    .detail-head { padding: 20px; border-bottom: 1px solid var(--stone-900); }
+    .detail-head .specimen-label { display: block; margin-bottom: 8px; }
+    .detail-head h4 { margin: 0 0 6px; font-family: var(--heading); font-size: 20px; }
+    .detail-head p { margin: 0; color: var(--ink-muted); font-size: 13px; }
+    .detail-map { padding: 18px 20px; border-bottom: 1px solid var(--stone-900); }
+    .link-rail { position: relative; display: grid; gap: 18px; padding-left: 22px; }
+    .link-rail::before { content: ""; position: absolute; left: 5px; top: 7px; bottom: 7px; width: 2px; background: var(--stone-900); }
+    .link-node { position: relative; }
+    .link-node::before { content: ""; position: absolute; left: -22px; top: 6px; width: 10px; height: 10px; border: 2px solid var(--white); border-radius: 50%; background: var(--slate-logo); box-shadow: 0 0 0 1px var(--slate-logo); }
+    .link-node.active::before { background: var(--signal-blue); box-shadow: 0 0 0 1px var(--signal-blue); }
+    .link-node strong { display: block; font-size: 13px; }
+    .link-node span { display: block; color: var(--ink-muted); font-size: 12px; }
+    .detail-actions { display: grid; gap: 8px; margin-top: auto; padding: 18px; }
+    .detail-actions .btn { width: 100%; min-height: 48px; }
+
+    .semantics-grid { display: grid; grid-template-columns: 1fr 0.84fr; gap: 18px; }
+    .semantic-board, .control-board { border: 1px solid var(--stone-900); border-radius: var(--radius-xl); background: var(--white); overflow: hidden; }
+    .semantic-list { display: grid; grid-template-columns: repeat(2, 1fr); }
+    .semantic-item { min-height: 142px; padding: 22px; border-right: 1px solid var(--stone-900); border-bottom: 1px solid var(--stone-900); }
+    .semantic-item:nth-child(2n) { border-right: 0; }
+    .semantic-item:nth-last-child(-n + 2) { border-bottom: 0; }
+    .semantic-item .status { margin-bottom: 15px; }
+    .semantic-item p { margin: 0; color: var(--ink-muted); font-size: 14px; }
+    .control-stack { display: grid; gap: 22px; padding: 26px; }
+    .control-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .control-note { margin: 0; color: var(--ink-muted); font-size: 14px; }
+    .target-demo { display: flex; gap: 12px; align-items: end; }
+    .target-box { display: grid; place-items: center; border: 1px dashed var(--slate-logo); border-radius: 12px; color: var(--carbon-700); font-size: 12px; font-weight: 750; }
+    .target-44 { width: 44px; height: 44px; }
+    .target-48 { width: 48px; height: 48px; }
+    .target-56 { width: 56px; height: 56px; }
+
+    .responsive-stage { display: grid; grid-template-columns: minmax(540px, 1.15fr) minmax(300px, 0.55fr); gap: 34px; align-items: end; }
+    .device { overflow: hidden; border: 12px solid var(--carbon-800); background: var(--white); box-shadow: var(--shadow-frame); }
+    .tablet { border-radius: 30px; }
+    .mobile { max-width: 390px; margin: 0 auto; border-width: 10px; border-radius: 38px; }
+    .device-bar { display: flex; align-items: center; justify-content: space-between; min-height: 58px; padding: 0 18px; border-bottom: 1px solid var(--stone-900); background: var(--white); }
+    .device-bar strong { font-family: var(--heading); }
+    .tablet-shell { display: grid; grid-template-columns: 74px 1fr; min-height: 500px; }
+    .tablet-rail { display: flex; flex-direction: column; gap: 10px; padding: 14px 10px; background: var(--carbon-800); }
+    .tablet-rail .rail-mark { width: 44px; height: 44px; margin: 0 auto 12px; border-radius: 12px; background: var(--white); }
+    .rail-item { display: grid; place-items: center; width: 48px; height: 48px; margin: 0 auto; border: 1px solid #53656d; border-radius: 12px; color: #d9e2e6; font-size: 12px; font-weight: 800; }
+    .rail-item.active { border-color: var(--white); background: var(--white); color: var(--carbon-900); }
+    .tablet-content { padding: 18px; background: var(--paper-soft); }
+    .compact-row { display: grid; grid-template-columns: minmax(0, 1fr) 160px 118px; gap: 12px; align-items: center; min-height: 74px; margin-bottom: 9px; padding: 12px 14px; border: 1px solid var(--stone-900); border-radius: 14px; background: var(--white); }
+    .compact-row strong, .compact-row span { display: block; }
+    .compact-row .record-sub { margin-top: 3px; }
+    .tablet-tray { display: flex; justify-content: flex-end; gap: 8px; margin: 18px -18px -18px; padding: 14px 18px; border-top: 1px solid var(--stone-900); background: var(--white); }
+    .tablet-tray .btn { min-height: 48px; }
+    .mobile .device-bar { min-height: 64px; }
+    .mobile-content { padding: 18px; background: var(--paper-soft); }
+    .mobile-intro { margin-bottom: 18px; }
+    .mobile-intro p { margin: 4px 0 0; color: var(--ink-muted); font-size: 14px; }
+    .mobile-card { margin-bottom: 10px; padding: 16px; border: 1px solid var(--stone-900); border-radius: 16px; background: var(--white); }
+    .mobile-card-head { display: flex; justify-content: space-between; gap: 10px; align-items: start; margin-bottom: 16px; }
+    .mobile-card strong { display: block; }
+    .mobile-card dl { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0; }
+    .mobile-card dt { color: var(--ink-muted); font-size: 12px; }
+    .mobile-card dd { margin: 2px 0 0; font-size: 14px; font-weight: 700; }
+    .bottom-action { position: sticky; bottom: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 22px -18px -18px; padding: 12px 18px 18px; border-top: 1px solid var(--stone-900); background: var(--white); }
+    .bottom-action .btn { min-height: 52px; }
+
+    .principle-strip { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 34px; overflow: hidden; border: 1px solid var(--stone-900); border-radius: var(--radius-lg); background: var(--stone-900); }
+    .principle { min-height: 128px; padding: 22px; background: var(--white); }
+    .principle strong { display: block; margin-bottom: 10px; font-family: var(--heading); }
+    .principle p { margin: 0; color: var(--ink-muted); font-size: 14px; }
+
+    .page-nav {
+      position: fixed;
+      z-index: 20;
+      left: 50%;
+      bottom: 22px;
+      display: flex;
+      gap: 4px;
+      max-width: calc(100vw - 28px);
+      padding: 6px;
+      transform: translateX(-50%);
+      border: 1px solid #41525b;
+      border-radius: 16px;
+      background: var(--carbon-800);
+      box-shadow: var(--shadow-float);
+    }
+    .page-nav button { min-height: 44px; padding: 0 16px; border: 0; border-radius: 11px; background: transparent; color: #d3dde1; font-size: 13px; font-weight: 700; white-space: nowrap; cursor: pointer; }
+    .page-nav button.active { background: var(--white); color: var(--carbon-900); }
+
+    @media (max-width: 1180px) {
+      .page-shell { padding-inline: 18px; }
+      .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 62px; }
+      .hero-copy { max-width: 780px; }
+      .section-heading { grid-template-columns: 100px minmax(0, 1fr); }
+      .section-heading p { grid-column: 2; max-width: 720px; }
+      .foundation-grid { grid-template-columns: 1fr; }
+      .cockpit { grid-template-columns: 84px minmax(0, 1fr); }
+      .cockpit-logo { display: none; }
+      .cockpit-nav-label, .cockpit-link span, .nav-context { display: none; }
+      .cockpit-link { justify-content: center; min-height: 52px; padding: 0; }
+      .cockpit-link::before { width: 10px; height: 10px; margin: 0; }
+      .workspace-grid { grid-template-columns: minmax(0, 1fr) 260px; }
+      .responsive-stage { grid-template-columns: minmax(480px, 1fr) 320px; gap: 20px; }
+    }
+
+    @media (max-width: 900px) {
+      .review-bar { padding-left: 16px; }
+      .review-rule, .review-bar .eyebrow { display: none; }
+      .hero { padding-inline: 8px; }
+      .hero-notes { grid-template-columns: 1fr; }
+      .hero-note { display: grid; grid-template-columns: 54px 1fr; min-height: 0; }
+      .hero-note-index { grid-row: 1 / 3; margin: 0; }
+      .section { padding-inline: 8px; }
+      .section-heading { grid-template-columns: 1fr; gap: 10px; }
+      .section-heading p { grid-column: auto; }
+      .swatch-grid { grid-template-columns: repeat(2, 1fr); }
+      .swatch:nth-child(4n) { border-right: 1px solid var(--stone-900); }
+      .swatch:nth-child(2n) { border-right: 0; }
+      .swatch:nth-last-child(-n + 4) { border-bottom: 1px solid var(--stone-900); }
+      .swatch:nth-last-child(-n + 2) { border-bottom: 0; }
+      .cockpit-stage { padding: 9px; border-radius: 26px; }
+      .cockpit { min-height: 0; }
+      .workspace { padding: 16px; }
+      .workspace-grid { grid-template-columns: 1fr; }
+      .detail-panel { min-height: 350px; }
+      .semantics-grid { grid-template-columns: 1fr; }
+      .responsive-stage { grid-template-columns: 1fr; gap: 34px; }
+      .mobile { width: min(100%, 390px); }
+      .principle-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 560px) {
+      .page-shell { padding: 14px 10px 116px; }
+      .review-bar { min-height: 58px; }
+      .logo-lockup img { width: 150px; }
+      .version-chip { min-height: 36px; padding: 0 11px; font-size: 12px; }
+      .hero { gap: 34px; padding-top: 46px; padding-bottom: 32px; }
+      .hero h1 { font-size: clamp(48px, 15vw, 68px); }
+      .hero-copy { font-size: 17px; }
+      .hero-note { padding: 18px; }
+      .section { padding-top: 58px; }
+      .section-heading h2 { font-size: 38px; }
+      .foundation-panel, .semantic-board, .control-board { border-radius: 20px; }
+      .panel-head { padding-inline: 18px; }
+      .swatch { min-height: 138px; padding: 14px; }
+      .type-board { padding: 22px 18px; }
+      .ui-sample { grid-template-columns: 1fr; }
+      .cockpit-stage { margin-inline: -8px; padding: 7px; border-radius: 22px; }
+      .cockpit { grid-template-columns: 1fr; border-radius: 16px; }
+      .cockpit-nav { flex-direction: row; gap: 6px; overflow-x: auto; padding: 8px; }
+      .cockpit-logo, .cockpit-nav-label, .nav-context { display: none; }
+      .cockpit-nav-list { display: flex; gap: 6px; }
+      .cockpit-link { min-width: 48px; min-height: 48px; }
+      .workspace-head { align-items: flex-start; }
+      .workspace-actions .btn:first-child { display: none; }
+      .workspace-title h3 { font-size: 24px; }
+      .workspace-grid { min-height: 0; }
+      .detail-panel { min-height: 410px; }
+      .semantic-list { grid-template-columns: 1fr; }
+      .semantic-item { border-right: 0; }
+      .semantic-item:nth-last-child(-n + 2) { border-bottom: 1px solid var(--stone-900); }
+      .semantic-item:last-child { border-bottom: 0; }
+      .principle-strip { grid-template-columns: 1fr; }
+      .tablet-shell { grid-template-columns: 1fr; min-height: 0; }
+      .tablet-rail { flex-direction: row; overflow-x: auto; }
+      .tablet-rail .rail-mark { margin: 0 4px 0 0; flex: 0 0 44px; }
+      .rail-item { flex: 0 0 48px; margin: 0; }
+      .compact-row { grid-template-columns: 1fr; }
+      .compact-row .status { justify-self: start; }
+      .page-nav { left: 10px; right: 10px; bottom: 10px; overflow-x: auto; transform: none; border-radius: 14px; scrollbar-width: none; }
+      .page-nav::-webkit-scrollbar { display: none; }
+      .page-nav button { min-height: 48px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="review-bar" aria-label="Brand direction header">
+      <div class="logo-lockup">
+        <img src="../assets/keyloop-logo-slate.svg" alt="Keyloop">
+        <span class="review-rule" aria-hidden="true"></span>
+        <p class="eyebrow">Brand foundation exploration</p>
+      </div>
+      <span class="version-chip">v0.1 · Direction C</span>
+    </header>
+
+    <main>
+      <section class="hero" id="intro" data-section>
+        <div>
+          <div class="hero-kicker">Operational design direction</div>
+          <h1>Precision <span>Cockpit.</span></h1>
+          <p class="hero-copy">A focused control frame around a calm working surface. Dense enough for dealership operations, soft enough for sustained attention, and explicit enough for confident touch.</p>
+        </div>
+        <div class="hero-notes" aria-label="Direction principles">
+          <article class="hero-note"><span class="hero-note-index">01</span><strong>Frame the work</strong><p>Slate navigation holds orientation; it never competes with records.</p></article>
+          <article class="hero-note"><span class="hero-note-index">02</span><strong>Compress carefully</strong><p>Fine divisions and aligned type create density without tiny targets.</p></article>
+          <article class="hero-note"><span class="hero-note-index">03</span><strong>Connect decisions</strong><p>A continuous rail links master data, location, status, and history.</p></article>
+        </div>
+      </section>
+
+      <section class="section" id="foundation" data-section>
+        <header class="section-heading">
+          <span class="section-number">01 / FOUNDATION</span>
+          <h2>Brand signal, then system.</h2>
+          <p>The palette establishes a strict hierarchy: carbon for orientation, stone for work, blue for action, and semantic hues only when meaning demands them.</p>
+        </header>
+        <div class="foundation-grid">
+          <article class="foundation-panel">
+            <div class="panel-head"><h3>Official UI palette</h3><span class="panel-meta">No decorative gradients</span></div>
+            <div class="swatch-grid">
+              <div class="swatch"><div class="swatch-color" style="background:#11181c"></div><strong>Carbon black</strong><code>#11181C</code></div>
+              <div class="swatch"><div class="swatch-color" style="background:#162228"></div><strong>Deep graphite</strong><code>#162228</code></div>
+              <div class="swatch"><div class="swatch-color" style="background:#2e4758"></div><strong>Tech slate</strong><code>#2E4758</code></div>
+              <div class="swatch"><div class="swatch-color" style="background:#f1f1f3"></div><strong>Website grey</strong><code>#F1F1F3</code></div>
+              <div class="swatch"><div class="swatch-color" style="background:#3da5ff"></div><strong>Signal blue</strong><code>#3DA5FF</code></div>
+              <div class="swatch"><div class="swatch-color" style="background:#00c7f2"></div><strong>Fusion blue</strong><code>#00C7F2</code></div>
+              <div class="swatch"><div class="swatch-color" style="background:#18e0a4"></div><strong>Pulse green</strong><code>#18E0A4</code></div>
+              <div class="swatch"><div class="swatch-color" style="background:#ff6b57"></div><strong>Energy coral</strong><code>#FF6B57</code></div>
+            </div>
+          </article>
+          <article class="foundation-panel">
+            <div class="panel-head"><h3>Typography</h3><span class="panel-meta">Clear hierarchy · tabular data</span></div>
+            <div class="type-board">
+              <div class="type-sample">
+                <div class="type-label"><span>Plus Jakarta Sans</span><span>Heading / 700</span></div>
+                <p class="display-sample">Inventory, in focus.</p>
+              </div>
+              <div class="type-sample">
+                <div class="type-label"><span>IBM Plex Sans</span><span>Interface / 400–700</span></div>
+                <div class="ui-sample"><p>Readable controls, precise labels, and useful secondary detail.</p><span class="numeral-sample tabular">A–14 · 48px</span></div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="cockpit" data-section>
+        <header class="section-heading">
+          <span class="section-number">02 / DESKTOP</span>
+          <h2>The cockpit keeps density legible.</h2>
+          <p>Desktop exposes the full record set and a contextual detail rail. The frame remains dark; the operational plane remains light.</p>
+        </header>
+        <div class="cockpit-stage">
+          <div class="cockpit">
+            <aside class="cockpit-nav" aria-label="Floating product navigation">
+              <div class="cockpit-logo"><img src="../assets/keyloop-logo-slate.svg" alt="Keyloop"></div>
+              <p class="cockpit-nav-label">Workspace</p>
+              <nav class="cockpit-nav-list">
+                <button class="cockpit-link" type="button"><span>Overview</span></button>
+                <button class="cockpit-link active" type="button"><span>Inventory</span></button>
+                <button class="cockpit-link" type="button"><span>Locations</span></button>
+                <button class="cockpit-link" type="button"><span>Activity</span></button>
+                <button class="cockpit-link" type="button"><span>Master Data</span></button>
+              </nav>
+              <div class="nav-context"><strong>Touch-safe rail</strong><span>48px navigation targets preserve speed on tablet without hover.</span></div>
+            </aside>
+
+            <div class="workspace">
+              <header class="workspace-head">
+                <div class="workspace-title"><p>DEALERSHIP WORKSPACE</p><h3>Inventory records</h3></div>
+                <div class="workspace-actions"><button class="btn" type="button">Export view</button><button class="btn btn-primary" type="button">Add record</button></div>
+              </header>
+              <div class="filter-bar" role="group" aria-label="Record specimen filters">
+                <button class="filter-button" type="button" aria-pressed="true">All records</button>
+                <button class="filter-button" type="button" aria-pressed="false">Needs attention</button>
+                <button class="filter-button" type="button" aria-pressed="false">In transit</button>
+                <button class="filter-button" type="button" aria-pressed="false">Unassigned</button>
+              </div>
+              <div class="workspace-grid">
+                <article class="data-panel">
+                  <div class="data-caption"><strong>Operational table</strong><span class="specimen-label">Representative specimen</span></div>
+                  <div class="table-scroll">
+                    <table>
+                      <thead><tr><th>Record</th><th>Master</th><th>Location</th><th>Age band</th><th>Status</th><th>Action</th></tr></thead>
+                      <tbody>
+                        <tr class="selected" tabindex="0" data-record="01" data-location="Zone A · Slot 14" data-status="Ready for review">
+                          <td><span class="record-ref tabular">VEH-REFERENCE-01</span><span class="record-sub">Stock record specimen</span></td><td>Vehicle master</td><td>Zone A · Slot 14</td><td>Current</td><td><span class="status status-ready">Ready</span></td><td><button class="row-action" type="button">View record</button></td>
+                        </tr>
+                        <tr tabindex="0" data-record="02" data-location="Zone B · Unassigned" data-status="Needs attention">
+                          <td><span class="record-ref tabular">VEH-REFERENCE-02</span><span class="record-sub">Stock record specimen</span></td><td>Vehicle master</td><td>Zone B · Unassigned</td><td>Aging</td><td><span class="status status-attention">Attention</span></td><td><button class="row-action" type="button">Assign slot</button></td>
+                        </tr>
+                        <tr tabindex="0" data-record="03" data-location="In transit" data-status="Movement in progress">
+                          <td><span class="record-ref tabular">VEH-REFERENCE-03</span><span class="record-sub">Stock record specimen</span></td><td>Vehicle master</td><td>In transit</td><td>New</td><td><span class="status status-transit">Transit</span></td><td><button class="row-action" type="button">View history</button></td>
+                        </tr>
+                        <tr tabindex="0" data-record="04" data-location="Zone C · Slot 08" data-status="Action blocked">
+                          <td><span class="record-ref tabular">VEH-REFERENCE-04</span><span class="record-sub">Stock record specimen</span></td><td>Master review</td><td>Zone C · Slot 08</td><td>Current</td><td><span class="status status-blocked">Blocked</span></td><td><button class="row-action" type="button">Resolve</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </article>
+                <aside class="detail-panel" aria-live="polite">
+                  <div class="detail-head"><span class="specimen-label">Selected record</span><h4 id="detail-title">VEH-REFERENCE-01</h4><p id="detail-state">Ready for review</p></div>
+                  <div class="detail-map">
+                    <div class="link-rail">
+                      <div class="link-node"><strong>Vehicle master</strong><span>Record relationship</span></div>
+                      <div class="link-node active"><strong id="detail-location">Zone A · Slot 14</strong><span>Current location</span></div>
+                      <div class="link-node"><strong>Activity history</strong><span>Decision trail</span></div>
+                    </div>
+                  </div>
+                  <div class="detail-actions"><button class="btn btn-soft" type="button">Open history</button><button class="btn btn-primary" type="button">Review record</button></div>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="semantics" data-section>
+        <header class="section-heading">
+          <span class="section-number">03 / SEMANTICS</span>
+          <h2>Color confirms. Language explains.</h2>
+          <p>Status is always paired with a label and geometric marker. Controls prioritize clear bounds, selected states, and visible keyboard focus.</p>
+        </header>
+        <div class="semantics-grid">
+          <article class="semantic-board">
+            <div class="panel-head"><h3>Status language</h3><span class="panel-meta">Never color-only</span></div>
+            <div class="semantic-list">
+              <div class="semantic-item"><span class="status status-ready">Ready</span><p>Positive completion or availability. Green is paired with a square marker and explicit label.</p></div>
+              <div class="semantic-item"><span class="status status-attention">Attention</span><p>Aging-stock attention or a manager decision. Coral remains purposeful, not decorative.</p></div>
+              <div class="semantic-item"><span class="status status-transit">In transit</span><p>Informational movement state. Blue supports progress without implying completion.</p></div>
+              <div class="semantic-item"><span class="status status-blocked">Blocked</span><p>Action cannot continue. Error red is reserved for a concrete operational stop.</p></div>
+            </div>
+          </article>
+          <article class="control-board">
+            <div class="panel-head"><h3>Touch control rack</h3><span class="panel-meta">44px minimum</span></div>
+            <div class="control-stack">
+              <div><p class="specimen-label">Action hierarchy</p><div class="control-row"><button class="btn btn-primary" type="button">Primary action</button><button class="btn" type="button">Secondary</button><button class="btn btn-soft" type="button">Contextual</button></div></div>
+              <div><p class="specimen-label">Target guidance</p><div class="target-demo"><span class="target-box target-44">44</span><span class="target-box target-48">48</span><span class="target-box target-56">56</span></div></div>
+              <p class="control-note">Desktop controls start at 44px. Frequent tablet actions rise to 48–56px, preserving separation without making the interface toy-like.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="responsive" data-section>
+        <header class="section-heading">
+          <span class="section-number">04 / RESPONSIVE</span>
+          <h2>Same decisions. Different distance.</h2>
+          <p>Tablet preserves multi-record action with larger controls. Mobile becomes a fast-check exception surface and moves actions to a reachable bottom tray.</p>
+        </header>
+        <div class="responsive-stage">
+          <article class="device tablet" aria-label="Tablet inventory specimen">
+            <div class="device-bar"><strong>Tablet · action view</strong><span class="specimen-label">1024 reference</span></div>
+            <div class="tablet-shell">
+              <nav class="tablet-rail" aria-label="Tablet navigation"><span class="rail-mark" aria-hidden="true"></span><span class="rail-item">OV</span><span class="rail-item active">IN</span><span class="rail-item">LO</span><span class="rail-item">AC</span><span class="rail-item">MD</span></nav>
+              <div class="tablet-content">
+                <div class="workspace-title"><p>INVENTORY</p><h3>Records requiring review</h3></div>
+                <div class="filter-bar" style="margin-top:16px"><button class="filter-button" type="button" aria-pressed="true">Needs attention</button><button class="filter-button" type="button" aria-pressed="false">Unassigned</button></div>
+                <div class="compact-row"><div><strong class="tabular">VEH-REFERENCE-02</strong><span class="record-sub">Vehicle master · specimen</span></div><span>Zone B · Unassigned</span><span class="status status-attention">Attention</span></div>
+                <div class="compact-row"><div><strong class="tabular">VEH-REFERENCE-04</strong><span class="record-sub">Master review · specimen</span></div><span>Zone C · Slot 08</span><span class="status status-blocked">Blocked</span></div>
+                <div class="tablet-tray"><button class="btn" type="button">Open history</button><button class="btn btn-primary" type="button">Review selected</button></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="device mobile" aria-label="Mobile inventory specimen">
+            <div class="device-bar"><strong>Inventory</strong><span class="specimen-label">Fast check</span></div>
+            <div class="mobile-content">
+              <div class="mobile-intro"><strong>Review exceptions</strong><p>Prioritized records only. Full table detail remains on larger screens.</p></div>
+              <div class="mobile-card">
+                <div class="mobile-card-head"><div><strong class="tabular">VEH-REFERENCE-02</strong><span class="record-sub">Stock record specimen</span></div><span class="status status-attention">Attention</span></div>
+                <dl><div><dt>Location</dt><dd>Unassigned</dd></div><div><dt>Age band</dt><dd>Aging</dd></div></dl>
+              </div>
+              <div class="mobile-card">
+                <div class="mobile-card-head"><div><strong class="tabular">VEH-REFERENCE-04</strong><span class="record-sub">Master review specimen</span></div><span class="status status-blocked">Blocked</span></div>
+                <dl><div><dt>Location</dt><dd>Zone C</dd></div><div><dt>Next step</dt><dd>Resolve</dd></div></dl>
+              </div>
+              <div class="bottom-action"><button class="btn" type="button">History</button><button class="btn btn-primary" type="button">Review</button></div>
+            </div>
+          </article>
+        </div>
+        <div class="principle-strip">
+          <div class="principle"><strong>1440 · Full context</strong><p>Persistent navigation, dense table, and selected-record panel coexist.</p></div>
+          <div class="principle"><strong>1024 · Fast action</strong><p>Reduced columns, 48px targets, and a sticky action tray support touch.</p></div>
+          <div class="principle"><strong>390 · Fast check</strong><p>Exceptions rise first; details disclose progressively in bottom sheets.</p></div>
+          <div class="principle"><strong>All sizes · No hover debt</strong><p>Selection, status, and action meaning remain visible without pointer hover.</p></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <nav class="page-nav" aria-label="Direction sections">
+    <button type="button" data-target="intro" class="active">Intro</button>
+    <button type="button" data-target="foundation">Foundation</button>
+    <button type="button" data-target="cockpit">Desktop</button>
+    <button type="button" data-target="semantics">Semantics</button>
+    <button type="button" data-target="responsive">Responsive</button>
+  </nav>
+
+  <script>
+    const pageNavButtons = [...document.querySelectorAll('.page-nav button')];
+    const sections = [...document.querySelectorAll('[data-section]')];
+
+    pageNavButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const target = document.getElementById(button.dataset.target);
+        const top = target.getBoundingClientRect().top + window.scrollY - 24;
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top, behavior: reduceMotion ? 'auto' : 'smooth' });
+      });
+    });
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      pageNavButtons.forEach((button) => button.classList.toggle('active', button.dataset.target === visible.target.id));
+    }, { rootMargin: '-20% 0px -64% 0px', threshold: [0, 0.2, 0.5] });
+    sections.forEach((section) => sectionObserver.observe(section));
+
+    document.querySelectorAll('.filter-bar').forEach((bar) => {
+      bar.addEventListener('click', (event) => {
+        const button = event.target.closest('.filter-button');
+        if (!button) return;
+        bar.querySelectorAll('.filter-button').forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+      });
+    });
+
+    document.querySelectorAll('.cockpit-link').forEach((button) => {
+      button.addEventListener('click', () => {
+        document.querySelectorAll('.cockpit-link').forEach((item) => item.classList.toggle('active', item === button));
+      });
+    });
+
+    const detailTitle = document.getElementById('detail-title');
+    const detailState = document.getElementById('detail-state');
+    const detailLocation = document.getElementById('detail-location');
+    const records = [...document.querySelectorAll('tbody tr[data-record]')];
+    const selectRecord = (row) => {
+      records.forEach((item) => item.classList.toggle('selected', item === row));
+      detailTitle.textContent = `VEH-REFERENCE-${row.dataset.record}`;
+      detailState.textContent = row.dataset.status;
+      detailLocation.textContent = row.dataset.location;
+    };
+    records.forEach((row) => {
+      row.addEventListener('click', () => selectRecord(row));
+      row.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          selectRecord(row);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
