@@ -1,5 +1,7 @@
 # Intelligent Inventory Dashboard
 
+[![Intelligent Inventory Dashboard overview with aging-stock insights and manager actions](./assets/images/intelligent-inventory-dashboard-hero.png)](./assets/images/intelligent-inventory-dashboard-hero.png)
+
 A browser application for dealership managers to find aging vehicles, review
 inventory, and record a proposed action. The core flow is:
 
