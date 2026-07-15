@@ -125,5 +125,6 @@ it was corrected at the source and the relevant checks were run again.
 
 ### Design flow
 
-Review the final responsive design flow in the
-[v0.5 design handoff](https://khanhworktime.github.io/keyloop-submission/design/v0.5-design-handoff/index.html).
+- [Interactive v0.5 design handoff](https://khanhworktime.github.io/keyloop-submission/design/v0.5-design-handoff/index.html)
+- [System design document (PDF)](./assets/documents/intelligent-inventory-dashboard-system-design.pdf)
+- [Application walkthrough video (Google Drive)](https://drive.google.com/file/d/1HfQ9g15J3wB-9je5e59G-PzIvCprBPxj/view?usp=sharing)
