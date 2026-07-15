@@ -2,6 +2,12 @@
 
 [![Intelligent Inventory Dashboard overview with aging-stock insights and manager actions](./assets/images/intelligent-inventory-dashboard-hero.png)](./assets/images/intelligent-inventory-dashboard-hero.png)
 
+Explore the architecture, data flows, and technical decisions in the complete
+[system design document (PDF)](./assets/documents/intelligent-inventory-dashboard-system-design.pdf).
+
+Explore the responsive UI journey in the
+[interactive v0.5 design handoff](https://khanhworktime.github.io/keyloop-submission/design/v0.5-design-handoff/index.html).
+
 A browser application for dealership managers to find aging vehicles, review
 inventory, and record a proposed action. The core flow is:
 
@@ -125,6 +131,4 @@ it was corrected at the source and the relevant checks were run again.
 
 ### Design flow
 
-- [Interactive v0.5 design handoff](https://khanhworktime.github.io/keyloop-submission/design/v0.5-design-handoff/index.html)
-- [System design document (PDF)](./assets/documents/intelligent-inventory-dashboard-system-design.pdf)
 - [Application walkthrough video (Google Drive)](https://drive.google.com/file/d/1HfQ9g15J3wB-9je5e59G-PzIvCprBPxj/view?usp=sharing)
