@@ -120,3 +120,8 @@ and mobile layouts. The final quality gate combines linting, unit and
 repository tests, a production build, Playwright journeys, and automated
 accessibility checks. When a result did not match the required flow or layout,
 it was corrected at the source and the relevant checks were run again.
+
+### Design flow
+
+Review the final responsive design flow in the
+[v0.5 design handoff](https://khanhworktime.github.io/keyloop-submission/design/v0.5-design-handoff/index.html).
