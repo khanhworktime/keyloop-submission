@@ -6,7 +6,7 @@ and validation work.
 Current product packets:
 
 - [`US-001 Intelligent Inventory Dashboard Foundation`](US-001-intelligent-inventory-dashboard-foundation.md)
-  is in progress and owns production implementation proof.
+  is implemented and owns the validated production MVP proof.
 - [`US-002 Basic Design Foundation`](US-002-basic-design-foundation.md) is
   implemented and owns the completed design milestone.
 

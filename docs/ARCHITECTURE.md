@@ -1,138 +1,156 @@
 # Architecture
 
-The upstream Harness product is implemented as a Rust workspace with a CLI and
-SQLite durable layer. Its primary source is `crates/harness-cli/`, organized
-into domain, application, infrastructure, and interface modules. Schema
-migrations live in `scripts/schema/`, while installers and validation scripts
-form the distribution boundary.
+## System Boundary
 
-The reusable template does not select an application stack for a consumer
-project. The discovery guidance below is for that consumer application after a
-user-provided spec and stack decision exist; it does not describe the upstream
-Harness CLI as unimplemented.
-
-## Discovery Before Shape
-
-Before proposing implementation shape, identify:
-
-- Product surfaces: browser, mobile, desktop, CLI, API, worker, or service.
-- Runtime stack: language, framework, database, queues, providers, and hosting.
-- Core domains: the product concepts that deserve stable names and contracts.
-- Boundary inputs: user input, API requests, webhooks, jobs, files, credentials,
-  provider payloads, and environment configuration.
-- Validation ladder: the smallest checks that can prove the selected stack.
-
-Record stack choices in `docs/decisions/` when they meaningfully constrain
-future work.
-
-## Default Layering
+The Intelligent Inventory Dashboard is a browser-only React application. It
+ships with an MSW API and a Local Storage-backed repository so the full manager
+journey is executable without a production server.
 
 ```text
-domain
-  <- application
-      <- infrastructure
-          <- interface
-              <- app surfaces
+React route
+  -> feature component
+  -> TanStack Query hook
+  -> typed Axios client
+  -> MSW HTTP handler
+  -> inventory repository
+  -> versioned Local Storage state
 ```
 
-## Consumer Candidate Structure
+The browser API and storage adapter are submission infrastructure. They do not
+represent a deployed backend, shared database, authenticated user, or
+multi-user synchronization model.
 
-```text
-app/
-  domain/
-    entities/
-    value-objects/
-    repositories/
-    services/
+## Runtime Composition
 
-  application/
-    commands/
-    queries/
-    handlers/
+`src/main.tsx` starts the MSW worker, then mounts React with the shared Query
+Client and TanStack Router. If the worker cannot start, the application still
+renders and query surfaces expose recoverable request errors.
 
-  infrastructure/
-    database/
-    logging/
-    notifications/
-
-  interface/
-    controllers/
-    dto/
-    presenters/
-    routes/
-    middlewares/
-
-surfaces/
-  browser/
-  mobile/
-  desktop/
-  cli/
-```
-
-This is a thinking template, not a scaffold. Create real folders only when a
-story enters implementation and the selected stack needs them.
-
-## Dependency Rule
-
-Inner layers must not depend on outer layers.
-
-| Layer | May depend on | Must not depend on |
+| Boundary | Main ownership | Responsibilities |
 | --- | --- | --- |
-| domain | nothing project-external except tiny pure utilities | framework, database, UI, provider, process/env |
-| application | domain | framework, UI, provider, database concrete clients |
-| infrastructure | domain, application | interface controllers or UI |
-| interface | all backend layers | UI state or platform shell assumptions |
-| app surfaces | API contracts and app-facing clients | domain internals directly |
+| Routes | `src/routes/`, `src/router.tsx` | Route tree, path/search parsing, route composition |
+| Application shell | `src/components/app-shell/` | Navigation, landmarks, responsive shell |
+| Feature UI | `src/features/*/components/` | Overview, Inventory, Unit action, Activity presentation |
+| Query/application seam | `src/features/*/*-queries.ts`, `src/features/shared/` | Cache keys, HTTP calls, mutation invalidation, safe errors |
+| HTTP boundary | `src/lib/`, `src/mocks/handlers.ts`, `src/mocks/api/` | DTOs, correlation IDs, input parsing, response envelopes |
+| Persistence | `src/mocks/persistence/` | Queries, joins, schema parsing, atomic action write |
+| Domain | `src/domain/` | Entities, repository contract, aging/date rules |
+| Seed data | `src/mocks/data/` | Deterministic normalized starting state |
 
-## Parse-First Boundary Rule
+Dependencies point inward: feature components do not import Axios, MSW, or
+browser storage. The concrete Local Storage adapter is constructed only by the
+mock-browser boundary.
 
-Unknown data must be parsed at boundaries before it enters inner code.
+## Routes and Navigation
 
-Boundaries include:
+| Route | Feature |
+| --- | --- |
+| `/` | Overview totals and aging priority queue |
+| `/inventory` | URL-backed inventory filtering, sorting, selection, and pagination |
+| `/inventory/$unitId` | Unit facts, recent activity, and proposed-action mutation |
+| `/activity` | Global Activity feed and URL-backed filters |
 
-- HTTP request bodies, params, and query strings.
-- Session payloads and identity claims.
-- Environment variables.
-- Database rows returned from external clients.
-- Platform shell payloads.
-- Deep links, tokens, and signed URLs.
-- Provider webhooks, events, and async payloads.
+Primary route destinations are exactly Overview, Inventory, and Activity.
+Inventory Unit is reached from inventory context. Unknown and deferred routes
+render the application not-found state. The application shell also owns a
+non-route Search command: desktop exposes it in primary navigation, while the
+compact header exposes it beside Notifications. Its Base UI command palette
+reuses `GET /api/inventory?search=...` and navigates selected results to the
+existing Inventory Unit route; it does not introduce a new API or route.
 
-Target flow:
+Inventory and Activity search parameters are parsed before entering feature
+components. Canonical navigation uses replacement when correcting default or
+invalid paging/filter state, preserving usable Back navigation.
 
-```text
-unknown input
-  -> parser
-  -> typed DTO or command
-  -> application use case
-  -> domain object/value object
-```
+Inventory page and command-palette keyword searches share the repository index
+for the derived Inventory Unit name, Stock No., VIN, and Vehicle Master name/ID.
 
-Inner layers should work with meaningful product types such as `UserId`,
-`AccountId`, `WorkspaceId`, `Role`, `DateRange`, or domain-specific IDs,
-rather than repeatedly validating raw strings.
+## Domain Model
 
-## Command/Query Boundary
+The persisted `PersistedInventoryStateV1` envelope contains:
 
-If the product has both reads and writes, keep command/query separation clear at
-the code level even when the storage layer is simple:
+- `vehicleMasters`: reusable make, model, variant, and type identity.
+- `inventoryUnits`: VIN, stock number, arrival date, status, optional Zone/Slot
+  label, and latest action.
+- `activities`: timestamped arrival, status, and manager-action evidence.
 
-- Commands mutate state and own audit side effects.
-- Queries read state and format for consumers.
-- Shared domain rules live in domain/application, not controllers.
+Inventory Units reference Vehicle Masters by ID. Master fields are not copied
+into Unit persistence. `daysInStock` and `isAging` are derived at query time;
+derived age is never stored. Aging is strictly
+`inventoryStatus === 'available' && daysInStock > 90`.
 
-## Observability Contract
+## HTTP Contract
 
-The future server should emit one canonical JSON log line per request with:
+| Method | Path | Result |
+| --- | --- | --- |
+| `GET` | `/api/overview` | Current totals and oldest aging Units |
+| `GET` | `/api/inventory` | Filtered, sorted, paginated Units and facets |
+| `GET` | `/api/inventory/:unitId` | One Unit joined to Master and Activity data |
+| `PATCH` | `/api/inventory/:unitId` | Validated editable Unit identity and status update |
+| `POST` | `/api/inventory/:unitId/actions` | Updated Unit plus the new Activity item |
+| `GET` | `/api/activity` | Filtered, paginated global Activity and facets |
 
-- timestamp
-- level
-- request_id
-- user_id when known
-- action
-- duration_ms
-- status_code
-- message
+Success responses use typed `{ data }` envelopes. Errors use a stable error
+object with a correlation ID and optional field errors. Handlers parse and
+bound path, query, and body values before calling the repository. Mock latency
+is 250–650 ms in the browser and injectable for deterministic tests.
 
-Audit logs are product records. Application logs are operational records. Do not
-use one as a substitute for the other.
+Telemetry records correlation ID, method, path, duration, and status. It does
+not log query values, VINs, notes, or request bodies.
+
+## Persistence Flow
+
+The Local Storage key is `keyloop.inventory-state.v1`.
+
+Read flow:
+
+1. Read the stored string once.
+2. If no state exists, create and persist the deterministic seed.
+3. Parse unknown JSON into the versioned domain shape.
+4. Join Master, Unit, and Activity records for the requested view.
+5. Apply filters and sorting before pagination.
+
+Malformed or unsupported stored data returns a typed failure instead of being
+silently reset.
+
+Action flow:
+
+1. Read and parse the current snapshot.
+2. Validate Unit existence, action type, note length, and the aging rule.
+3. Clone the snapshot.
+4. Update `latestAction` and append one matching Activity event.
+5. Serialize both changes through one `setItem` call.
+6. Return the joined Unit and Activity result.
+7. Invalidate Overview, Inventory, the exact Unit, and Activity query keys.
+
+Unit update flow validates and trims VIN, stock number, lifecycle status, and
+the optional Zone/Slot label; rejects duplicate VIN/stock values; diffs the
+normalized values; and writes the Unit plus one `unit-updated` Activity in the
+same snapshot. A no-op returns the current detail without a write or Activity.
+Successful changes invalidate the same dependent query families.
+
+If persistence fails, no partial snapshot is written. Notes are rendered as
+plain text and excluded from telemetry.
+
+## Responsive Data Surface
+
+Desktop and tablet inventory views lazy-load AG Grid Community. Mobile renders
+cards from the same `UnitListItem` API response and shares the same filter,
+result, page, and action meaning. AG Grid Enterprise, Master/Detail, and the
+server-side row model are not used.
+
+## Scope Boundaries
+
+Vehicle Master is supporting normalized identity only. Inventory Units may
+carry one optional plain-text Zone/Slot label. Location hierarchy, capacity,
+assignment, movement, authentication, authorization,
+production APIs, SSE/WebSockets, and multi-user synchronization are outside the
+MVP. Production deployment is not evidenced.
+
+## Validation Boundary
+
+Vitest covers domain, repository, HTTP, query, and component behavior.
+Playwright runs desktop, tablet, and mobile Chromium projects for the manager
+journey, responsive surfaces, navigation, persistence, and accessibility. The
+production build may emit a non-blocking large-chunk advisory for the
+lazy-loaded AG Grid dependency.

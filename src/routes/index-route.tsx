@@ -1,10 +1,10 @@
 import { createRoute } from '@tanstack/react-router'
 
-import { InventoryDashboardShell } from '../components/inventory-dashboard-shell'
+import { OverviewPage } from '../features/overview/components/overview-page'
 import { rootRoute } from './root-route'
 
 export const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/',
-  component: InventoryDashboardShell,
+  component: OverviewPage,
 })

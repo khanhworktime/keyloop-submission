@@ -43,8 +43,12 @@ the input document remain scale-up reference material only.
 ### Inventory browsing
 
 - A manager can see a paginated, filterable inventory list.
-- Filters include make, model, and vehicle age; keyword search and pagination
-  must remain compatible with the mock API boundary.
+- Filters include make, model, and vehicle age. Shared keyword search matches
+  Inventory Unit name, Stock No., VIN, and Vehicle Master name/ID while
+  remaining compatible with the mock API boundary.
+- Global Inventory search opens from desktop primary navigation, the
+  tablet/mobile header, or Command/Ctrl + K, reuses the same keyword contract,
+  and navigates directly to a selected Unit.
 - Each row provides enough identifying and inventory-age information to decide
   whether attention is required.
 
@@ -53,25 +57,34 @@ the input document remain scale-up reference material only.
 - A Vehicle Master is the reusable definition of a vehicle, including make,
   model, variant, and type.
 - An Inventory Unit is a VIN-specific stock record that references one Vehicle
-  Master and owns inventory state such as arrival date, status, and action.
+  Master and owns inventory state such as VIN, stock number, arrival date,
+  lifecycle status, an optional Zone/Slot label, and action.
 - The Vehicle Master relationship supports filtering and record identity
   without duplicating shared specification data. A dedicated Master library is
   an optional supporting/admin surface, not part of the core submission flow.
 
-### Deferred location and placement module
+### Bounded placement label and deferred location module
 
+- A manager may edit one optional plain-text Zone/Slot label with the other
+  Inventory Unit identity fields. It is display context only.
 - Locations, Zone capacity, Slot occupancy, unassigned-unit management,
-  assignment, and movement are explicitly deferred beyond the submission MVP.
-- Legacy fixture labels may show read-only Zone/Slot context, but they do not
-  create an accepted route, mutation, persistence, API, or proof requirement.
+  assignment, and movement remain explicitly deferred beyond the submission MVP.
 
 ### Aging stock
 
 - `daysInStock` is calculated from a vehicle's inventory-arrival date using the
   current client date.
-- A vehicle is aging when `daysInStock > 90`; exactly 90 days is not aging.
-- Aging status is shown prominently in inventory and contributes to dashboard
-  summary data.
+- A vehicle is aging when its lifecycle status is `available` and
+  `daysInStock > 90`; exactly 90 days is not aging.
+- **Inventory age** means the derived `daysInStock` value plus an aging signal
+  when the strict threshold is met.
+- **Inventory status** means the persisted lifecycle value `available`,
+  `reserved`, or `sold`; aging never replaces or renames this status.
+- Reserved and sold units retain their numeric age for context and sorting but
+  never display an aging signal or contribute to aging review workflows.
+- Inventory surfaces show age and lifecycle as separate facts; lifecycle status
+  does not replace the numeric age.
+- Aging inventory contributes to dashboard summary data.
 
 ### Dashboard
 
@@ -85,12 +98,16 @@ the input document remain scale-up reference material only.
 
 ### Manager actions and history
 
-- A manager can record a status or proposed action for an aging vehicle, such
+- A manager can record a status or proposed action for an available aging vehicle, such
   as `Price Reduction Planned`, with an optional note.
 - Saving an action persists both the latest vehicle action and a timestamped
   activity-history entry.
-- A successful save provides immediate user feedback (toast) and exposes the
-  resulting history in a timeline or equivalent activity view.
+- A successful save provides immediate feedback through the accessible Base UI
+  toast pattern and exposes the resulting history in a timeline or equivalent
+  activity view.
+- Editing VIN, Stock No., lifecycle status, or Zone/Slot adds one `Unit update`
+  Activity listing the fields that changed. Submitting identical values does
+  not create an Activity event.
 
 ## Data Ownership
 
@@ -98,6 +115,7 @@ The active mock domain owns the canonical browser-side representation of
 Vehicle Masters, Inventory Units, actions, and activity records. UI components
 consume API-shaped responses and must not manipulate Local Storage directly.
 Zones and Slots are reserved for the deferred placement module.
+The optional `zoneSlot` Unit label does not model either entity.
 
 ## Quality Expectations
 
@@ -114,5 +132,4 @@ Zones and Slots are reserved for the deferred placement module.
 - Seed-data shape, image licensing/source, and reset behavior.
 - Exact component behavior and responsive breakpoints within the selected
   Precision design system.
-- Locations, Zone/Slot capacity and placement, associated mock API contracts,
-  persistence, and validation proof.
+- Location hierarchy, Zone/Slot capacity, assignment, and movement workflows.
